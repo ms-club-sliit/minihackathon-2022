@@ -1,70 +1,69 @@
-# Getting Started with Create React App
+# MS Club - Mini Hackathon 2022
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Your one-stop portal to all things regarding MS Club of SLIIT🌀  
+Read further to know how **you** can start contributing to MS Club Mini Hackathon! 
 
-## Available Scripts
+## Quick Links
 
-In the project directory, you can run:
+- [Tech Stack](#tech-stack)
+- [How to contribute](#how-to-contribute)
+- [Learning Resources](#i-really-want-to-contribute-but-where-do-i-start)
 
-### `yarn start`
+## [Tech Stack](#Tech-Stack)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![banner-whitebg-spacing-10px(2)](https://user-images.githubusercontent.com/73905901/126197938-6f1301fb-623f-4d0a-8bce-5b268722da1c.png)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<!-- Add system architecture -->
 
-### `yarn test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+## [How to contribute](#how-to)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Fork the repo on GitHub.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. Clone the project to your own machine.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```git clone https://github.com/<YOUR_USERNAME>/minihackathon-v2.git```
 
-### `yarn eject`
+3. Create a branch using the git checkout command.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+`git checkout -b <your-new-branch-name>`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. Stage your changes and commit with a meaningful commit message.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+``` 
+git add .
+git commit -m "<initial commit>" 
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+5. Push your work back up to your fork.
 
-## Learn More
+`git push origin <add-your-branch-name>`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+6. Submit a Pull request so that we can review your changes. [Learn about creating a pull request.](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## [I really want to contribute but where do I start?](#resources) 
 
-### Code Splitting
+We got your back. Here are some **FREE** resources for you to strengthen your web development skills and start firing some commits 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+**HTML / CSS / JS**
 
-### Analyzing the Bundle Size
+- [Web Development 101 by Microsoft Learn](https://docs.microsoft.com/en-us/learn/paths/web-development-101/)
+- [Responsive Web Design by freeCodecamp](https://www.freecodecamp.org/learn/responsive-web-design/)
+- [Learn Javascript for free by Scrimba](https://scrimba.com/learn/learnjavascript)
+- [HTML & CSS Crash Course by Scrimba](https://scrimba.com/learn/htmlcss)
+- [Learn Modern Javascript by freeCodeCamp + Scrimba](https://scrimba.com/learn/es6)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+**React.js**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- [React course by freeCodeCamp](https://www.freecodecamp.org/learn/front-end-libraries/#react)
+- [Learn React by Scrimba](https://scrimba.com/learn/learnreact)
 
-### Advanced Configuration
+## Contributors
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+<a href="https://github.com/ms-club-sliit/minihackathon-v2/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=ms-club-sliit/minihackathon-v2" />
+</a>
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
