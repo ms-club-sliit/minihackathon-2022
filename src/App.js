@@ -1,7 +1,7 @@
 function App() {
 	return (
-		<div>
-			<h1>Mini Hackathon 2022</h1>
+		<div className="grid place-items-center mt-10">
+			<h1 className="text-3xl font-bold">Mini Hackathon 2022</h1>
 		</div>
 	);
 }
