@@ -63,7 +63,7 @@ We got your back. Here are some **FREE** resources for you to strengthen your we
 ## Contributors
 
 <a href="https://github.com/ms-club-sliit/minihackathon-v2/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=ms-club-sliit/minihackathon-v2" />
+  <img src="https://contrib.rocks/image?repo=ms-club-sliit/minihackathon-v2" width="95" />
 </a>
 
 
