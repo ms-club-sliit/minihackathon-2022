@@ -1,3 +1,4 @@
+import Rules from "./rules";
 import Timeline from "./Timeline";
 
-export { Timeline };
+export { Rules, Timeline };

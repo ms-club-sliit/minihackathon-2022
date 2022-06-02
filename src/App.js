@@ -1,10 +1,12 @@
-import {Timeline} from "./views";
+import { Rules } from "./views";
+import { Navbar } from "./components";
 
 function App() {
 	return (
-		<div>
-
-		</div>
+		<>
+			<Navbar />
+			<Rules />
+		</>
 	);
 }
 
