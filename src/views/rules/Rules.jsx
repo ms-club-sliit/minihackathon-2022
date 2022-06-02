@@ -5,7 +5,7 @@ const Rules = () => {
     <div>
         <div className='my-10'>
             <div>
-                <div className="block p-6 rounded-lg ">
+                <div className="flex justify-center block p-6 rounded-lg">
                     <h1 className='font-bold text-6xl text-center'>
                         Who Can Participate ?
                     </h1>
