@@ -1,4 +1,4 @@
-import { Rules, Timeline } from "./views";
+import { Gallery, Rules, Timeline } from "./views";
 import { Navbar } from "./components";
 
 function App() {
@@ -7,6 +7,7 @@ function App() {
 			<Navbar />
 			<Rules />
 			<Timeline />
+			<Gallery />
 		</>
 	);
 }
