@@ -1,3 +1,5 @@
+import { Gallery } from "./views";
+
 function App() {
 	return (
 		<div className="grid place-items-center mt-10">
@@ -24,6 +26,7 @@ function App() {
 					</li>
 				</ul>
 			</div>
+			<Gallery/>
 		</div>
 	);
 }
