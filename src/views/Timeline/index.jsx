@@ -1,8 +1,8 @@
 import React from "react";
 import { VerticalTimeline } from "react-vertical-timeline-component";
-import { TimelineComponent } from "../components";
+import { TimelineComponent } from "../../components";
 import "react-vertical-timeline-component/style.min.css";
-import TimelineData from "../data/Timeline.json";
+import TimelineData from "../../data/Timeline.json";
 
 const Timeline = () => (
 	<div>

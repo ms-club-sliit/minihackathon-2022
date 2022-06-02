@@ -1,4 +1,4 @@
-import { Rules } from "./views";
+import { Rules, Timeline } from "./views";
 import { Navbar } from "./components";
 
 function App() {
@@ -6,6 +6,7 @@ function App() {
 		<>
 			<Navbar />
 			<Rules />
+			<Timeline />
 		</>
 	);
 }
