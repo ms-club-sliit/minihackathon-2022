@@ -1,3 +1,5 @@
+import {Timeline} from "./views";
+
 function App() {
 	return (
 		<div className="grid place-items-center mt-10">
@@ -23,6 +25,9 @@ function App() {
 						for styling
 					</li>
 				</ul>
+			</div>
+			<div>
+				<Timeline />
 			</div>
 		</div>
 	);

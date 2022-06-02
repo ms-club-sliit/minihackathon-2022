@@ -1,0 +1,28 @@
+{
+    "data": [
+      {
+        "id": 1,
+        "title": "Registration Open for Awareness Session",
+        "timeDate": "23rd Of April - 7.30 pm",
+        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout"
+      },
+      {
+        "id": 2,
+        "title": "Awareness Session",
+        "timeDate": "23rd Of April - 7.30 pm",
+        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout"
+      },
+      {
+        "id": 3,
+        "title": "Registration Open",
+        "timeDate": "23rd Of April - 7.30 pm",
+        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout"
+      },
+      {
+        "id": 4,
+        "title": "Registration Closes",
+        "timeDate": "23rd Of April - 7.30 pm",
+        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout"
+      }
+    ]
+  }
