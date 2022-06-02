@@ -1,3 +1,3 @@
-import TimelineComponent from "./timeline";
+import Navbar from "./Navbar";
 
-export { TimelineComponent };
+export { Navbar };

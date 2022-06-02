@@ -3,7 +3,7 @@ import { Popover, Transition } from '@headlessui/react'
 import {
   MenuIcon,
   XIcon,
-} from '@heroicons/react/outline'
+} from '@heroicons/react/outline';
 
 const solutions = [
   {
@@ -33,9 +33,9 @@ const solutions = [
     name: 'Contact',
     href: '#',
   },
-]
+];
 
-export default function Header() {
+const Header = () => {
   return (
     <Popover className="relative bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -133,3 +133,5 @@ export default function Header() {
     </Popover>
   )
 }
+
+export default Header;
