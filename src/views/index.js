@@ -1,3 +1,5 @@
+import Gallery from "./Gallery/Gallery";
 import Rules from "./rules";
 
-export { Rules };
+export { Gallery, Rules };
+
