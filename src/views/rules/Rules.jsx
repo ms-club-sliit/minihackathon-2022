@@ -2,37 +2,38 @@ import React from 'react'
 
 const Rules = () => {
   return (
-    <div >
-        <div>
-            <div className="block p-6 rounded-lg">
-                <h1 style={{ height:"73px", fontWeight: 700, fontSize: "60px", lineHeight: "75px", textAlign:"center", letterSpacing: "-0.06em",color: "#000000"}} >
-                    Who Can Participate ?
-                </h1>
-            </div> 
-        </div>
+    <div>
+        <div className='my-10'>
+            <div>
+                <div className="block p-6 rounded-lg ">
+                    <h1 className='font-bold text-6xl text-center'>
+                        Who Can Participate ?
+                    </h1>
+                </div> 
+            </div>
 
-        <div className='flex justify-center'>
-            <p style={{textAlign:"center",color: "#000000"}}> 
-                Open to Students of Sri Lankan Institute of Information Technology (SLIIT) 
-                         <br></br>from the following batches;<br></br>
-            </p>
-            <br></br>  
-        </div>
+            <div className='flex justify-center'>
+                <p className='text-center font-semibold text-neutral-700'> 
+                    Open to Students of Sri Lankan Institute of Information Technology (SLIIT) 
+                             <br />from the following batches;<br/>
+                </p> 
+            </div>
 
-        <div className='flex justify-center' >
-            <p style={{marginTop:20}}>
-                <b style={{ fontSize: "20px"}}>All 1st Years | All 2nd Years</b> <br />
-            </p>
-        </div>
+            <div className='flex justify-center mt-2' >
+                <p className="mt-3 text-xl font-bold">
+                    All 1st Years | All 2nd Years
+                </p>
+            </div>
 
-        <div className='flex justify-center'>
-            <a href='/'>
-                <button style={{marginTop:25,width:200, height:50,borderRadius:10,background:"black",color:'white'}}>
-                    Get full instructions
-                </button>
-            </a>
-        </div>
-                              
+            <div className='flex justify-center'>
+                <a href='/'>
+                    <button className='mt-4 w-48 h-10 rounded-md bg-black text-white'>
+                        Get Full Instructions
+                    </button>
+                </a>
+            </div>
+            
+        </div>                    
     </div>
   )
 }
