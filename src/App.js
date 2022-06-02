@@ -8,7 +8,7 @@ function App() {
 			<Navbar />
 			<Rules />
 			<Gallery />
-			<TeamCard />
+			<TeamCard/>
 		</>
 	);
 }

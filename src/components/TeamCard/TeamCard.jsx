@@ -2,7 +2,7 @@ import React from "react";
 
 export default function TeamCard() {
 	return (
-		<div class="block px-6 py-4 rounded-lg  bg-white md:w-[36rem]  md:h-[18rem] border-2">
+		<div class="block px-6 py-4 rounded-lg  bg-white md:w-[36rem]  md:h-[18rem] border-2 object-cover">
 			<div className="md:flex items-center px-8 py-2">
 				<img
 					src="https://www.drodd.com/images16/black-color13.jpg"
