@@ -1,3 +1,3 @@
-import Timeline from "./timeline";
+import Timeline from "./Timeline";
 
 export { Timeline };

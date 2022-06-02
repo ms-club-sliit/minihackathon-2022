@@ -1,3 +1,3 @@
-import TimelineComponent from "./timeline";
+import TimelineComponent from "./Timeline";
 
 export { TimelineComponent };
