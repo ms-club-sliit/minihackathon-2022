@@ -1,3 +1,5 @@
+import Rules from "./views/rules/Rules";
+
 function App() {
 	return (
 		<div className="grid place-items-center mt-10">
@@ -23,6 +25,9 @@ function App() {
 						for styling
 					</li>
 				</ul>
+
+				<br></br>
+				<Rules></Rules>
 			</div>
 		</div>
 	);
