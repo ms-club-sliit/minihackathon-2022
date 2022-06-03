@@ -41,13 +41,11 @@ const Header = () => {
 	return (
 		<Popover className="relative bg-white">
 			<div className="max-w-7xl mx-auto px-4 sm:px-6">
-				<div className="flex justify-between items-center border-b-2 border-gray-100 py-3 md:justify-start md:space-x-10">
+				<div className="flex justify-between items-center border-0 py-3 md:justify-start md:space-x-10">
 					<div className="flex justify-start lg:w-0 lg:flex-1">
-						<li className="text-xl font-medium text-black hover:text-gray-900 font-medium font-extrabold list-none">
-							<h2>
-								<b>MiNi HACKATHON 2022</b>
-							</h2>
-						</li>
+						<div className="text-xl font-medium text-black hover:text-gray-900 list-none">
+							MiNi HACKATHON 2022
+						</div>
 					</div>
 					<div className="-mr-2 -my-2 md:hidden">
 						<Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
@@ -57,33 +55,33 @@ const Header = () => {
 					</div>
 					<Popover.Group as="nav" className="hidden md:flex space-x-7">
 						<li className="text-base font-medium text-black hover:text-gray-900 mt-1 list-none cursor-pointer">
-							<b>Home</b>
+							Home
 						</li>
-						<li className="text-base font-semibold text-gray-500 hover:text-gray-900 mt-1 list-none cursor-pointer">
+						<li className="text-base font-normal text-gray-500 hover:text-gray-900 mt-1 list-none cursor-pointer">
 							<Link
 								to="eligibility"
 								spy={true}
 								smooth={true}
-								offset={50}
+								offset={10}
 								duration={500}
 								delay={100}
 							>
 								Eligibility
 							</Link>
 						</li>
-						<li className="text-base font-semibold text-gray-500 hover:text-gray-900 mt-1 list-none cursor-pointer">
+						<li className="text-base font-normal text-gray-500 hover:text-gray-900 mt-1 list-none cursor-pointer">
 							<Link
 								to="timeline"
 								spy={true}
 								smooth={true}
-								offset={50}
+								offset={-10}
 								duration={600}
 								delay={100}
 							>
 								Timeline
 							</Link>
 						</li>
-						<li className="text-base font-semibold text-gray-500 hover:text-gray-900 mt-1 list-none cursor-pointer">
+						<li className="text-base font-normal text-gray-500 hover:text-gray-900 mt-1 list-none cursor-pointer">
 							<Link
 								to="teams"
 								spy={true}
@@ -95,19 +93,19 @@ const Header = () => {
 								Teams
 							</Link>
 						</li>
-						<li className="text-base font-semibold text-gray-500 hover:text-gray-900 mt-1 list-none cursor-pointer">
+						<li className="text-base font-normal text-gray-500 hover:text-gray-900 mt-1 list-none cursor-pointer">
 							<Link
 								to="gallery"
 								spy={true}
 								smooth={true}
-								offset={50}
+								offset={30}
 								duration={800}
 								delay={100}
 							>
 								Gallery
 							</Link>
 						</li>
-						<li className="text-base font-semibold text-gray-500 hover:text-gray-900 mt-1 list-none cursor-pointer">
+						<li className="text-base font-normal text-gray-500 hover:text-gray-900 mt-1 list-none cursor-pointer">
 							<Link
 								to="rules"
 								spy={true}
@@ -119,7 +117,7 @@ const Header = () => {
 								Rules
 							</Link>
 						</li>
-						<li className="text-base font-semibold text-gray-500 hover:text-gray-900 mt-1 list-none cursor-pointer">
+						<li className="text-base font-normal text-gray-500 hover:text-gray-900 mt-1 list-none cursor-pointer">
 							<Link
 								to="contact"
 								spy={true}
@@ -131,7 +129,7 @@ const Header = () => {
 								Contact
 							</Link>
 						</li>
-						<li className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-1 border border-transparent rounded-md shadow-sm text-base font-medium text-white hover:text-black bg-black hover:bg-gray-200">
+						<li className="ml-8 cursor-pointer inline-flex items-center justify-center px-4 py-1 border-0 rounded font-normal text-white hover:text-black bg-black hover:bg-gray-200 transition duration-0 hover:duration-500">
 							Join Teams
 						</li>
 					</Popover.Group>
@@ -191,7 +189,7 @@ const Header = () => {
 							<div>
 								<a
 									href="/"
-									className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white hover:text-black bg-black hover:bg-gray-200"
+									className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white hover:text-black bg-black hover:bg-gray-200 transition duration-0 hover:duration-500"
 								>
 									Join Teams
 								</a>
