@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import MemberItem from "./memberItem";
+import MemberForm from "./MemberForm";
 import { saveTeamInfo } from "../../api/register";
 
 const Register = () => {
@@ -127,7 +127,7 @@ const Register = () => {
 
 			<div className="row">
 				<div className="flex">
-					<MemberItem
+					<MemberForm
 						id="01"
 						name={member01Name}
 						email={member01Email}
@@ -144,7 +144,7 @@ const Register = () => {
 						onImageChange={(value) => setMember01Image(value)}
 					/>
 
-					<MemberItem
+					<MemberForm
 						id="02"
 						name={member02Name}
 						email={member02Email}
@@ -162,7 +162,7 @@ const Register = () => {
 					/>
 				</div>
 				<div className="flex mt-8">
-					<MemberItem
+					<MemberForm
 						id="03"
 						name={member03Name}
 						email={member03Email}
@@ -179,7 +179,7 @@ const Register = () => {
 						onImageChange={(value) => setMember03Image(value)}
 					/>
 
-					<MemberItem
+					<MemberForm
 						id="04"
 						name={member04Name}
 						email={member04Email}

@@ -1,7 +1,6 @@
 import React from "react";
 
-const MemberItem = (props) => {
-	// console.log(props);
+const MemberForm = (props) => {
 	return (
 		<div>
 			<h6>Member {props.id}</h6>
@@ -90,4 +89,4 @@ const MemberItem = (props) => {
 	);
 };
 
-export default MemberItem;
+export default MemberForm;
