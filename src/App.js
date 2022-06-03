@@ -1,14 +1,15 @@
-import { Gallery, Rules, Timeline } from "./views";
-import { Navbar, TeamCard } from "./components";
+import { Gallery, Countdown, Timeline, Eligibility } from "./views";
+import { Footer, Navbar } from "./components";
 
 function App() {
 	return (
 		<>
 			<Navbar />
-			<Rules />
+			<Countdown />
+			<Eligibility />
 			<Timeline />
 			<Gallery />
-			<TeamCard />
+			<Footer />
 		</>
 	);
 }
