@@ -2,7 +2,7 @@ import React from 'react'
 
 const Rules = () => {
   return (
-    <div>
+    <div id = "rules">
         <div className='my-10'>
             <div>
                 <div className="flex justify-center block p-6 rounded-lg">

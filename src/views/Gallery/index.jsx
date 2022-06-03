@@ -31,7 +31,7 @@ const responsive = {
 
 const Gallery = () => {
 	return (
-		<div className="lg:px-20 py-10">
+		<div id = "gallery" className="lg:px-20 py-10">
 			<h1 className="text-3xl text-center mb-5 font-bold">Gallery</h1>
 			<div>
 				<Carousel responsive={responsive} className="lg:rounded-3xl">
