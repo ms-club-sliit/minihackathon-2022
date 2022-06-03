@@ -33,7 +33,7 @@ const Gallery = () => {
 	return (
 		<div>
 			<h1 className="text-3xl text-center mb-5 font-bold">Gallery</h1>
-			<div className="w-screen h-full items-center">
+			<div>
 				<Carousel responsive={responsive}>
 					<img src={IMG1} alt="minihackthon2019" />
 					<img src={IMG2} alt="minihackthon2019" />
