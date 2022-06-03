@@ -1,6 +1,5 @@
 import { Gallery, Rules } from "./views";
-import { Navbar } from "./components";
-import TeamCard from "./components/TeamCard/TeamCard";
+import { Navbar, TeamCard } from "./components";
 
 function App() {
 	return (
@@ -8,7 +7,7 @@ function App() {
 			<Navbar />
 			<Rules />
 			<Gallery />
-			<TeamCard/>
+			<TeamCard />
 		</>
 	);
 }
