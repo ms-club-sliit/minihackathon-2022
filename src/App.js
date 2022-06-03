@@ -1,13 +1,16 @@
-import { Gallery, Eligibility, Timeline } from "./views";
-import { Navbar } from "./components";
+import { Gallery, Header, Sponsors, Timeline, Eligibility } from "./views";
+import { Footer, Navbar } from "./components";
 
 function App() {
 	return (
 		<>
 			<Navbar />
+			<Header />
 			<Eligibility />
 			<Timeline />
 			<Gallery />
+			<Sponsors />
+			<Footer />
 		</>
 	);
 }

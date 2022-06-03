@@ -1,4 +1,6 @@
 import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
 import { FirebaseConfigs } from "./configs";
 
 const FirebaseApp = initializeApp({
@@ -11,4 +13,7 @@ const FirebaseApp = initializeApp({
 	measurementId: FirebaseConfigs.MEASUREMENT_ID,
 });
 
-export default FirebaseApp;
+const Db = getFirestore(FirebaseApp);
+const Storage = getStorage(FirebaseApp);
+
+export { FirebaseApp, Db, Storage };
