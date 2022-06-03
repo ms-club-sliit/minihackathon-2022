@@ -9,7 +9,7 @@ const TimelineComponent = (props) => (
 		iconStyle={{ background: "#000000", color: "#fff" }}
 		icon={<HiCheckCircle/>}
 	>
-		<h2 className="vertical-timeline-element-title" style={{color:"#000000", fontWeight:"bold"}}>{props.data && props.data.title}</h2>
+		<h2 className="vertical-timeline-element-title" style={{color:"#000000", fontWeight:"bold", fontSize:"xx-large"}}>{props.data && props.data.title}</h2>
 		<h6 className="vertical-timeline-element-subtitle" style={{color:"#666666", fontWeight:"bold"}}>
 		{props.data && props.data.dateTime}
 		</h6>
