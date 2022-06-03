@@ -2,20 +2,20 @@ import React from "react";
 
 const Teamcard = () => {
 	return (
-		<div class="block px-5 py-3 rounded-lg  bg-white md:w-[36rem]  md:h-[18rem] border-2 absolute">
-			<div className="grid grid-rows-1 grid-cols-9 gap-4 md:flex items-center p-4">
-				<div class="col-span-1">
+		<div class="block px-5 py-3 rounded-lg  bg-white md:w-[45rem]  md:h-[18rem] border-2 absolute">
+			<div className="grid grid-rows-1 grid-cols-10 items-center p-4">
+				<div class="col-start-1 col-span-1">
 					<img
 						src="https://www.drodd.com/images16/black-color13.jpg"
-						class="max-w-sm md:h-[4rem] rounded-full h-20"
+						class="max-w-sm md:h-[4rem] rounded-full h-14"
 						alt="Team Cats"
 					/>
 				</div>
-				<div class="col-span-4">
-					<h1 className="ml-4 pl-3 text-3xl font-bold mr-14">Team Cats</h1>
+				<div class="col-start-3 col-span-5">
+					<h1 className="text-3xl font-bold">Team Cats</h1>
 				</div>
-				<div>
-					<button class=" ml-8 whitespace-nowrap rounded-full border-2 px-3 py-1 text-lg md:text-gray-800">
+				<div class="col-start-9 col-span-2">
+					<button class="whitespace-nowrap rounded-full border-2 px-3 py-1 text-lg md:text-gray-800">
 						1st Round
 					</button>
 				</div>
