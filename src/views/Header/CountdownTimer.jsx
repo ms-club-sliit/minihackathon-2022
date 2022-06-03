@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getRemainingTimeUntilMsTimestamp } from "../../util/CountdownTimerUtils";
+import { getRemainingTimeUntilMsTimestamp } from "../../utils/countdownTimerUtils";
 
 const defaultRemainingTime = {
 	seconds: "00",
@@ -23,7 +23,7 @@ const CountdownTimer = ({ countdownTimestampMs, month, date }) => {
 	}
 
 	return (
-		<div className="font-clash flex flex-col justify-center text-center">
+		<div className=" flex flex-col justify-center text-center">
 			<div className="font-bold text-6xl sm:text-7xl md:text-8xl mb-2">
 				{month} {date}
 			</div>

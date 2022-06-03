@@ -1,5 +1,5 @@
 import React from "react";
-import CompanyLogo1 from "../../asserts/sponsers/companylogo1.webp";
+import CompanyLogo1 from "../../assets/sponsors/company_logo.webp";
 
 const Sponsers = () => {
 	return (

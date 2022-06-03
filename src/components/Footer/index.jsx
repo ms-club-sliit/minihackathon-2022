@@ -1,6 +1,6 @@
 import React from "react";
-import MSLogo from "../../asserts/msclub/mslogo.webp";
-import MLSALogo from "../../asserts/mlsa/mlsalogo.webp";
+import MSLogo from "../../assets/logo/ms_club_logo.png";
+import MLSALogo from "../../assets/logo/mlsa_logo.png";
 
 const Footer = () => {
 	return (

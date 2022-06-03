@@ -1,15 +1,15 @@
-import { Gallery, Countdown, Sponsers, Timeline, Eligibility } from "./views";
+import { Gallery, Header, Sponsors, Timeline, Eligibility } from "./views";
 import { Footer, Navbar } from "./components";
 
 function App() {
 	return (
 		<>
 			<Navbar />
-			<Countdown />
+			<Header />
 			<Eligibility />
 			<Timeline />
 			<Gallery />
-			<Sponsers />
+			<Sponsors />
 			<Footer />
 		</>
 	);

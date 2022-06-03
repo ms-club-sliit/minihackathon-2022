@@ -1,7 +1,7 @@
 import Gallery from "./Gallery";
 import Eligibility from "./Eligibility";
-import Countdown from "./Countdown";
-import Sponsers from "./Sponsers";
+import Header from "./Header";
+import Sponsors from "./Sponsors";
 import Timeline from "./Timeline";
 
-export { Gallery, Countdown, Sponsers, Timeline, Eligibility };
+export { Gallery, Header, Sponsors, Timeline, Eligibility };
