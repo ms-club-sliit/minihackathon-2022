@@ -21,14 +21,13 @@ const Countdown = () => {
 			</div>
 
 			<div className="flex justify-center items-center mt-10 md:mt-0 md:p-10">
-			{/* Countdown */}
-			<CountdownTimer
-				countdownTimestampMs={newDate.getTime()}
-				month={month}
-				date={date}
-			/>
+				{/* Countdown */}
+				<CountdownTimer
+					countdownTimestampMs={newDate.getTime()}
+					month={month}
+					date={date}
+				/>
 			</div>
-
 		</div>
 	);
 };
