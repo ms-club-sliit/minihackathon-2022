@@ -7,7 +7,7 @@ const Footer = () => {
 		<footer class="p-4 bg-white shadow md:px-20 md:py-8">
 			<hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
 			<div class="sm:flex sm:items-center sm:justify-between">
-				<div className="flex mt-4 space-x-4 sm:justify-center sm:mt-0">
+				<div className="flex mt-4 space-x-4 justify-center sm:mt-0">
 					<a
 						href="https://msclubsliit.org/"
 						class="flex items-center mb-4 sm:mb-0"
@@ -29,10 +29,10 @@ const Footer = () => {
 					</a>
 					. All Rights Reserved.
 				</span>
-				<div class="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
+				<div class="flex mt-4 space-x-6 justify-center sm:mt-0">
 					<a
 						href="https://www.facebook.com/msclubsliit"
-						class="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+						class="text-gray-500 hover:text-black dark:hover:text-black"
 					>
 						<svg
 							class="w-5 h-5"
@@ -49,7 +49,7 @@ const Footer = () => {
 					</a>
 					<a
 						href="https://www.linkedin.com/company/msclubsliit"
-						class="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+						class="text-gray-500 hover:text-black dark:hover:text-black"
 					>
 						<svg
 							class="w-5 h-5"
@@ -66,7 +66,7 @@ const Footer = () => {
 					</a>
 					<a
 						href="https://www.instagram.com/msclub.sliit/"
-						class="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+						class="text-gray-500 hover:text-black dark:hover:text-black"
 					>
 						<svg
 							class="w-5 h-5"
@@ -79,7 +79,7 @@ const Footer = () => {
 					</a>
 					<a
 						href="https://www.instagram.com/msclub.sliit/"
-						class="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+						class="text-gray-500 hover:text-black dark:hover:text-black"
 					>
 						<svg
 							class="w-5 h-5"
@@ -96,7 +96,7 @@ const Footer = () => {
 					</a>
 					<a
 						href="https://msclubsliit.org/"
-						class="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+						class="text-gray-500 hover:text-black dark:hover:text-black"
 					>
 						<svg
 							class="w-5 h-5"
