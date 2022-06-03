@@ -31,7 +31,7 @@ const responsive = {
 
 const Gallery = () => {
 	return (
-		<div>
+		<div id = "gallery">
 			<h1 className="text-3xl text-center mb-5 font-bold">Gallery</h1>
 			<div>
 				<Carousel responsive={responsive}>
