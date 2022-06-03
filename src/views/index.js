@@ -1,3 +1,5 @@
-import Register from "./register";
+import Gallery from "./Gallery";
+import Rules from "./rules";
+import Timeline from "./Timeline";
 
-export { Register };
+export { Gallery, Rules, Timeline };

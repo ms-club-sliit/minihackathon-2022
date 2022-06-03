@@ -1,10 +1,14 @@
-import { Register } from "./views";
+import { Gallery, Rules, Timeline } from "./views";
+import { Navbar } from "./components";
 
 function App() {
 	return (
-		<div className="grid place-items-center mt-10">
-			<Register />
-		</div>
+		<>
+			<Navbar />
+			<Rules />
+			<Timeline />
+			<Gallery />
+		</>
 	);
 }
 
