@@ -1,6 +1,6 @@
 import Gallery from "./Gallery";
-import Rules from "./rules";
+import Eligibility from "./Eligibility";
 import Timeline from "./Timeline";
 
-export { Gallery, Rules, Timeline };
+export { Gallery, Eligibility, Timeline };
 
