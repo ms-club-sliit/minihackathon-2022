@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Rules = () => {
+const Eligibility = () => {
   return (
-    <div id = "rules">
+    <div id = "eligibility">
         <div className='my-10'>
             <div>
                 <div className="flex justify-center block p-6 rounded-lg">
@@ -38,4 +38,4 @@ const Rules = () => {
   )
 }
 
-export default Rules;
+export default Eligibility;

@@ -7,6 +7,7 @@ import TimelineData from "../../data/Timeline.json";
 
 const Timeline = () => (
 	<div className="my-30" id = "timeline">
+		<h1 className="text-5xl text-center mb-5 font-bold">Timeline</h1>
 		<VerticalTimeline lineColor={"black"}>
 			{TimelineData.data.map((singleTimelineDetails) => {
 				return <TimelineComponent data={singleTimelineDetails}/>;
