@@ -1,16 +1,17 @@
 import { Gallery, Header, Sponsors, Timeline, Eligibility } from "./views";
-import { Footer, Navbar } from "./components";
+import { Footer, Navbar, Ticket } from "./components";
 
 function App() {
 	return (
 		<>
-			<Navbar />
+			<Ticket />
+			{/* <Navbar />
 			<Header />
 			<Eligibility />
 			<Timeline />
 			<Gallery />
 			<Sponsors />
-			<Footer />
+			<Footer /> */}
 		</>
 	);
 }
