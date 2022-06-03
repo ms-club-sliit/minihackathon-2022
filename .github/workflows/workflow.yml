@@ -30,7 +30,7 @@ jobs:
           REACT_APP_MEASUREMENT_ID: ${{ secrets.REACT_APP_MEASUREMENT_ID }}
       
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@v4
+        uses: JamesIves/github-pages-deploy-action@v4.1.1
         with:
           branch: gh-pages
           folder: build
