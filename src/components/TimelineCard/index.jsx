@@ -9,7 +9,7 @@ const TimelineComponent = (props) => (
 		iconClassName="bg-black text-white"
 		icon={<HiCheckCircle />}
 	>
-		<div className="text-3xl font-bold text-black">
+		<div className="text-4xl font-bold text-black">
 			{props.data && props.data.title}
 		</div>
 		<div className="text-gray-500 font-semibold text-xl">
