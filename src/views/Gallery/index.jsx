@@ -31,17 +31,17 @@ const responsive = {
 
 const Gallery = () => {
 	return (
-		<div id = "gallery">
+		<div id = "gallery" className="lg:px-20 py-10">
 			<h1 className="text-3xl text-center mb-5 font-bold">Gallery</h1>
 			<div>
-				<Carousel responsive={responsive}>
-					<img src={IMG1} alt="minihackthon2019" />
-					<img src={IMG2} alt="minihackthon2019" />
-					<img src={IMG3} alt="minihackthon2019" />
-					<img src={IMG4} alt="minihackthon2019" />
-					<img src={IMG5} alt="minihackthon2019" />
-					<img src={IMG6} alt="minihackthon2019" />
-					<img src={IMG7} alt="minihackthon2019" />
+				<Carousel responsive={responsive} className="lg:rounded-3xl">
+					<img src={IMG1} alt="minihackthon2019" className="lg:pr-3"/>
+					<img src={IMG2} alt="minihackthon2019" className="lg:pr-3"/>
+					<img src={IMG3} alt="minihackthon2019" className="lg:pr-3"/>
+					<img src={IMG4} alt="minihackthon2019" className="lg:pr-3"/>
+					<img src={IMG5} alt="minihackthon2019" className="lg:pr-3"/>
+					<img src={IMG6} alt="minihackthon2019" className="lg:pr-3"/>
+					<img src={IMG7} alt="minihackthon2019" className="lg:pr-3"/>
 				</Carousel>
 			</div>
 		</div>

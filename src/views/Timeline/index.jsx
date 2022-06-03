@@ -6,7 +6,7 @@ import "react-vertical-timeline-component/style.min.css";
 import TimelineData from "../../data/Timeline.json";
 
 const Timeline = () => (
-	<div className="my-40" id = "timeline">
+	<div className="my-30" id = "timeline">
 		<VerticalTimeline lineColor={"black"}>
 			{TimelineData.data.map((singleTimelineDetails) => {
 				return <TimelineComponent data={singleTimelineDetails}/>;
