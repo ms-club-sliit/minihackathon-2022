@@ -7,20 +7,19 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        node-version: [16.x]
+
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Install Node 16
-        uses: actions/setup-node
-        with:
-          node-version: 16.x
+        uses: actions/checkout@v1
       
       - name: Install dependencies
         run: yarn install --check-files --non-interactive --ignore-optional --frozen-lockfile
       
       - name: Build production
-        run: yarn install --check-files --non-interactive --ignore-optional --frozen-lockfile && yarn build
+        run: yarn build
         env:
           REACT_APP_FIREBASE_API_KEY: ${{ secrets.REACT_APP_FIREBASE_API_KEY }}
           REACT_APP_AUTH_DOMAIN: ${{ secrets.REACT_APP_AUTH_DOMAIN }}
