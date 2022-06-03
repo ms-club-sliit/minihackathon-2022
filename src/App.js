@@ -1,5 +1,5 @@
 import { Gallery, Countdown, Timeline, Eligibility } from "./views";
-import { Navbar } from "./components";
+import { Footer, Navbar } from "./components";
 
 function App() {
 	return (
@@ -9,6 +9,7 @@ function App() {
 			<Eligibility />
 			<Timeline />
 			<Gallery />
+			<Footer />
 		</>
 	);
 }
