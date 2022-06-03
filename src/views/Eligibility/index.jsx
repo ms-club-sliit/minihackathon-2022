@@ -3,10 +3,10 @@ import React from 'react'
 const Eligibility = () => {
   return (
     <div id = "eligibility">
-        <div className='my-10'>
+        <div className='mt-1 mb-14'>
             <div>
                 <div className="flex justify-center block p-6 rounded-lg">
-                    <h1 className='font-bold text-6xl text-center'>
+                    <h1 className='font-bold text-3xl md:text-6xl text-center'>
                         Who Can Participate ?
                     </h1>
                 </div> 
