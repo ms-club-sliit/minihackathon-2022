@@ -1,10 +1,11 @@
-import { Gallery, Eligibility, Timeline } from "./views";
+import { Gallery, Countdown, Timeline, Eligibility } from "./views";
 import { Navbar } from "./components";
 
 function App() {
 	return (
 		<>
 			<Navbar />
+			<Countdown />
 			<Eligibility />
 			<Timeline />
 			<Gallery />
