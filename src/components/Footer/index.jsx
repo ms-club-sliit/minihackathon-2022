@@ -22,7 +22,7 @@ const Footer = () => {
 					</a>
 				</div>
 
-				<span className="block text-sm text-gray-800 sm:text-center font-medium">
+				<span class="block text-sm text-gray-800 text-center font-medium">
 					Copyright © 2022{" "}
 					<a href="https://msclubsliit.org/" className="hover:underline">
 						MS Club of SLIIT
