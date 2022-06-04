@@ -1,6 +1,6 @@
 import React from "react";
 import CountdownTimer from "./CountdownTimer";
-import Logo from "../../assets/logo/mini_hackathon_logo.png";
+import Logo from "../../assets/logo/mini_hackathon_logo.webp";
 
 const Countdown = () => {
 	const isAwarenessSession = true;
