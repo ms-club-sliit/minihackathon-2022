@@ -165,7 +165,7 @@ const Header = () => {
 										<li
 											key={item.name}
 											to={item.to}
-											duration={item.duration}
+											duration={500}
 											className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50"
 										>
 											<span className="ml-3 text-base font-medium text-gray-700 cursor-pointer">
@@ -174,7 +174,7 @@ const Header = () => {
 													spy={true}
 													smooth={true}
 													offset={50}
-													duration={item.duration}
+													duration={500}
 													delay={100}
 												>
 													{item.name}

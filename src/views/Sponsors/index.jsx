@@ -10,26 +10,26 @@ const Sponsers = () => {
 
 			<div className="grid grid-cols-1 md:grid-cols-4 gap-4">
 				<div className="flex justify-center">
-					<a href="https://msclubsliit.org/" class="mb-4 sm:mb-0">
-						<img src={CompanyLogo1} class="h-40" alt="MS Club Of SLIIT" />
+					<a href="https://msclubsliit.org/" className="mb-4 sm:mb-0">
+						<img src={CompanyLogo1} className="h-40" alt="MS Club Of SLIIT" />
 					</a>
 				</div>
 
 				<div className="flex justify-center">
-					<a href="https://msclubsliit.org/" class="mb-4 sm:mb-0">
-						<img src={CompanyLogo1} class="h-40" alt="MS Club Of SLIIT" />
+					<a href="https://msclubsliit.org/" className="mb-4 sm:mb-0">
+						<img src={CompanyLogo1} className="h-40" alt="MS Club Of SLIIT" />
 					</a>
 				</div>
 
 				<div className="flex justify-center">
-					<a href="https://msclubsliit.org/" class="mb-4 sm:mb-0">
-						<img src={CompanyLogo1} class="h-40" alt="MS Club Of SLIIT" />
+					<a href="https://msclubsliit.org/" className="mb-4 sm:mb-0">
+						<img src={CompanyLogo1} className="h-40" alt="MS Club Of SLIIT" />
 					</a>
 				</div>
 
 				<div className="flex justify-center">
-					<a href="https://msclubsliit.org/" class="mb-4 sm:mb-0">
-						<img src={CompanyLogo1} class="h-40" alt="MS Club Of SLIIT" />
+					<a href="https://msclubsliit.org/" className="mb-4 sm:mb-0">
+						<img src={CompanyLogo1} className="h-40" alt="MS Club Of SLIIT" />
 					</a>
 				</div>
 			</div>

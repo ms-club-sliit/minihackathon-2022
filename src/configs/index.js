@@ -8,4 +8,11 @@ const FirebaseConfigs = {
 	MEASUREMENT_ID: process.env.REACT_APP_MEASUREMENT_ID,
 };
 
-export { FirebaseConfigs };
+const emailConfigs = {
+	USER_NAME: process.env.REACT_APP_MAIL_USER_NAME,
+	PASSWORD: process.env.REACT_APP_MAIL_PASSWORD,
+	HOST: process.env.REACT_APP_MAIL_HOST,
+	SSL: process.env.REACT_APP_MAIL_SSL,
+};
+
+export { FirebaseConfigs, emailConfigs };
