@@ -53,7 +53,7 @@ jobs:
       - name: GitHub Action for Firebase
         uses: w9jds/firebase-action@v2.0.0
         with:
-          args: deploy --only hosting --project stagingfire
+          args: deploy --only hosting --project staging
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
           
