@@ -1,0 +1,7 @@
+{
+  "projects": {
+    "development": "mini-hackthon-dev",
+    "staging": "mini-hackthon-stg",
+    "production": "mini-hackthon-prod"
+  }
+}
