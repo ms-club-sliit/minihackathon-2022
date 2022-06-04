@@ -66,4 +66,13 @@ We got your back. Here are some **FREE** resources for you to strengthen your we
   <img src="https://contrib.rocks/image?repo=ms-club-sliit/minihackathon-v2" width="95" />
 </a>
 
+## Environments
 
+Development
+https://minihackathon.dev.msclubsliit.org
+
+Staging
+minihackathon.stg.msclubsliit.org
+
+Production
+minihackathon.msclubsliit.org
