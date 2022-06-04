@@ -11,6 +11,7 @@
 		"@testing-library/user-event": "^13.2.1",
 		"dayjs": "^1.11.2",
 		"emailjs": "^4.0.0",
+		"env-cmd": "^10.1.0",
 		"firebase": "^9.8.2",
 		"html-to-image": "^1.9.0",
 		"moment": "^2.29.3",
@@ -27,7 +28,8 @@
 	},
 	"scripts": {
 		"predeploy": "yarn build",
-		"start": "GENERATE_SOURCEMAP=false react-scripts start",
+		"start": "react-scripts start",
+		"start:local": "env-cmd -f .env.local react-scripts start",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
