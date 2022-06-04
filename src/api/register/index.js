@@ -2,7 +2,7 @@ import { Db, Storage } from "../../Firebase";
 import { collection, addDoc, Timestamp } from "firebase/firestore";
 import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
 
-const isDebugModeOn = false;
+const isDebugModeOn = false; // Enable debug mode to print the console.log
 
 export const saveTeamInfo = async (teamInfo) => {
 	return new Promise(async (resolve, reject) => {
