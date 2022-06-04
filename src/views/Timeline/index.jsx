@@ -11,9 +11,10 @@ const Timeline = () => (
 		</h1>
 		<VerticalTimeline lineColor={"black"}>
 			{TimelineData.data.map((singleTimelineDetails) => (
-				<div key={singleTimelineDetails.id}>
-					<TimelineComponent data={singleTimelineDetails} />
-				</div>
+				<TimelineComponent
+					key={singleTimelineDetails.id}
+					data={singleTimelineDetails}
+				/>
 			))}
 		</VerticalTimeline>
 	</div>
