@@ -1,13 +1,13 @@
 import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import IMG1 from "../../asserts/minihackthon2019/img1.webp";
-import IMG2 from "../../asserts/minihackthon2019/img2.webp";
-import IMG3 from "../../asserts/minihackthon2019/img3.webp";
-import IMG4 from "../../asserts/minihackthon2019/img4.webp";
-import IMG5 from "../../asserts/minihackthon2019/img5.webp";
-import IMG6 from "../../asserts/minihackthon2019/img6.webp";
-import IMG7 from "../../asserts/minihackthon2019/img7.webp";
+import IMG1 from "../../assets/gallery/img1.webp";
+import IMG2 from "../../assets/gallery/img2.webp";
+import IMG3 from "../../assets/gallery/img3.webp";
+import IMG4 from "../../assets/gallery/img4.webp";
+import IMG5 from "../../assets/gallery/img5.webp";
+import IMG6 from "../../assets/gallery/img6.webp";
+import IMG7 from "../../assets/gallery/img7.webp";
 
 const responsive = {
 	superLargeDesktop: {
@@ -32,7 +32,7 @@ const responsive = {
 const Gallery = () => {
 	return (
 		<div id="gallery" className="lg:px-20 py-10">
-			<h1 className="text-5xl text-center mb-5 font-bold">Gallery</h1>
+			<h1 className="text-4xl md:text-5xl text-center my-10 font-bold">Gallery</h1>
 			<div>
 				<Carousel responsive={responsive} className="lg:rounded-3xl">
 					<img src={IMG1} alt="minihackthon2019" className="lg:pr-3" />
