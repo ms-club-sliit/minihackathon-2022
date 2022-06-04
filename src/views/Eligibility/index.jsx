@@ -3,7 +3,7 @@ import React from "react";
 const Eligibility = () => {
 	return (
 		<div id="eligibility">
-			<div className="mt-1 mb-14">
+			<div className="mb-14">
 				<div>
 					<div className="flex justify-center p-6 rounded-lg">
 						<div className="font-bold text-3xl md:text-4xl lg:text-5xl text-center">
