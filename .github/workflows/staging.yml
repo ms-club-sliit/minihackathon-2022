@@ -1,0 +1,59 @@
+name: MiniHackthon Staging CI/CD
+
+on:
+  push:
+    branches: [staging]
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: Staging
+    
+    strategy:
+      matrix:
+        node-version: [16.x]
+        
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.4.0
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.5.0
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install -g yarn
+      - name: yarn install
+        run: yarn install
+      - name: yarn build
+        env: 
+          REACT_APP_FIREBASE_API_KEY: ${{ secrets.REACT_APP_FIREBASE_API_KEY }}
+          REACT_APP_AUTH_DOMAIN: ${{ secrets.REACT_APP_AUTH_DOMAIN }}
+          REACT_APP_PROJECT_ID: ${{ secrets.REACT_APP_PROJECT_ID }}
+          REACT_APP_STORAGE_BUCKET: ${{ secrets.REACT_APP_STORAGE_BUCKET }}
+          REACT_APP_MESSAGING_SENDER_ID: ${{ secrets.REACT_APP_MESSAGING_SENDER_ID }}
+          REACT_APP_APP_ID: ${{ secrets.REACT_APP_APP_ID }}
+          REACT_APP_MEASUREMENT_ID: ${{ secrets.REACT_APP_MEASUREMENT_ID }}
+        run: yarn build
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v2.3.0
+        with:
+          name: build
+          path: build
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.4.0
+      - name: Download a Build Artifact
+        uses: actions/download-artifact@v2.1.0
+        with:
+          name: build
+          path: build
+      - name: GitHub Action for Firebase
+        uses: w9jds/firebase-action@v2.0.0
+        with:
+          args: deploy --only hosting --project stagingfire
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          
