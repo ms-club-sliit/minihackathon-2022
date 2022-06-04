@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
-      - name: Changelog Action 📑
+      - name: Changelog Action 📄
         id: changelog
         uses: TriPSs/conventional-changelog-action@v3.7.1
         with:
