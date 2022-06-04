@@ -1,7 +1,6 @@
 {
   "name": "minihackathon-v2",
   "version": "0.2.0",
-  "homepage": "https://ms-club-sliit.github.io/minihackathon-2022",
   "private": true,
   "dependencies": {
     "@headlessui/react": "^1.6.4",
