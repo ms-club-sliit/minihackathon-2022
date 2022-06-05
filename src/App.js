@@ -1,4 +1,4 @@
-import { Gallery, Header, Sponsors, Timeline, Eligibility } from "./views";
+import { Gallery, Header, Sponsors, Timeline, Eligibility, PastWinners } from "./views";
 import { Footer, Navbar } from "./components";
 
 function App() {
@@ -10,6 +10,7 @@ function App() {
 			<Timeline />
 			<Gallery />
 			<Sponsors />
+			<PastWinners />
 			<Footer />
 		</>
 	);
