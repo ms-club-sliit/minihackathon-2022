@@ -32,7 +32,9 @@ const responsive = {
 const Gallery = () => {
 	return (
 		<div id="gallery" className="lg:px-20 py-10">
-			<h1 className="text-4xl md:text-5xl text-center my-10 font-bold">Gallery</h1>
+			<h1 className="text-4xl md:text-5xl text-center my-10 font-bold">
+				Gallery
+			</h1>
 			<div>
 				<Carousel responsive={responsive} className="lg:rounded-3xl">
 					<img src={IMG1} alt="minihackthon2019" className="lg:pr-3" />
