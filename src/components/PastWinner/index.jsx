@@ -3,7 +3,7 @@ import React from "react";
 const PastWinner = (props) => {
 	return (
 		<div class="grid grid-cols-1 md:grid-cols-2 mb-5">
-			{props.data.id % 2 == 0 ? (
+			{props.data.id % 2 === 0 ? (
 				<>
 					<div className="flex self-center px-7 hidden md:block">
 						<p className="italic  text-xl md:text-2xl text-justify">{`"${props.data.description}"`}</p>
