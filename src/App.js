@@ -1,18 +1,20 @@
-import { Gallery, Header, Sponsors, Timeline, Eligibility } from "./views";
-import { Footer, Navbar } from "./components";
+import {Eligibility, Header, Timeline} from "./views";
+import {Navbar} from "./components";
+import TeamView from "./views/TeamView";
 
 function App() {
-	return (
-		<>
-			<Navbar />
-			<Header />
-			<Eligibility />
-			<Timeline />
-			<Gallery />
-			<Sponsors />
-			<Footer />
-		</>
-	);
+    return (
+        <>
+            <Navbar/>
+            <Header/>
+            <Eligibility/>
+            <Timeline/>
+            <TeamView/>
+            {/*<Gallery/>*/}
+            {/*<Sponsors/>*/}
+            {/*<Footer/>*/}
+        </>
+    );
 }
 
 export default App;
