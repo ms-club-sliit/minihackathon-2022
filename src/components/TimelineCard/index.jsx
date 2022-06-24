@@ -19,14 +19,20 @@ const TimelineComponent = (props) => (
 			{props.data && props.data.description}
 		</div>
 		{props.data.id === 1 && (
-			<button className="mt-3 bg-white text-black border border-black hover:bg-gray-100 rounded lg:text-lg pl-4 pr-4 pt-1 pb-1 transition duration-0 hover:duration-500">
+			<a
+				href="/"
+				className="mt-3 bg-white text-black border border-black hover:bg-gray-100 rounded lg:text-lg pl-4 pr-4 pt-1 pb-1 transition duration-0 hover:duration-500"
+			>
 				📣 Book your tickets now
-			</button>
+			</a>
 		)}
 		{props.data.id === 3 && (
-			<button className="mt-3 bg-white text-black border border-black hover:bg-gray-100 rounded lg:text-lg pl-4 pr-4 pt-1 pb-1 transition duration-0 hover:duration-500">
+			<a
+				href="/team/register"
+				className="mt-3 bg-white text-black border border-black hover:bg-gray-100 rounded lg:text-lg pl-4 pr-4 pt-1 pb-1 transition duration-0 hover:duration-500"
+			>
 				✍🏼 Register your team
-			</button>
+			</a>
 		)}
 	</VerticalTimelineElement>
 );
