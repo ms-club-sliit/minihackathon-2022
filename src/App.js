@@ -1,18 +1,7 @@
-import { Gallery, Header, Sponsors, Timeline, Eligibility } from "./views";
-import { Footer, Navbar } from "./components";
+import PageRoutes from "./PageRoutes";
 
 function App() {
-	return (
-		<>
-			<Navbar />
-			<Header />
-			<Eligibility />
-			<Timeline />
-			<Gallery />
-			<Sponsors />
-			<Footer />
-		</>
-	);
+	return <PageRoutes />;
 }
 
 export default App;

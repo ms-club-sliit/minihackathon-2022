@@ -1,7 +1,4 @@
-import Gallery from "./Gallery";
-import Eligibility from "./Eligibility";
-import Header from "./Header";
-import Sponsors from "./Sponsors";
-import Timeline from "./Timeline";
+import Home from "./Home";
+import Register from "./Register";
 
-export { Gallery, Header, Sponsors, Timeline, Eligibility };
+export { Home, Register };
