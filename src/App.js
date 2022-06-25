@@ -1,20 +1,27 @@
-import {Eligibility, Header, Timeline} from "./views";
-import {Navbar} from "./components";
 import TeamView from "./views/TeamView";
+import {
+	Gallery,
+	Header,
+	Sponsors,
+	Timeline,
+	Eligibility,
+	PastWinners,
+} from "./views";
+import { Footer, Navbar } from "./components";
 
 function App() {
-    return (
-        <>
-            <Navbar/>
-            <Header/>
-            <Eligibility/>
-            <Timeline/>
-            <TeamView/>
-            {/*<Gallery/>*/}
-            {/*<Sponsors/>*/}
-            {/*<Footer/>*/}
-        </>
-    );
+	return (
+		<>
+			<Navbar />
+			<Header />
+			<Eligibility />
+			<Timeline />
+			<Gallery />
+			<Sponsors />
+			<PastWinners />
+			<Footer />
+		</>
+	);
 }
 
 export default App;
