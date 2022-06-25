@@ -3,7 +3,7 @@
     {
       "team_id": "1",
       "team_name": "Team 1",
-      "team_image": "https://www.w3schools.com/howto/img_avatar.png",
+      "team_image": "https://cdn-icons-png.flaticon.com/512/0/14.png",
       "round": "1",
       "members": {
         "Member1": "Member1",
@@ -14,7 +14,7 @@
     },
     {
       "team_id": "2",
-      "team_image": "https://www.w3schools.com/howto/img_avatar.png",
+      "team_image": "https://cdn-icons-png.flaticon.com/512/0/14.png",
       "team_name": "Team 2",
       "round": "1",
       "members": {
@@ -26,7 +26,7 @@
     },
     {
       "team_id": "3",
-      "team_image": "https://www.w3schools.com/howto/img_avatar.png",
+      "team_image": "https://cdn-icons-png.flaticon.com/512/0/14.png",
       "team_name": "Team 3",
       "round": "1",
       "members": {
@@ -38,7 +38,7 @@
     },
     {
       "team_id": "4",
-      "team_image": "https://www.w3schools.com/howto/img_avatar.png",
+      "team_image": "https://cdn-icons-png.flaticon.com/512/0/14.png",
       "team_name": "Team 4",
       "round": "1",
       "members": {

@@ -22,13 +22,12 @@ const TeamView = () => {
     }
 
     return (
-        <>
             <div id="teamsView">
-                <div className="mb-14 ml-8 mr-8 pl-5 pr-5">
+                <div className="mb-14 lg:px-20">
                     <h1 className="text-4xl md:text-5xl text-center mb-5 mt-10 font-bold">
                         Teams
                     </h1>
-                    <div className="flex justify-center mb-6 ml-8 mr-8 pl-5 pr-5">
+                    <div className="flex justify-center mb-6 ml-8 mr-8">
                         <SearchIcon className="w-6 h-6 text-gray-600 relative top-3 left-10"/>
                         <input type="text" className="w-3/4 p-2 border-2 border-gray-300 rounded-lg pl-12"
                                placeholder="Team name" onChange={(e) => {
@@ -40,7 +39,7 @@ const TeamView = () => {
                                 onClick={searchTeamByName}>Search
                         </button>
                     </div>
-                    <div className="flex flex-wrap justify-between pl-5">
+                    <div className="flex flex-wrap justify-between px-4 md:px-20">
                         {teamCards.map((singleTeamCardDetails) => (
                             <TeamCard
                                 key={singleTeamCardDetails.team_id}
@@ -56,7 +55,6 @@ const TeamView = () => {
                     </div>
                 </div>
             </div>
-        </>
     )
 };
 

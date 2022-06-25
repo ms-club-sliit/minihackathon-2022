@@ -2,8 +2,8 @@ import React from "react";
 
 const TeamCard = (props) => {
     return (
-        <div className="md:w-1/2 lg:w-96 p-4 bg-white border-inherit h-52 border rounded-lg mr-5 mb-5">
-            <div className="grid grid-rows-1 grid-cols-11 items-center p-4 pt-2 pl-2">
+        <div className="md:w-1/2 lg:w-96 p-4 bg-white border-inherit h-52 border rounded-lg mb-5">
+            <div className="grid grid-rows-1 grid-cols-11 items-center p-4 pt-2">
                 <div className="col-start-1 col-span-1">
                     <img
                         src={props.teamImage}
@@ -11,8 +11,8 @@ const TeamCard = (props) => {
                         alt="Team Cats"
                     />
                 </div>
-                <div className="col-start-3 col-span-5">
-                    <h1 className="text-xl font-bold">{props.team_name}</h1>
+                <div className="col-start-3 col-span-6">
+                    <h1 className="font-bold">{props.team_name}</h1>
                 </div>
                 <div className="col-start-9 col-span-2">
                     <button
