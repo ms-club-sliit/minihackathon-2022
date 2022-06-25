@@ -1,4 +1,3 @@
-import TeamView from "./views/TeamView";
 import {
 	Gallery,
 	Header,
@@ -6,6 +5,7 @@ import {
 	Timeline,
 	Eligibility,
 	PastWinners,
+	TeamView
 } from "./views";
 import { Footer, Navbar } from "./components";
 
@@ -18,6 +18,7 @@ function App() {
 			<Timeline />
 			<Gallery />
 			<Sponsors />
+			<TeamView />
 			<PastWinners />
 			<Footer />
 		</>

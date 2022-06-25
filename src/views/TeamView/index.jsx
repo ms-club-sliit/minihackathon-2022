@@ -6,17 +6,20 @@ import {SearchIcon} from "@heroicons/react/outline";
 const TeamView = () => {
 
     const [teamCards, setTeamCards] = useState([]);
-    const [teamName, setTeamName] = useState("");
+    // const [teamName, setTeamName] = useState("");
 
     useEffect(() => {
         setTeamCards(teamCardData.data);
     }, []);
 
-    const searchTeamByName = () => {
-        const searchedTeam = teamCards.filter(team => team.team_name.toLowerCase().includes(teamName.toLowerCase()));
-        setTeamCards(searchedTeam);
+    const searchTeamByName = (teamName) => {
+        if(teamName){
+            const searchedTeam = teamCardData.data.filter(team => team.team_name.toLowerCase().includes(teamName.toLowerCase()));
+            setTeamCards(searchedTeam);
+        }else{
+            setTeamCards(teamCardData.data);
+        }
     }
-
 
     return (
         <>
@@ -29,7 +32,7 @@ const TeamView = () => {
                         <SearchIcon className="w-6 h-6 text-gray-600 relative top-3 left-10"/>
                         <input type="text" className="w-3/4 p-2 border-2 border-gray-300 rounded-lg pl-12"
                                placeholder="Team name" onChange={(e) => {
-                            setTeamName(e.target.value);
+                            searchTeamByName(e.target.value);
                         }}/>
                         <button type="button"
                                 className="bg-black text-white hover:bg-gray-300 hover:text-black transition duration-0

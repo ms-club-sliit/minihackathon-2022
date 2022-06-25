@@ -4,5 +4,6 @@ import Header from "./Header";
 import Sponsors from "./Sponsors";
 import PastWinners from "./PastWinners";
 import Timeline from "./Timeline";
+import TeamView from "./TeamView"
 
-export { Gallery, Header, Sponsors, PastWinners, Timeline, Eligibility };
+export { Gallery, Header, Sponsors, PastWinners, Timeline, Eligibility, TeamView };
