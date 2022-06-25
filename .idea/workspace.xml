@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4a788ed6-cf79-4041-a5cf-5146339225cd" name="Default Changelist" comment="" />
+    <list default="true" id="4a788ed6-cf79-4041-a5cf-5146339225cd" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/git_toolbox_prj.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jsLinters/eslint.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/minihackathon-2022.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/TeamCard.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/TeamView/index.jsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -89,7 +99,8 @@
       <workItem from="1654675282561" duration="5550000" />
       <workItem from="1654798742235" duration="20000" />
       <workItem from="1655067615907" duration="9504000" />
-      <workItem from="1655384870525" duration="712000" />
+      <workItem from="1655384870525" duration="743000" />
+      <workItem from="1655830531182" duration="50000" />
     </task>
     <task id="LOCAL-00001" summary="style(TeamCard):redesign team card">
       <created>1654680269729</created>
@@ -105,7 +116,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655386463052</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="feat(Team view) : #14 Team view">
+      <created>1655386499127</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1655386499127</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
