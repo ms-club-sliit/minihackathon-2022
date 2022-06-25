@@ -27,7 +27,7 @@ const TeamView = () => {
                     <h1 className="text-4xl md:text-5xl text-center mb-5 mt-10 font-bold">
                         Teams
                     </h1>
-                    <div className="flex justify-center mb-6 ml-8 mr-8">
+                    <div className="flex justify-center mb-6 ml-8 mr-8 md:px-20">
                         <SearchIcon className="w-6 h-6 text-gray-600 relative top-3 left-10"/>
                         <input type="text" className="w-3/4 p-2 border-2 border-gray-300 rounded-lg pl-12"
                                placeholder="Team name" onChange={(e) => {
