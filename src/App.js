@@ -1,3 +1,4 @@
+import TeamView from "./views/TeamView";
 import {
 	Gallery,
 	Header,
