@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import MemberForm from "./MemberForm";
-import { saveTeamInfo } from "../../api/register";
+import { registerTeam } from "../../api/register";
 
 const Register = () => {
 	const [isLoading, setIsLoading] = useState(false);
@@ -97,7 +97,7 @@ const Register = () => {
 			},
 		};
 
-		saveTeamInfo(teamInfo)
+		registerTeam(teamInfo)
 			.then(() => {
 				setIsLoading(false);
 				alert(
