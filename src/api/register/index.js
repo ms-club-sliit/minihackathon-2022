@@ -4,7 +4,16 @@ import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
 
 const isDebugModeOn = false; // Enable debug mode to print the console.log
 
-export const saveTeamInfo = async (teamInfo) => {
+export const registerAwarenessSession = async (studentInfo) => {
+	return new Promise(async (resolve, reject) => {
+		try {
+		} catch (error) {
+			return reject(error);
+		}
+	});
+};
+
+export const registerTeam = async (teamInfo) => {
 	return new Promise(async (resolve, reject) => {
 		let teamObj = {
 			member01: {},

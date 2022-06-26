@@ -1,28 +1,7 @@
-import {
-	Gallery,
-	Header,
-	Sponsors,
-	Timeline,
-	Eligibility,
-	PastWinners,
-	TeamView
-} from "./views";
-import { Footer, Navbar } from "./components";
+import PageRoutes from "./PageRoutes";
 
 function App() {
-	return (
-		<>
-			<Navbar />
-			<Header />
-			<Eligibility />
-			<Timeline />
-			<Gallery />
-			<Sponsors />
-			<TeamView />
-			<PastWinners />
-			<Footer />
-		</>
-	);
+	return <PageRoutes />;
 }
 
 export default App;
