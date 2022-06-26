@@ -1,6 +1,7 @@
 import React from "react";
 import MSLogo from "../../assets/logo/ms_club_logo.png";
 import MLSALogo from "../../assets/logo/mlsa_logo.png";
+import FCSCLogo from "../../assets/logo/fcsc_logo.webp";
 
 const Footer = () => {
 	return (
@@ -13,6 +14,12 @@ const Footer = () => {
 						className="flex items-center mb-4 sm:mb-0"
 					>
 						<img src={MSLogo} className="mr-3 h-12" alt="MS Club Of SLIIT" />
+					</a>
+					<a
+						href="https://msclubsliit.org/"
+						className="flex items-center mb-4 sm:mb-0"
+					>
+						<img src={FCSCLogo} className="mr-3 h-12" alt="MS Club Of SLIIT" />
 					</a>
 					<a
 						href="https://studentambassadors.microsoft.com/"
