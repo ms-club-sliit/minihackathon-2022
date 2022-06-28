@@ -5,7 +5,7 @@ import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
 const isDebugModeOn = false; // Enable debug mode to print the console.log
 
 export const registerAwarenessSession = async (member_details) => {
-	return await addDoc(collection(Db, "awarness_session"), member_details)
+	return await addDoc(collection(Db, "awareness_session"), member_details)
 }
 
 export const registerTeam = async (teamInfo) => {

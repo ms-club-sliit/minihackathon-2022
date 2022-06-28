@@ -8,7 +8,7 @@ import { useState } from "react";
 const awarenessSchema = yup.object().shape({
     name: yup.string().required("Name is required."),
     email: yup.string().email().required("Email is required."),
-    contact_no: yup.string().matches(/[0-9]+/gi, "Enter Numbers only.").min(10, "Contact Number must be at least 10 digits").required("Contact no is required"),
+    contact_no: yup.string().matches(/[0-9]+/gi, "Enter Numbers only.").min(10, "Contact Number must be at least 10 digits").required("Contact number is required"),
     it_no: yup.string().required("IT number is required."),
     academic_year: yup.string().required("Academic Year is required."),
     faculty: yup.string().required("Faculty is required.")
@@ -26,7 +26,7 @@ function AwarenessSession() {
             
             await registerAwarenessSession(member_data);
 
-            setStatus({ state: "success", message: "Success, You successfully registered for Awareness session."});
+            setStatus({ state: "success", message: "Success, You have successfully registered for the Awareness Session."});
             
             setTimeout(() => {
                 setStatus({ state: "none", message: "" });
