@@ -4,14 +4,9 @@ import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
 
 const isDebugModeOn = false; // Enable debug mode to print the console.log
 
-export const registerAwarenessSession = async (studentInfo) => {
-	return new Promise(async (resolve, reject) => {
-		try {
-		} catch (error) {
-			return reject(error);
-		}
-	});
-};
+export const registerAwarenessSession = async (member_details) => {
+	return await addDoc(collection(Db, "awarness_session"), member_details)
+}
 
 export const registerTeam = async (teamInfo) => {
 	return new Promise(async (resolve, reject) => {
