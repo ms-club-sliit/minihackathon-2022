@@ -34,7 +34,6 @@ const Register = () => {
 	}
 
 	const next = async() => {
-		console.log(currentIndex);
 		const data = await submitFunctions[currentIndex]();
 		if(!data){
 			return;
@@ -49,8 +48,6 @@ const Register = () => {
 			}else{
 				new_info = { ...prev, [`member0${currentIndex}`]: data };
 			}
-
-			console.log(new_info);
 			
 			// Finish the form and submit
 			if(currentIndex === memberCount){
@@ -74,7 +71,6 @@ const Register = () => {
 
 	const previous = () => {
 		setCurrentIndex(prev => {
-			console.log(prev);
 			if(prev > 0){
 				let new_count = prev - 1;
 				return new_count;

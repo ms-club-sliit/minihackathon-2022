@@ -31,7 +31,6 @@ function MemberForm2({ formKey, handleSubmitFunc, width }) {
                 })();
             })
         });
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
