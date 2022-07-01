@@ -17,25 +17,12 @@ const Register = () => {
         }, timeout);
     }
 
-	const finish = () => {
+	const finish = (tInfo) => {
 		console.log("finish");
 
-		// If there was a missing form, just in case.
-		for(let i = 1; i < 5; i++){
-			console.log(i);
-			if(!teamInfo[`member0${currentIndex}`]){
-				setCurrentIndex(currentIndex);
-				return;
-			}
-		}
-
-		if(!teamInfo["teamName"]){
-			setCurrentIndex(0);
-			return;
-		}
 		setStatus({ state: "loading", message: "Please wait."});
 
-		registerTeam(teamInfo)
+		registerTeam(tInfo)
 			.then(() => {
 				setStatus({ state: "success", message: "Nice job 👏🏼. You have successfully submit the registration form"});
 				resetStatus(3000);
@@ -56,13 +43,19 @@ const Register = () => {
 		setTeamInfo(prev => {
 			let new_info;
 			// Handle the teamName form
-			if(currentIndex == 0) {
+			if(currentIndex === 0) {
 				new_info = { ...prev, [`teamName`]: data };
 			}else{
 				new_info = { ...prev, [`member0${currentIndex}`]: data };
 			}
 
 			console.log(new_info);
+			
+			// Finish the form and submit
+			if(currentIndex === form_count - 1){
+				finish(new_info);
+				return new_info;
+			}
 
 			return new_info;
 		})
@@ -74,10 +67,6 @@ const Register = () => {
 				return new_count;
 			}
 
-			if(prev == form_count - 1){
-				finish();
-			}
-			
 			return prev;
 		});
 	}
@@ -95,7 +84,8 @@ const Register = () => {
 	}
 
 	return (
-		<div className="w-50">
+		<div className="w-full h-full flex flex-col justify-center items-center">
+			<h1 className="text-center font-bold text-4xl mb-[1.5em] mt-[2em]">Team Registration</h1>
 			<div className="w-[22em] md:w-[35em] rounded-[5px] p-[2em] md:p-[4em] relative border-2 border-gray-400 overflow-hidden">
 				<div className={`${ status.state === "error" ? "bg-red-400" : "bg-green-400" } ${ status.state === "none" ? "hidden" : "" } absolute flex justify-center items-center top-0 right-0 w-full h-full p-[3em] z-10`}>
 					<p className="text-center font-bold text-4xl mb-[1.5em]">{ status.message }</p>
@@ -115,7 +105,7 @@ const Register = () => {
 						previous
 					</button>
 					<button onClick={next} className="mt-2 w-48 h-10 rounded bg-black text-white hover:bg-gray-300 hover:text-black transition duration-0 hover:duration-500">
-						Next
+						{ currentIndex === form_count - 1 ? "Finish" : "Next" }
 					</button>
 				</div>
 			</div>
