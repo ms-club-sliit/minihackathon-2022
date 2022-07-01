@@ -5,6 +5,7 @@ import Eligibility from "../Eligibility";
 import Timeline from "../Timeline";
 import Gallery from "../Gallery";
 import Sponsors from "../Sponsors";
+import PastWinners from "../PastWinners";
 
 const Home = () => {
 	return (
@@ -15,6 +16,7 @@ const Home = () => {
 			<Timeline />
 			<Gallery />
 			<Sponsors />
+			<PastWinners />
 			<Footer />
 		</>
 	);
