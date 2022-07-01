@@ -1,11 +1,34 @@
 import { Db, Storage } from "../../Firebase";
-import { collection, addDoc, Timestamp } from "firebase/firestore";
+import { collection, addDoc, Timestamp, doc, runTransaction } from "firebase/firestore";
 import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
+import { EmailExists } from "../errors/errors";
 
 const isDebugModeOn = false; // Enable debug mode to print the console.log
 
 export const registerAwarenessSession = async (member_details) => {
-	return await addDoc(collection(Db, "awareness_session"), member_details)
+	await runTransaction(Db, async (transaction) => {
+		const counter_ref = doc(Db, "awareness_session", "--stats--");
+		let counter_doc = await transaction.get(counter_ref);
+		const doc_ref = doc(Db, "awareness_session", member_details.email);
+		const document = await transaction.get(doc_ref);
+
+		if(document.exists()){
+			throw new EmailExists(document.data().email, document.id);
+		}
+
+		if(!counter_doc.exists()){
+			await transaction.set(counter_ref, { ticket_count: 1 });
+		}
+		
+		let new_count = 1;
+		if(counter_doc.data()) {
+			new_count = counter_doc.data().ticket_count + 1
+		}
+
+		transaction.update(counter_ref, { ticket_count: new_count });
+		member_details.number = new_count;
+		transaction.set(doc_ref, member_details);
+	})
 }
 
 export const registerTeam = async (teamInfo) => {

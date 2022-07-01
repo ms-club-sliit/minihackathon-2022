@@ -2,6 +2,7 @@ import React, { useCallback, useRef } from "react";
 import { toPng } from "html-to-image";
 import QRCode from "react-qr-code";
 import moment from "moment";
+import { useEffect } from "react";
 
 /**
  *
@@ -14,6 +15,7 @@ import moment from "moment";
  * 		subTitle: "",
  * 		date: "",
  * 		url: "",
+ *      onRender: ""
  * }} props
  * @property url - The url is required to generate the QR code
  * @example 	
@@ -31,6 +33,18 @@ import moment from "moment";
 const Ticket = (props) => {
 	const isDebugModeOn = false;
 	const ref = useRef(null);
+
+	useEffect(() => {
+		if(props.onRender) {
+			toPng(ref.current, { cacheBust: true })
+			.then((dataUrl) => {
+				props.onRender(dataUrl);
+			})
+			.catch((err) => {
+				isDebugModeOn && console.log(err);
+			});
+		}
+	},[props.onRender]); 
 
 	const onButtonClick = useCallback(() => {
 		if (ref.current === null) {
@@ -54,7 +68,7 @@ const Ticket = (props) => {
 			<div className="m-6 flex justify-center">
 				<div
 					ref={ref}
-					className="bg-white w-5/12 rounded-lg border-2 border-gray-600"
+					className="bg-white w-full rounded-lg border-2 border-gray-600"
 				>
 					<div className="p-4">
 						<div className="grid grid-cols-2 gap-0">
