@@ -40,7 +40,7 @@ function NameForm({ formKey, handleSubmitFunc, width }) {
                 placeholder="Team Name"
                 className="border-2 border-black rounded mb-[0.1em] px-2 py-1 w-full"
             />
-            <p className="text-red-500 text-sm font-semibold h-[1rem] italic">{errors.teamName?.message}</p>
+            <p className="text-red-500 text-[0.8em] font-semibold min-h-[1em] italic">{errors.teamName?.message}</p>
 
             <label className="block font-semibold text-[#969696] text-[1em] md:text-left mb-1 md:mb-0 pr-4">
                 Team Size
@@ -54,7 +54,7 @@ function NameForm({ formKey, handleSubmitFunc, width }) {
                 <option value="3">3</option>
                 <option value="4">4</option>
             </select>
-            <p className="text-red-500 text-sm font-semibold h-[1rem] italic">{errors.count?.message}</p>
+            <p className="text-red-500 text-[0.8em] font-semibold min-h-[1em] italic">{errors.count?.message}</p>
         </div>
     )
 }

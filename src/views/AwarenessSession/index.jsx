@@ -104,7 +104,7 @@ function AwarenessSession() {
                             placeholder="Name"
                             className="border-2 border-black rounded mb-[0.1em] px-2 py-1 w-full"
                         />
-                        <p className="text-red-500 text-sm font-semibold h-[1rem] italic">{errors.name?.message}</p>
+                        <p className="text-red-500 text-[0.8em] font-semibold min-h-[1em] italic">{errors.name?.message}</p>
 
                         <label className="block font-semibold text-[#969696] text-[1em] md:text-left mb-1 md:mb-0 pr-4">
                             Email
@@ -115,7 +115,7 @@ function AwarenessSession() {
                             placeholder="Email"
                             className="border-2 border-black  rounded mb-[0.1em] px-2 py-1 w-full"
                         />
-                        <p className="text-red-500 text-sm font-semibold h-[1rem] italic">{errors.email?.message}</p>
+                        <p className="text-red-500 text-[0.8em] font-semibold min-h-[1em] italic">{errors.email?.message}</p>
 
                         <label className="block font-semibold text-[#969696] text-[1em] md:text-left mb-1 md:mb-0 pr-4">
                             Contact Number
@@ -126,7 +126,7 @@ function AwarenessSession() {
                             placeholder="Contact No"
                             className="border-2 border-black rounded mb-[0.1em] px-2 py-1 w-full"
                         />
-                        <p className="text-red-500 text-sm font-semibold h-[1rem] italic">{errors.contact_no?.message}</p>
+                        <p className="text-red-500 text-[0.8em] font-semibold h-[1em] italic">{errors.contact_no?.message}</p>
 
                         <label className="block font-semibold text-[#969696] text-[1em] md:text-left mb-1 md:mb-0 pr-4">
                             IT Number
@@ -137,7 +137,7 @@ function AwarenessSession() {
                             placeholder="IT Number"
                             className="border-2 border-black rounded mb-[0.1em] px-2 py-1 w-full"
                         />
-                        <p className="text-red-500 text-sm font-semibold h-[1rem] italic">{errors.it_no?.message}</p>
+                        <p className="text-red-500 text-[0.8em] font-semibold min-h-[1em] italic">{errors.it_no?.message}</p>
 
                         <div className="flex flex-row">
                             <div className="mr-2 w-full">
@@ -156,7 +156,7 @@ function AwarenessSession() {
                                     <option value="Year 02 Semester 02">Year 02 Semester 02</option>
                                     <option value="Year 03 Semester 01">Year 03 Semester 01</option>
                                 </select>
-                                <p className="text-red-500 text-sm font-semibold h-[1rem] italic">{errors.academic_year?.message}</p>
+                                <p className="text-red-500 text-[0.8em] font-semibold min-h-[1em] italic">{errors.academic_year?.message}</p>
                             </div>
 
                             <div className="w-full">
@@ -173,7 +173,7 @@ function AwarenessSession() {
                                     <option value="Faculty of Engineering">Faculty of Engineering</option>
                                     <option value="Faculty of Business">Faculty of Business</option>
                                 </select>
-                                <p className="text-red-500 text-sm font-semibold h-[1rem] italic">{errors.faculty?.message}</p>
+                                <p className="text-red-500 text-[0.8em] font-semibold min-h-[1em] italic">{errors.faculty?.message}</p>
                             </div>
                         </div>
                         
