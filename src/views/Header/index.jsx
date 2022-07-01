@@ -4,11 +4,11 @@ import Logo from "../../assets/logo/mini_hackathon_logo.webp";
 
 const Countdown = () => {
 	const isAwarenessSession = true;
-	var myDate = "22-07-2022";
+	let myDate = "22-07-2022";
 	myDate = myDate.split("-");
-	var newDate = new Date(myDate[2], myDate[1] - 1, myDate[0]);
-	var month = newDate.toLocaleString("en-us", { month: "long" });
-	var date = newDate.getDate();
+	let newDate = new Date(myDate[2], myDate[1] - 1, myDate[0]);
+	let month = newDate.toLocaleString("en-us", { month: "long" });
+	let date = newDate.getDate();
 
 	return (
 		<div className="flex justify-center flex-col md:flex-row px-3.5 mt-10">
