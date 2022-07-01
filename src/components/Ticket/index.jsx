@@ -33,18 +33,19 @@ import { useEffect } from "react";
 const Ticket = (props) => {
 	const isDebugModeOn = false;
 	const ref = useRef(null);
+	const { onRender } = props;
 
 	useEffect(() => {
-		if(props.onRender) {
+		if(onRender) {
 			toPng(ref.current, { cacheBust: true })
 			.then((dataUrl) => {
-				props.onRender(dataUrl);
+				onRender(dataUrl);
 			})
 			.catch((err) => {
 				isDebugModeOn && console.log(err);
 			});
 		}
-	},[ref, isDebugModeOn, props.onRender]); 
+	},[ref, isDebugModeOn, onRender]); 
 
 	const onButtonClick = useCallback(() => {
 		if (ref.current === null) {

@@ -15,10 +15,11 @@ const memberSchema = yup.object().shape({
 }); 
 
 
-function MemberForm2({ formKey, handleSubmitFunc }) {
-    const { register, handleSubmit, formState: { errors }, reset } = useForm({
+function MemberForm2({ formKey, handleSubmitFunc, width }) {
+    const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(memberSchema)
     });
+    const padded_key = String(formKey).padStart(2, '0')
 
     useEffect(() => {
         handleSubmitFunc && handleSubmitFunc(formKey, () => {
@@ -30,10 +31,12 @@ function MemberForm2({ formKey, handleSubmitFunc }) {
                 })();
             })
         });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
-        <div className="w-[20%] h-full">
+        <div className="h-full" style={{ width: width || "20%" }} >
+            <h1 className="text-xl font-bold text-center">Member {String(formKey).padStart(2, '0')} { formKey === 1 ? "(Leader Details)" : "Details" }</h1>
             <form>
                 <label className="block font-semibold text-[#969696] text-[1em] md:text-left mb-1 md:mb-0 pr-4">
                     Name
@@ -117,7 +120,7 @@ function MemberForm2({ formKey, handleSubmitFunc }) {
                     </div>
                 </div>
                 <label className="block font-semibold text-[#969696] text-[1em] md:text-left mb-1 md:mb-0 pr-4">
-                    Member {formKey} Profile Image
+                    Member {padded_key} Profile Image
                 </label>
                 <input
                     type="file"

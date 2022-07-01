@@ -2,7 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { registerAwarenessSession } from "../../api/register";
+import { registerAwarenessSession, saveTicket, updateTicket } from "../../api/register";
 import { useState } from "react";
 import { EmailExists } from "../../api/errors/errors";
 import { Ticket } from "../../components";
@@ -39,20 +39,26 @@ function AwarenessSession() {
         try{
             setStatus({ state: "loading", message: "Please wait."});
 
+            // Registers use and Adds new number and document ref to member details
             await registerAwarenessSession(member_data);
 
             const onRender = async (dataURL) => {
                 try{
-                    let str = jsx2html(<EmailTemplate image={dataURL} />);
+                    let url = await saveTicket(dataURL);
+                    let str = jsx2html(<EmailTemplate image={url} />);
+                    
+                    // update with the ticket image url
+                    await updateTicket(member_data.ref, url)
 
                     await sendEmail(member_data.email, "Mini hackathon awareness session", str);
 
-                    setStatus({ state: "success", message: "Success, You have successfully registered for the Awareness Session."});
+                    setStatus({ state: "success", message: "Success, You have successfully registered for the Awareness Session." });
 
                     setTicket(prevTicket => { return { ...prevTicket, display: true }});
 
                     reset();
                 }catch(error){
+                    console.error(error);
                    setStatus({ state: "error", message: "Failed to register, Something went wrong. Try again later"});
                 }
                 
@@ -73,9 +79,11 @@ function AwarenessSession() {
         }
     }
     
-    const closePopup = () => { setTicket(prevTicket => {
-        return { ...prevTicket, display: false }
-    })};
+    const closePopup = () => { 
+        setTicket(prevTicket => {
+            return { ...prevTicket, display: false }
+        }
+    )};
 
     return (
         <>

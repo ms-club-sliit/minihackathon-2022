@@ -2,11 +2,12 @@ import React from "react";
 
 export default function EmailTemplate({ image }) {
     return (
-        <html>
-            <body>
-                <h1>Test Email</h1>
-                <img src={image} alt="Your Ticket"></img>
-            </body>
-        </html>
+        <div style={{ display: "flex", justifyContent: "center", flexDirection:"column", width: "100%", textAlign: "center" }}>
+            <h1>You are now registered to the Mini Hackathon 2022!</h1>
+            <div><img src={image} alt="Your Ticket"></img></div>
+            <div>
+                Click here to checkout your ticket <a href={image}>here</a>
+            </div>
+        </div>
     )
 }
