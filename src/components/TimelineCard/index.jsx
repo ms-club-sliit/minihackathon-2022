@@ -18,22 +18,24 @@ const TimelineComponent = (props) => (
 		<div className="text-sm lg:text-xl md:text-lg">
 			{props.data && props.data.description}
 		</div>
-		{props.data.id === 1 && (
-			<a
-				href="/"
-				className="mt-3 bg-white text-black border border-black hover:bg-gray-100 rounded lg:text-lg pl-4 pr-4 pt-1 pb-1 transition duration-0 hover:duration-500"
-			>
-				📣 Book your tickets now
-			</a>
-		)}
-		{props.data.id === 3 && (
-			<a
-				href="/team/register"
-				className="mt-3 bg-white text-black border border-black hover:bg-gray-100 rounded lg:text-lg pl-4 pr-4 pt-1 pb-1 transition duration-0 hover:duration-500"
-			>
-				✍🏼 Register your team
-			</a>
-		)}
+		<div className="mt-5">
+			{props.data.id === 1 && (
+				<a
+					href="/awareness-session/register"
+					className="bg-white text-black border border-black hover:bg-gray-100 rounded lg:text-lg pl-4 pr-4 pt-1 pb-1 transition duration-0 hover:duration-500"
+				>
+					📣 Book your tickets now
+				</a>
+			)}
+			{props.data.id === 3 && (
+				<a
+					href="/team/register"
+					className="bg-white text-black border border-black hover:bg-gray-100 rounded lg:text-lg pl-4 pr-4 pt-1 pb-1 transition duration-0 hover:duration-500"
+				>
+					✍🏼 Register your team
+				</a>
+			)}
+		</div>
 	</VerticalTimelineElement>
 );
 
