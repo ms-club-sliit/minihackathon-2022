@@ -31,7 +31,7 @@ function MemberForm2({ formKey, handleSubmitFunc, width }) {
                 })();
             })
         });
-    }, []);
+    });
 
     return (
         <div className="h-full" style={{ width: width || "20%" }} >

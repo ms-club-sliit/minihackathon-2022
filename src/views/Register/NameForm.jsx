@@ -25,7 +25,7 @@ function NameForm({ formKey, handleSubmitFunc, width }) {
                 })();
             })
         });
-    }, []);
+    });
 
     return (
         <div className="h-full" style={{ width: width || "20%" }}>

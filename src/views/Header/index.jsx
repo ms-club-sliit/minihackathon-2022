@@ -28,15 +28,25 @@ const Countdown = () => {
 						date={date}
 					/>
 				</div>
-				<div className="text-center">
+				<div className="text-center mt-5">
 					{isAwarenessSession ? (
-						<button className="mt-5 bg-white text-black border border-black hover:bg-gray-100 rounded lg:text-lg pl-4 pr-4 pt-1 pb-1 transition duration-0 hover:duration-500">
+						<a
+							href="/awareness-session/register"
+							target="_blank"
+							rel="noopener noreferrer"
+							className=" bg-white text-black border border-black hover:bg-gray-100 rounded lg:text-lg pl-4 pr-4 pt-1 pb-1 transition duration-0 hover:duration-500"
+						>
 							📣 Tickets for Awareness Session
-						</button>
+						</a>
 					) : (
-						<button className="mt-5 bg-white text-black border border-black hover:bg-gray-100 rounded lg:text-xl pl-5 pr-5 pt-2 pb-2 transition duration-0 hover:duration-500">
-							✍🏼 Register Now
-						</button>
+						<a
+							href="/team/register"
+							target="_blank"
+							rel="noopener noreferrer"
+							className=" bg-white text-black border border-black hover:bg-gray-100 rounded lg:text-lg pl-4 pr-4 pt-1 pb-1 transition duration-0 hover:duration-500"
+						>
+							✍🏼 Register your team
+						</a>
 					)}
 				</div>
 			</div>

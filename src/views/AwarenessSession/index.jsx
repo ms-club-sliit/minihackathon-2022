@@ -87,9 +87,9 @@ function AwarenessSession() {
         <>
             <div className="fixed z-[-1] w-screen h-screen top-0 left-0 bg-white"></div>
             <div className="w-full h-full flex flex-col justify-center items-center">
-                <h1 className="text-center font-bold text-4xl mb-[1.5em] mt-[2em]">Awareness Session Registration</h1>
+                <h1 className="text-center font-bold text-4xl mb-[1.5em] mt-[1.5em]">AWARENESS SESSION REGISTRATION</h1>
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <div className="w-[22em] md:w-[35em] rounded-[5px] p-[2em] md:p-[4em] relative border-2 border-gray-400 overflow-hidden">
+                    <div className="w-[22em] md:w-[35em] rounded-[5px] p-[2em] md:py-[2em] relative border-2 border-gray-400 overflow-hidden mb-5">
                         <div className={`${ status.state === "error" ? "bg-red-400" : "bg-green-400" } ${ status.state === "none" ? "hidden" : "" } absolute flex justify-center items-center top-0 right-0 w-full h-full p-[3em]`}>
                             <p className="text-center font-bold text-4xl mb-[1.5em]">{ status.message }</p>
                         </div>
