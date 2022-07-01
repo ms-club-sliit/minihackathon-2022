@@ -5,7 +5,7 @@ export default function EmailTemplate({ image }) {
         <html>
             <body>
                 <h1>Test Email</h1>
-                <img src={image}></img>
+                <img src={image} alt="Your Ticket"></img>
             </body>
         </html>
     )
