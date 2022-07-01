@@ -1,211 +1,171 @@
 import React, { useState } from "react";
-import MemberForm from "./MemberForm";
 import { registerTeam } from "../../api/register";
+import MemberForm2 from "./MemberForm2";
+import NameForm from "./NameForm";
 
 const Register = () => {
-	const [isLoading, setIsLoading] = useState(false);
-	const [teamName, setTeamName] = useState("");
-	const [member01Name, setMember01Name] = useState("");
-	const [member01Email, setMember01Email] = useState("");
-	const [member01ContactNo, setMember01ContactNo] = useState("");
-	const [member01ItNo, setMember01ItNo] = useState("");
-	const [member01AcademicYear, setMember01AcademicYear] = useState(
-		"Year 01 Semester 01"
-	);
-	const [member01Faculty, setMember01Faculty] = useState(
-		"Faculty of Computing"
-	);
-	const [member01Image, setMember01Image] = useState(null);
+	const [status, setStatus] = useState({ state: "none", message: "" });
+	const [currentIndex, setCurrentIndex] = useState(0);
 
-	const [member02Name, setMember02Name] = useState("");
-	const [member02Email, setMember02Email] = useState("");
-	const [member02ContactNo, setMember02ContactNo] = useState("");
-	const [member02ItNo, setMember02ItNo] = useState("");
-	const [member02AcademicYear, setMember02AcademicYear] = useState(
-		"Year 01 Semester 01"
-	);
-	const [member02Faculty, setMember02Faculty] = useState(
-		"Faculty of Computing"
-	);
-	const [member02Image, setMember02Image] = useState(null);
+	// Members are scalable using the default value. (5 forms, with the first one being team name and team count.)
+	const [memberCount, setMemberCount] = useState(4);
 
-	const [member03Name, setMember03Name] = useState("");
-	const [member03Email, setMember03Email] = useState("");
-	const [member03ContactNo, setMember03ContactNo] = useState("");
-	const [member03ItNo, setMember03ItNo] = useState("");
-	const [member03AcademicYear, setMember03AcademicYear] = useState(
-		"Year 01 Semester 01"
-	);
-	const [member03Faculty, setMember03Faculty] = useState(
-		"Faculty of Computing"
-	);
-	const [member03Image, setMember03Image] = useState(null);
+	const [submitFunctions, setSubmitFunctions] = useState({});
+	const [, setTeamInfo] = useState({});
 
-	const [member04Name, setMember04Name] = useState("");
-	const [member04Email, setMember04Email] = useState("");
-	const [member04ContactNo, setMember04ContactNo] = useState("");
-	const [member04ItNo, setMember04ItNo] = useState("");
-	const [member04AcademicYear, setMember04AcademicYear] = useState(
-		"Year 01 Semester 01"
-	);
-	const [member04Faculty, setMember04Faculty] = useState(
-		"Faculty of Computing"
-	);
-	const [member04Image, setMember04Image] = useState(null);
+	const resetStatus = (timeout) => {
+		setTimeout(() => {
+			setStatus({ state: "none", message: "" });
+		}, timeout);
+	};
 
-	const onSubmit = (event) => {
-		event.preventDefault();
+	const finish = (tInfo) => {
+		setStatus({ state: "loading", message: "Please wait." });
 
-		setIsLoading(true);
-		const teamInfo = {
-			teamName: teamName,
-			member01: {
-				name: member01Name,
-				email: member01Email,
-				contactNumber: member01ContactNo,
-				itNumber: member01ItNo,
-				academicYear: member01AcademicYear,
-				image: member01Image,
-				faculty: member01Faculty,
-			},
-			member02: {
-				name: member02Name,
-				email: member02Email,
-				contactNumber: member02ContactNo,
-				itNumber: member02ItNo,
-				academicYear: member02AcademicYear,
-				image: member02Image,
-				faculty: member02Faculty,
-			},
-			member03: {
-				name: member03Name,
-				email: member03Email,
-				contactNumber: member03ContactNo,
-				itNumber: member03ItNo,
-				academicYear: member03AcademicYear,
-				image: member03Image,
-				faculty: member03Faculty,
-			},
-			member04: {
-				name: member04Name,
-				email: member04Email,
-				contactNumber: member04ContactNo,
-				itNumber: member04ItNo,
-				academicYear: member04AcademicYear,
-				image: member04Image,
-				faculty: member04Faculty,
-			},
-		};
-
-		registerTeam(teamInfo)
+		registerTeam(tInfo)
 			.then(() => {
-				setIsLoading(false);
-				alert(
-					"Nice job 👏🏼. You have successfully submit the registration form"
-				);
+				setStatus({
+					state: "success",
+					message:
+						"Nice job 👏🏼. You have successfully submit the registration form",
+				});
+				resetStatus(3000);
 			})
 			.catch(() => {
-				setIsLoading(false);
-				alert("Hmm... 🤔 something went wrong. Please try again");
+				setStatus({
+					state: "error",
+					message: "Hmm... 🤔 something went wrong. Please try again",
+				});
+				resetStatus(3000);
 			});
 	};
 
+	const next = async () => {
+		const data = await submitFunctions[currentIndex]();
+		if (!data) {
+			return;
+		}
+
+		setTeamInfo((prev) => {
+			let new_info;
+			// Handle the teamName form
+			if (currentIndex === 0) {
+				new_info = { ...prev, [`teamName`]: data.teamName };
+				setMemberCount(data.count);
+			} else {
+				new_info = { ...prev, [`member0${currentIndex}`]: data };
+			}
+
+			// Finish the form and submit
+			if (currentIndex === memberCount) {
+				finish(new_info);
+				return new_info;
+			}
+
+			return new_info;
+		});
+
+		setCurrentIndex((prev) => {
+			if (prev < memberCount) {
+				let new_count = prev + 1;
+
+				return new_count;
+			}
+
+			return prev;
+		});
+	};
+
+	const previous = () => {
+		setCurrentIndex((prev) => {
+			if (prev > 0) {
+				let new_count = prev - 1;
+				return new_count;
+			}
+
+			return prev;
+		});
+	};
+
+	const arr = new Array(memberCount).fill(null);
+
 	return (
-		<div className="w-50">
-			<div className="flex justify-center">
-				<label className="block text-gray-500 font-light text-sm md:text-left mb-1 md:mb-0 pr-4">
-					Team Name
-				</label>
-				<input
-					type="text"
-					placeholder="team name"
-					value={teamName}
-					onChange={(e) => setTeamName(e.target.value)}
-					className="bg-gray-200 border-2 rounded px-2 mb-3"
-				/>
-			</div>
+		<div className="w-full h-full flex flex-col justify-center items-center">
+			<h1 className="text-center font-bold text-4xl mb-[1.5em] mt-[1.5em]">
+				TEAM REGISTRATION
+			</h1>
+			<div className="rounded-[5px] border-2 border-gray-400 overflow-hidden mb-5">
+				<div className="w-[22em] md:w-[35em] p-[2em] md:py-[2em] relative overflow-hidden">
+					<div
+						className={`${
+							status.state === "error" ? "bg-red-400" : "bg-green-400"
+						} ${
+							status.state === "none" ? "hidden" : ""
+						} absolute flex justify-center items-center top-0 right-0 w-full h-full p-[3em] z-10`}
+					>
+						<p className="text-center font-bold text-4xl mb-[1.5em]">
+							{status.message}
+						</p>
+					</div>
+					<div className="h-full w-full overflow-hidden">
+						<div
+							className="h-full relative flex flex-row transition-all"
+							style={{
+								transform: `translate(-${
+									(100 / (memberCount + 1)) * currentIndex
+								}%)`,
+								width: `${100 * (memberCount + 1)}%`,
+							}}
+						>
+							<NameForm
+								formKey={0}
+								width={`${100 / (memberCount + 1)}%`}
+								handleSubmitFunc={(i, f) =>
+									setSubmitFunctions((prev) => {
+										return { ...prev, [i]: f };
+									})
+								}
+							/>
+							{arr.map((v, i) => {
+								return (
+									<MemberForm2
+										key={i}
+										formKey={i + 1}
+										width={`${100 / (memberCount + 1)}%`}
+										handleSubmitFunc={(i, f) =>
+											setSubmitFunctions((prev) => {
+												return { ...prev, [i]: f };
+											})
+										}
+									/>
+								);
+							})}
+						</div>
+					</div>
 
-			<div className="row">
-				<div className="flex">
-					<MemberForm
-						id="01"
-						name={member01Name}
-						email={member01Email}
-						contactNumber={member01ContactNo}
-						itNumber={member01ItNo}
-						academicYear={member01AcademicYear}
-						faculty={member01Faculty}
-						onNameChange={(value) => setMember01Name(value)}
-						onEmailChange={(value) => setMember01Email(value)}
-						onContactNoChange={(value) => setMember01ContactNo(value)}
-						onItNoChange={(value) => setMember01ItNo(value)}
-						onAcademicChange={(value) => setMember01AcademicYear(value)}
-						onFacultyChange={(value) => setMember01Faculty(value)}
-						onImageChange={(value) => setMember01Image(value)}
-					/>
-
-					<MemberForm
-						id="02"
-						name={member02Name}
-						email={member02Email}
-						contactNumber={member02ContactNo}
-						itNumber={member02ItNo}
-						academicYear={member02AcademicYear}
-						faculty={member02Faculty}
-						onNameChange={(value) => setMember02Name(value)}
-						onEmailChange={(value) => setMember02Email(value)}
-						onContactNoChange={(value) => setMember02ContactNo(value)}
-						onItNoChange={(value) => setMember02ItNo(value)}
-						onAcademicChange={(value) => setMember02AcademicYear(value)}
-						onFacultyChange={(value) => setMember02Faculty(value)}
-						onImageChange={(value) => setMember02Image(value)}
-					/>
+					<div className="w-full flex items-center justify-center">
+						<button
+							onClick={previous}
+							className="mt-2 w-48 h-10 rounded bg-black text-white hover:bg-gray-300 hover:text-black transition duration-0 hover:duration-500 mr-4"
+						>
+							previous
+						</button>
+						<button
+							onClick={next}
+							className={`${
+								currentIndex === memberCount
+									? "bg-[#F2E782] text-black"
+									: "text-white"
+							} mt-2 w-48 h-10 rounded bg-black hover:bg-gray-300 hover:text-black transition duration-0 hover:duration-500`}
+						>
+							{currentIndex === memberCount ? "Finish" : "Next"}
+						</button>
+					</div>
 				</div>
-				<div className="flex mt-8">
-					<MemberForm
-						id="03"
-						name={member03Name}
-						email={member03Email}
-						contactNumber={member03ContactNo}
-						itNumber={member03ItNo}
-						academicYear={member03AcademicYear}
-						faculty={member03Faculty}
-						onNameChange={(value) => setMember03Name(value)}
-						onEmailChange={(value) => setMember03Email(value)}
-						onContactNoChange={(value) => setMember03ContactNo(value)}
-						onItNoChange={(value) => setMember03ItNo(value)}
-						onAcademicChange={(value) => setMember03AcademicYear(value)}
-						onFacultyChange={(value) => setMember03Faculty(value)}
-						onImageChange={(value) => setMember03Image(value)}
-					/>
-
-					<MemberForm
-						id="04"
-						name={member04Name}
-						email={member04Email}
-						contactNumber={member04ContactNo}
-						itNumber={member04ItNo}
-						academicYear={member04AcademicYear}
-						faculty={member04Faculty}
-						onNameChange={(value) => setMember04Name(value)}
-						onEmailChange={(value) => setMember04Email(value)}
-						onContactNoChange={(value) => setMember04ContactNo(value)}
-						onItNoChange={(value) => setMember04ItNo(value)}
-						onAcademicChange={(value) => setMember04AcademicYear(value)}
-						onFacultyChange={(value) => setMember04Faculty(value)}
-						onImageChange={(value) => setMember04Image(value)}
-					/>
-				</div>
-			</div>
-
-			<div className="flex justify-center mt-8">
-				<button
-					className="bg-blue-400 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-					onClick={(e) => onSubmit(e)}
-					disabled={isLoading}
-				>
-					{isLoading ? "Submitting..." : "Submit Application"}
-				</button>
+				<div
+					className="h-2 bg-[#F2E782] transition-all"
+					style={{ width: `${(currentIndex * 100) / memberCount}%` }}
+				></div>
 			</div>
 		</div>
 	);
