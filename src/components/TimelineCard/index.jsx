@@ -22,6 +22,8 @@ const TimelineComponent = (props) => (
 			{props.data.id === 1 && (
 				<a
 					href="/awareness-session/register"
+					target="_blank"
+					rel="noopener noreferrer"
 					className="bg-white text-black border border-black hover:bg-gray-100 rounded lg:text-lg pl-4 pr-4 pt-1 pb-1 transition duration-0 hover:duration-500"
 				>
 					📣 Book your tickets now
@@ -30,6 +32,8 @@ const TimelineComponent = (props) => (
 			{props.data.id === 3 && (
 				<a
 					href="/team/register"
+					target="_blank"
+					rel="noopener noreferrer"
 					className="bg-white text-black border border-black hover:bg-gray-100 rounded lg:text-lg pl-4 pr-4 pt-1 pb-1 transition duration-0 hover:duration-500"
 				>
 					✍🏼 Register your team
