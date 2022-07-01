@@ -195,7 +195,9 @@ function AwarenessSession() {
 function TicketPopup({ ticketNo, studentItNo, studentName, display, onRender, onClose }) {
     useEffect(() => console.log("hello"))
     return (
-        <div className={`fixed w-screen h-screen top-0 left-0 bg-[#000000d9] flex flex-col justify-center items-center = ${display ? "" : "z-[-2]"}`}>
+        <div className={`fixed w-screen h-screen top-0 left-0 bg-[#000000d9] flex flex-col items-center = ${display ? "" : "z-[-2]"}`}>
+            <h1 className="text-center font-bold text-4xl mb-[1.5em] mt-[4em] text-white px-4">You have successfully registered for the awareness session! Here's your ticket. Share everywhere!</h1>
+            <h2 className="text-md text-white"> Check your email for more information.</h2>
             <div>
                 <Ticket
                     headerImage={logo}
