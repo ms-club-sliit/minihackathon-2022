@@ -8,7 +8,6 @@ import { EmailExists } from "../../api/errors/errors";
 import { Ticket } from "../../components";
 import logo from "./ms_club_logo.png"
 import sendEmail from "../../utils/emailSend";
-import { useEffect } from "react";
 import jsx2html from "../../utils/jsx2html";
 import EmailTemplate from "./EmailTemplate";
 
