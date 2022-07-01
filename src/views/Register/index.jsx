@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import MemberForm from "./MemberForm";
 import { registerTeam } from "../../api/register";
 import MemberForm2 from "./MemberForm2";
 import NameForm from "./NameForm";

@@ -44,7 +44,7 @@ const Ticket = (props) => {
 				isDebugModeOn && console.log(err);
 			});
 		}
-	},[props.onRender]); 
+	},[ref, isDebugModeOn, props.onRender]); 
 
 	const onButtonClick = useCallback(() => {
 		if (ref.current === null) {
