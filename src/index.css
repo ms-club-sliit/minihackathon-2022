@@ -20,6 +20,10 @@ button.rec-dot {
 }
 
 .background-shade-1 {
-	background: rgb(0,0,0);
-	background: linear-gradient(155deg, rgba(0,0,0,1) 35%, rgba(122,122,122,1) 83%);
+	background: rgb(0, 0, 0);
+	background: linear-gradient(
+		155deg,
+		rgba(0, 0, 0, 1) 35%,
+		rgba(122, 122, 122, 1) 83%
+	);
 }

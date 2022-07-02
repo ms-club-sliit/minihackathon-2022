@@ -1,0 +1,19 @@
+{
+	"data": [
+		{
+			"id": 1,
+			"companyName": "Sample Company",
+			"imageUrl": "/assets/sponsors/company_logo_1.webp"
+		},
+		{
+			"id": 2,
+			"companyName": "Sample Company",
+			"imageUrl": "/assets/sponsors/company_logo_2.webp"
+		},
+		{
+			"id": 3,
+			"companyName": "Sample Company",
+			"imageUrl": "/assets/sponsors/company_logo_3.webp"
+		}
+	]
+}
