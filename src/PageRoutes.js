@@ -7,7 +7,10 @@ const PageRoutes = () => {
 		<div>
 			<BrowserRouter>
 				<Routes>
-					<Route path="/awareness-session/register" element={<AwarenessSession />} />
+					<Route
+						path="/awareness-session/register"
+						element={<AwarenessSession />}
+					/>
 					<Route path="/team/register" element={<Register />} />
 					<Route path="/" element={<Home />} />
 				</Routes>

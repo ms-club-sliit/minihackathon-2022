@@ -36,16 +36,16 @@ const Ticket = (props) => {
 	const { onRender } = props;
 
 	useEffect(() => {
-		if(onRender) {
+		if (onRender) {
 			toPng(ref.current, { cacheBust: true })
-			.then((dataUrl) => {
-				onRender(dataUrl);
-			})
-			.catch((err) => {
-				isDebugModeOn && console.log(err);
-			});
+				.then((dataUrl) => {
+					onRender(dataUrl);
+				})
+				.catch((err) => {
+					isDebugModeOn && console.log(err);
+				});
 		}
-	},[ref, isDebugModeOn, onRender]); 
+	}, [ref, isDebugModeOn, onRender]);
 
 	const onButtonClick = useCallback(() => {
 		if (ref.current === null) {

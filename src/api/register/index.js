@@ -1,5 +1,12 @@
 import { Db, Storage } from "../../Firebase";
-import { collection, addDoc, Timestamp, doc, runTransaction, updateDoc } from "firebase/firestore";
+import {
+	collection,
+	addDoc,
+	Timestamp,
+	doc,
+	runTransaction,
+	updateDoc,
+} from "firebase/firestore";
 import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
 import { EmailExists } from "../errors/errors";
 
@@ -12,39 +19,39 @@ export const registerAwarenessSession = async (member_details) => {
 		const doc_ref = doc(Db, "awareness_session", member_details.email);
 		const document = await transaction.get(doc_ref);
 
-		if(document.exists()){
+		if (document.exists()) {
 			throw new EmailExists(document.data().email, document.id);
 		}
 
-		if(!counter_doc.exists()){
+		if (!counter_doc.exists()) {
 			await transaction.set(counter_ref, { ticket_count: 1 });
 		}
-		
+
 		let new_count = 1;
-		if(counter_doc.data()) {
-			new_count = counter_doc.data().ticket_count + 1
+		if (counter_doc.data()) {
+			new_count = counter_doc.data().ticket_count + 1;
 		}
 
 		transaction.update(counter_ref, { ticket_count: new_count });
 
 		member_details.number = new_count;
-		
+
 		transaction.set(doc_ref, { ...member_details });
 
 		member_details.ref = doc_ref;
-	})
-}
+	});
+};
 
 export const updateTicket = async (ref, url) => {
 	await updateDoc(ref, { url });
-}
+};
 
 export const saveTicket = async (image_string) => {
 	let fileName = generateFileName();
 	const storageRef = ref(Storage, `/ticket-images/${fileName}`);
 	let snapshot = await uploadBytes(storageRef, dataURItoBlob(image_string));
 	return await getDownloadURL(snapshot.ref);
-}
+};
 
 export const registerTeam = async (teamInfo) => {
 	return new Promise(async (resolve, reject) => {
@@ -162,24 +169,23 @@ const generateFileName = () => {
 const dataURItoBlob = (dataURI) => {
 	// convert base64 to raw binary data held in a string
 	// doesn't handle URLEncoded DataURIs - see SO answer #6850276 for code that does this
-	let byteString = atob(dataURI.split(',')[1]);
-  
+	let byteString = atob(dataURI.split(",")[1]);
+
 	// separate out the mime component
-	let mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0]
-  
+	let mimeString = dataURI.split(",")[0].split(":")[1].split(";")[0];
+
 	// write the bytes of the string to an ArrayBuffer
 	let ab = new ArrayBuffer(byteString.length);
-  
+
 	// create a view into the buffer
 	let ia = new Uint8Array(ab);
-  
+
 	// set the bytes of the buffer to the correct values
 	for (let i = 0; i < byteString.length; i++) {
 		ia[i] = byteString.charCodeAt(i);
 	}
-  
+
 	// write the ArrayBuffer to a blob, and you're done
-	let blob = new Blob([ab], {type: mimeString});
+	let blob = new Blob([ab], { type: mimeString });
 	return blob;
-  
-  }
+};
