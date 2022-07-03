@@ -1,7 +1,14 @@
 import React, { useState } from "react";
+import HashLoader from "react-spinners/HashLoader";
 import { registerTeam } from "../../api/register";
 import MemberForm2 from "./MemberForm2";
 import NameForm from "./NameForm";
+
+const override = {
+	display: "block",
+	margin: "0 auto",
+	borderColor: "black",
+};
 
 const Register = () => {
 	const [status, setStatus] = useState({ state: "none", message: "" });
@@ -20,7 +27,7 @@ const Register = () => {
 	};
 
 	const finish = (tInfo) => {
-		setStatus({ state: "loading", message: "Please wait." });
+		setStatus({ state: "loading" });
 
 		registerTeam(tInfo)
 			.then(() => {
@@ -97,13 +104,17 @@ const Register = () => {
 			<div className="rounded-[5px] border-2 border-gray-400 overflow-hidden mb-5">
 				<div className="w-[22em] md:w-[35em] p-[2em] md:py-[2em] relative overflow-hidden">
 					<div
-						className={`${
-							status.state === "error" ? "bg-red-400" : "bg-green-400"
-						} ${
+						className={`${status.state === "error" ? "bg-white" : "bg-white"} ${
 							status.state === "none" ? "hidden" : ""
 						} absolute flex justify-center items-center top-0 right-0 w-full h-full p-[3em] z-10`}
 					>
 						<p className="text-center font-bold text-4xl mb-[1.5em]">
+							<HashLoader
+								color="#000000"
+								loading={status.state === "error" ? false : true}
+								cssOverride={override}
+								size={90}
+							/>
 							{status.message}
 						</p>
 					</div>
