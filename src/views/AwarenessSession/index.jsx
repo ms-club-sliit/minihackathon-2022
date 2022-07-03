@@ -1,4 +1,5 @@
 import React from "react";
+import HashLoader from "react-spinners/HashLoader";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -14,6 +15,12 @@ import logo from "./ms_club_logo.png";
 import sendEmail from "../../utils/emailSend";
 import jsx2html from "../../utils/jsx2html";
 import EmailTemplate from "./EmailTemplate";
+
+const override = {
+	display: "block",
+	margin: "0 auto",
+	borderColor: "black",
+};
 
 const awarenessSchema = yup.object().shape({
 	name: yup.string().required("Name is required."),
@@ -56,7 +63,7 @@ function AwarenessSession() {
 
 	const onSubmit = async (member_data) => {
 		try {
-			setStatus({ state: "loading", message: "Please wait." });
+			setStatus({ state: "loading" });
 
 			// Registers use and Adds new number and document ref to member details
 			await registerAwarenessSession(member_data);
@@ -104,7 +111,10 @@ function AwarenessSession() {
 			});
 		} catch (error) {
 			if (error instanceof EmailExists) {
-				setStatus({ state: "error", message: "Email already exists." });
+				setStatus({
+					state: "error",
+					message: "Email already exists. Try again",
+				});
 				// TODO - show the already existing ticket
 			} else {
 				setStatus({
@@ -134,12 +144,18 @@ function AwarenessSession() {
 					<div className="w-[22em] md:w-[35em] rounded-[5px] p-[2em] md:py-[2em] relative border-2 border-gray-400 overflow-hidden mb-5">
 						<div
 							className={`${
-								status.state === "error" ? "bg-red-400" : "bg-green-400"
+								status.state === "error" ? "bg-white" : "bg-white"
 							} ${
 								status.state === "none" ? "hidden" : ""
 							} absolute flex justify-center items-center top-0 right-0 w-full h-full p-[3em]`}
 						>
 							<p className="text-center font-bold text-4xl mb-[1.5em]">
+								<HashLoader
+									color="#000000"
+									loading={status.state === "error" ? false : true}
+									cssOverride={override}
+									size={90}
+								/>
 								{status.message}
 							</p>
 						</div>

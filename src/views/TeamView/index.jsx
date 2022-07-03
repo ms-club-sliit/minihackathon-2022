@@ -8,7 +8,7 @@ const TeamView = (props) => {
 
 	useEffect(() => {
 		setTeamCards(props.teamsList.data);
-	}, []);  // eslint-disable-line react-hooks/exhaustive-deps
+	}, []); // eslint-disable-line react-hooks/exhaustive-deps
 
 	const searchTeamByName = (teamName) => {
 		if (teamName) {
