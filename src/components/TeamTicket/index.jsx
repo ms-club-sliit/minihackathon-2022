@@ -9,7 +9,7 @@ import { useEffect } from "react";
  * @param {{
  * 		headerImage: "",
  * 		ticketNo: "",
- * 		studentName: "",
+ * 		studentNames: "",
  * 		studentItNo: "",
  * 		title: "",
  * 		subTitle: "",
@@ -26,11 +26,11 @@ import { useEffect } from "react";
 				date={new Date()}
 				ticketNo="334535"
 				studentItNo="IT19104218"
-				studentName="Rusiru Abhisheak"
+				studentNames={["Rusiru Abhisheak"]}
 				url={SessionInfo.awarenessSessionLink}
 			/>
  */
-const Ticket = (props) => {
+const TeamTicket = (props) => {
 	const isDebugModeOn = false;
 	const ref = useRef(null);
 	const { onRender } = props;
@@ -51,7 +51,7 @@ const Ticket = (props) => {
 		return () => {
 			window.removeEventListener('mousemove', onMove);
 		}
-	}, []); // eslint-disable-line react-hooks/exhaustive-deps
+	}, []);
 
 	useEffect(() => {
 		if (onRender) {
@@ -73,6 +73,8 @@ const Ticket = (props) => {
 			return;
 		}
 
+		ref.current.style.transform = "none";
+
 		toPng(ref.current, { cacheBust: true })
 			.then((dataUrl) => {
 				const link = document.createElement("a");
@@ -87,10 +89,14 @@ const Ticket = (props) => {
 
 	return (
 		<div>
-			<div className="m-6 flex justify-center">
+			<div 
+				className="flex relative justify-center"
+				style={{
+					transformOrigin: "0 0"
+				}}>
 				<div
 					ref={ref}
-					className="bg-white w-full rounded-lg border-2 border-gray-600"
+					className="bg-white rounded-lg border-2 border-gray-600 w-[32em] h-full"
 				>
 					<div className="p-4">
 						<div className="grid grid-cols-2 gap-0">
@@ -104,7 +110,7 @@ const Ticket = (props) => {
 								</div>
 								<div className="flex">
 									<div>{props.studentItNo}</div>
-									<div className="ml-5">{props.studentName}</div>
+									<div className="ml-5">{props.studentNames.map((v, i) => { return <span className="mr-1">{v}{i !== props.studentNames.length - 1 ? "," : ""}</span>})}</div>
 								</div>
 							</div>
 							<div>
@@ -120,7 +126,7 @@ const Ticket = (props) => {
 				</div>
 			</div>
 
-			<div className="flex justify-center">
+			<div className="flex justify-center mt-[1em]">
 				<button
 					onClick={onButtonClick}
 					className="bg-black text-white hover:bg-gray-300 hover:text-black transition duration-0 hover:duration-500 rounded border-0 pt-2 pb-2 pl-4 pr-4"
@@ -132,4 +138,4 @@ const Ticket = (props) => {
 	);
 };
 
-export default Ticket;
+export default TeamTicket;

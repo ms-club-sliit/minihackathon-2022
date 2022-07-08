@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import HashLoader from "react-spinners/HashLoader";
-import { registerTeam } from "../../api/register";
+import { registerTeam, saveTicket, updateTicket } from "../../api/register";
+import TicketPopup from "../../components/TicketPopup";
+import sendEmail from "../../utils/emailSend";
+import jsx2html from "../../utils/jsx2html";
+import EmailTemplate from "./EmailTemplate";
 import MemberForm2 from "./MemberForm2";
 import NameForm from "./NameForm";
 
@@ -19,6 +23,13 @@ const Register = () => {
 
 	const [submitFunctions, setSubmitFunctions] = useState({});
 	const [, setTeamInfo] = useState({});
+	const [ticket, setTicket] = useState({
+		display: false,
+		studentNames: [""],
+		number: 0,
+		link: "",
+		onRender: null,
+	});
 
 	const resetStatus = (timeout) => {
 		setTimeout(() => {
@@ -26,25 +37,79 @@ const Register = () => {
 		}, timeout);
 	};
 
-	const finish = (tInfo) => {
+	const finish = async (tInfo) => {
 		setStatus({ state: "loading" });
+		
+		try{
+			let teamData = await registerTeam(tInfo);
+			let teamNames = [];
+			let emails = [];
 
-		registerTeam(tInfo)
-			.then(() => {
-				setStatus({
-					state: "success",
-					message:
-						"Nice job 👏🏼. You have successfully submit the registration form",
-				});
+			for(let i = 1; i <= 4; i++) {
+				let member = teamData[`member0${i}`];
+
+				if(member) {
+					teamNames.push(member.name.split(" ")[0]);
+					emails.push(member.email);
+				}
+			}
+
+			const onRender = async (dataURL) => {
+				try {
+					let url = await saveTicket(dataURL);
+					let str = jsx2html(<EmailTemplate image={url} />);
+	
+					// update with the ticket image url
+					await updateTicket(teamData.ref, url);
+					
+					// We don't care if the email gets to everyone
+					try{
+						let tasks = emails.map((v) => sendEmail(
+							v,
+							"Mini hackathon by MS Club",
+							str
+						));
+
+						await Promise.all(tasks);
+					}catch(e){
+						
+					}
+					
+	
+					setStatus({
+						state: "success",
+						message:
+							"Nice job 👏🏼. You have successfully submit the registration form",
+					});
+	
+					setTicket((prevTicket) => {
+						return { ...prevTicket, display: true };
+					});
+	
+				} catch (error) {
+					setStatus({
+						state: "error",
+						message:
+							"Failed to register, Something went wrong. Try again later",
+					});
+				}
+	
 				resetStatus(3000);
-			})
-			.catch(() => {
-				setStatus({
-					state: "error",
-					message: "Hmm... 🤔 something went wrong. Please try again",
-				});
-				resetStatus(3000);
+			};
+
+			setTicket({
+				studentNames: teamNames,
+				onRender,
+				number: String(teamData.number).padStart(4, "0"),
 			});
+		}catch(e){
+			setStatus({
+				state: "error",
+				message: "Hmm... 🤔 something went wrong. Please try again",
+			});
+
+			resetStatus(3000);
+		}
 	};
 
 	const next = async () => {
@@ -91,6 +156,12 @@ const Register = () => {
 			}
 
 			return prev;
+		});
+	};
+
+	const closePopup = () => {
+		setTicket((prevTicket) => {
+			return { ...prevTicket, display: false };
 		});
 	};
 
@@ -159,7 +230,7 @@ const Register = () => {
 							onClick={previous}
 							className="mt-2 w-48 h-10 rounded bg-black text-white hover:bg-gray-300 hover:text-black transition duration-0 hover:duration-500 mr-4"
 						>
-							previous
+							Back
 						</button>
 						<button
 							onClick={next}
@@ -178,6 +249,16 @@ const Register = () => {
 					style={{ width: `${(currentIndex * 100) / memberCount}%` }}
 				></div>
 			</div>
+			<TicketPopup
+				ticketNo={ticket.number}
+				isTeam={true}
+				team={{
+					studentNames: ticket.studentNames
+				}}
+				display={ticket.display}
+				onRender={ticket.onRender}
+				onClose={closePopup}
+			/>
 		</div>
 	);
 };

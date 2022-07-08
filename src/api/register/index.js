@@ -1,7 +1,6 @@
 import { Db, Storage } from "../../Firebase";
 import {
 	collection,
-	addDoc,
 	Timestamp,
 	doc,
 	runTransaction,
@@ -10,12 +9,11 @@ import {
 import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
 import { EmailExists } from "../errors/errors";
 
-const isDebugModeOn = false; // Enable debug mode to print the console.log
-
 export const registerAwarenessSession = async (member_details) => {
-	await runTransaction(Db, async (transaction) => {
-		const counter_ref = doc(Db, "awareness_session", "--stats--");
+	return await runTransaction(Db, async (transaction) => {
+		const counter_ref = doc(Db, "awareness_session", "--counter--");
 		let counter_doc = await transaction.get(counter_ref);
+
 		const doc_ref = doc(Db, "awareness_session", member_details.email);
 		const document = await transaction.get(doc_ref);
 
@@ -39,6 +37,8 @@ export const registerAwarenessSession = async (member_details) => {
 		transaction.set(doc_ref, { ...member_details });
 
 		member_details.ref = doc_ref;
+
+		return member_details;
 	});
 };
 
@@ -54,107 +54,71 @@ export const saveTicket = async (image_string) => {
 };
 
 export const registerTeam = async (teamInfo) => {
-	return new Promise(async (resolve, reject) => {
-		let teamObj = {
-			member01: {},
-			member02: {},
-			member03: {},
-			member04: {},
-			team_name: "",
-			created: "",
-		};
+	teamInfo.team_name = `${teamInfo.teamName}`;
+	delete teamInfo.teamName; // Remove redundant key
 
-		try {
-			if (teamInfo.member01.image) {
+	teamInfo.created = Timestamp.now();
+
+	// Image tasks
+	let tasks = [];
+
+	for(let i = 1; i <= 4; i++) {
+		if(`member0${i}` in teamInfo){
+			let member = teamInfo[`member0${i}`];
+
+			// Correct the keys with deep copy
+			member.it_number = `${member.itNumber}`;
+			delete member.itNumber;
+
+			member.academic_year = `${member.academicYear}`;
+			delete member.academicYear
+
+			member.contact_no = `${member.contactNumber}`;
+			delete member.contactNumber;
+
+			// Add upload image task (team.image is a FileList)
+			if(member.image && member.image.length > 0) {
 				let fileName = generateFileName();
 				const storageRef = ref(Storage, `/profile-images/${fileName}`);
-				await uploadBytes(storageRef, teamInfo.member01.image)
-					.then((snapshot) => {
-						return getDownloadURL(snapshot.ref);
-					})
-					.then((url) => {
-						teamObj.member01.image = url;
-					});
-			}
 
-			if (teamInfo.member02.image) {
-				let fileName = generateFileName();
-				const storageRef = ref(Storage, `/profile-images/${fileName}`);
-				await uploadBytes(storageRef, teamInfo.member02.image)
-					.then((snapshot) => {
-						return getDownloadURL(snapshot.ref);
-					})
-					.then((url) => {
-						teamObj.member02.image = url;
-					});
-			}
+				let task = uploadBytes(storageRef, member.image[0])
+							.then(snapshot => getDownloadURL(snapshot.ref))
+							.then(url => member.image = url)
 
-			if (teamInfo.member03.image) {
-				let fileName = generateFileName();
-				const storageRef = ref(Storage, `/profile-images/${fileName}`);
-				await uploadBytes(storageRef, teamInfo.member03.image)
-					.then((snapshot) => {
-						return getDownloadURL(snapshot.ref);
-					})
-					.then((url) => {
-						teamObj.member03.image = url;
-					});
+				tasks.push(task);
+			}else{
+				member.image = "default";
 			}
+		}
+	}
 
-			if (teamInfo.member04.image) {
-				let fileName = generateFileName();
-				const storageRef = ref(Storage, `/profile-images/${fileName}`);
-				await uploadBytes(storageRef, teamInfo.member04.image)
-					.then((snapshot) => {
-						return getDownloadURL(snapshot.ref);
-					})
-					.then((url) => {
-						teamObj.member04.image = url;
-					});
-			}
-		} catch (error) {
-			return reject(error);
+	await Promise.all(tasks);
+
+	return await runTransaction(Db, async (transaction) => {
+		const counter_ref = doc(Db, "teams", "--counter--");
+		let counter_doc = await transaction.get(counter_ref);
+		
+		let doc_ref = doc(collection(Db, "teams"));
+
+		if (!counter_doc.exists()) {
+			await transaction.set(counter_ref, { ticket_count: 1 });
 		}
 
-		teamObj.team_name = teamInfo.teamName;
-		teamObj.created = Timestamp.now();
+		let new_count = 1;
+		if (counter_doc.data()) {
+			new_count = counter_doc.data().ticket_count + 1;
+		}
 
-		teamObj.member01.name = teamInfo.member01.name;
-		teamObj.member01.email = teamInfo.member01.email;
-		teamObj.member01.it_number = teamInfo.member01.itNumber;
-		teamObj.member01.academic_year = teamInfo.member01.academicYear;
-		teamObj.member01.contact_no = teamInfo.member01.contactNumber;
-		teamObj.member01.faculty = teamInfo.member01.faculty;
+		transaction.update(counter_ref, { ticket_count: new_count });
 
-		teamObj.member02.name = teamInfo.member02.name;
-		teamObj.member02.email = teamInfo.member02.email;
-		teamObj.member02.it_number = teamInfo.member02.itNumber;
-		teamObj.member02.academic_year = teamInfo.member02.academicYear;
-		teamObj.member02.contact_no = teamInfo.member02.contactNumber;
-		teamObj.member02.faculty = teamInfo.member02.faculty;
+		transaction.set(doc_ref, teamInfo);
 
-		teamObj.member03.name = teamInfo.member03.name;
-		teamObj.member03.email = teamInfo.member03.email;
-		teamObj.member03.it_number = teamInfo.member03.itNumber;
-		teamObj.member03.academic_year = teamInfo.member03.academicYear;
-		teamObj.member03.contact_no = teamInfo.member03.contactNumber;
-		teamObj.member03.faculty = teamInfo.member03.faculty;
+		teamInfo.number = new_count;
 
-		teamObj.member04.name = teamInfo.member04.name;
-		teamObj.member04.email = teamInfo.member04.email;
-		teamObj.member04.it_number = teamInfo.member04.itNumber;
-		teamObj.member04.academic_year = teamInfo.member04.academicYear;
-		teamObj.member04.contact_no = teamInfo.member04.contactNumber;
-		teamObj.member04.faculty = teamInfo.member04.faculty;
-
-		return resolve(teamObj);
+		teamInfo.ref = doc_ref;
+		
+		return teamInfo;
 	})
-		.then(async (data) => {
-			return await addDoc(collection(Db, "teams"), data);
-		})
-		.catch((error) => {
-			isDebugModeOn && console.error(error.message);
-		});
 };
 
 const generateFileName = () => {
