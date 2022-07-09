@@ -22,10 +22,12 @@ const Register = () => {
 	const [memberCount, setMemberCount] = useState(4);
 
 	const [submitFunctions, setSubmitFunctions] = useState({});
+	const [resetFunctions, setResetFunctions] = useState({});
+
 	const [, setTeamInfo] = useState({});
 	const [ticket, setTicket] = useState({
 		display: false,
-		studentNames: [""],
+		team: null,
 		number: 0,
 		link: "",
 		onRender: null,
@@ -39,17 +41,29 @@ const Register = () => {
 
 	const finish = async (tInfo) => {
 		setStatus({ state: "loading" });
-		
 		try{
-			let teamData = await registerTeam(tInfo);
-			let teamNames = [];
-			let emails = [];
+			// Get the file objects and convert those to BLOB Urls
+			let files = {};
+			
+			for(let i = 1; i <= 4; i++) {
+				let member = tInfo[`member0${i}`];
 
+				if(member) {
+					try{
+						files[`member0${i}`] = await fileToBlobURL(member.image[0]);
+					}catch(e){ }
+				}
+			}
+
+			let teamData = await registerTeam(tInfo);
+			let emails = [];
+		
 			for(let i = 1; i <= 4; i++) {
 				let member = teamData[`member0${i}`];
 
 				if(member) {
-					teamNames.push(member.name.split(" ")[0]);
+					// Restore the file URLs back to the teamData
+					member.image = files[`member0${i}`] || "default";
 					emails.push(member.email);
 				}
 			}
@@ -75,7 +89,11 @@ const Register = () => {
 						
 					}
 					
-	
+					for(const func of Object.values(resetFunctions)){
+						try{ func(); }catch(e) {}
+					}
+					setCurrentIndex(0);
+
 					setStatus({
 						state: "success",
 						message:
@@ -83,7 +101,7 @@ const Register = () => {
 					});
 	
 					setTicket((prevTicket) => {
-						return { ...prevTicket, display: true };
+						return { ...prevTicket, display: true, onRender: null };
 					});
 	
 				} catch (error) {
@@ -98,7 +116,7 @@ const Register = () => {
 			};
 
 			setTicket({
-				studentNames: teamNames,
+				team: teamData,
 				onRender,
 				number: String(teamData.number).padStart(4, "0"),
 			});
@@ -207,6 +225,12 @@ const Register = () => {
 										return { ...prev, [i]: f };
 									})
 								}
+
+								resetFunc={(i, f) => 
+									setResetFunctions((prev) => {
+										return { ...prev, [i]: f };
+									})
+								}
 							/>
 							{arr.map((v, i) => {
 								return (
@@ -216,6 +240,12 @@ const Register = () => {
 										width={`${100 / (memberCount + 1)}%`}
 										handleSubmitFunc={(i, f) =>
 											setSubmitFunctions((prev) => {
+												return { ...prev, [i]: f };
+											})
+										}
+
+										resetFunc={(i, f) => 
+											setResetFunctions((prev) => {
 												return { ...prev, [i]: f };
 											})
 										}
@@ -252,9 +282,7 @@ const Register = () => {
 			<TicketPopup
 				ticketNo={ticket.number}
 				isTeam={true}
-				team={{
-					studentNames: ticket.studentNames
-				}}
+				team={ticket.team}
 				display={ticket.display}
 				onRender={ticket.onRender}
 				onClose={closePopup}
@@ -264,3 +292,29 @@ const Register = () => {
 };
 
 export default Register;
+
+function fileToBlobURL(file) {
+	return new Promise((resolve, reject) => {
+		let reader = new FileReader();
+		reader.onload = function(e) {
+			try{
+				const blob = new Blob([new Uint8Array(e.target.result)], {type: file.type });
+				const url = URL.createObjectURL(blob);
+				resolve(url);
+			}catch(e){
+				reject(e);
+			}
+			
+		};
+
+		reader.onerror = function(e) {
+			reject(e);
+		}
+
+		try{
+			reader.readAsArrayBuffer(file);
+		}catch(e){
+			reject(e);
+		}
+	})
+}

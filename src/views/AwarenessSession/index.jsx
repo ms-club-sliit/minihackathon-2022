@@ -290,6 +290,7 @@ function AwarenessSession() {
 				display={ticket.display}
 				onRender={ticket.onRender}
 				onClose={closePopup}
+				ticketURL={"https://msclubsliit.org/"}
 			/>
 		</>
 	);
