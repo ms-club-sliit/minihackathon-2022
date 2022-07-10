@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import HashLoader from "react-spinners/HashLoader";
-import { registerTeam } from "../../api/register";
+import { registerTeam, saveTicket, updateTicket } from "../../api/register";
+import TicketPopup from "../../components/TicketPopup";
+import sendEmail from "../../utils/emailSend";
+import jsx2html from "../../utils/jsx2html";
+import EmailTemplate from "./EmailTemplate";
 import MemberForm2 from "./MemberForm2";
 import NameForm from "./NameForm";
 
@@ -18,7 +22,16 @@ const Register = () => {
 	const [memberCount, setMemberCount] = useState(4);
 
 	const [submitFunctions, setSubmitFunctions] = useState({});
+	const [resetFunctions, setResetFunctions] = useState({});
+
 	const [, setTeamInfo] = useState({});
+	const [ticket, setTicket] = useState({
+		display: false,
+		team: null,
+		number: 0,
+		link: "",
+		onRender: null,
+	});
 
 	const resetStatus = (timeout) => {
 		setTimeout(() => {
@@ -26,25 +39,95 @@ const Register = () => {
 		}, timeout);
 	};
 
-	const finish = (tInfo) => {
+	const finish = async (tInfo) => {
 		setStatus({ state: "loading" });
+		try{
+			// Get the file objects and convert those to BLOB Urls
+			let files = {};
+			
+			for(let i = 1; i <= 4; i++) {
+				let member = tInfo[`member0${i}`];
 
-		registerTeam(tInfo)
-			.then(() => {
-				setStatus({
-					state: "success",
-					message:
-						"Nice job 👏🏼. You have successfully submit the registration form",
-				});
+				if(member) {
+					try{
+						files[`member0${i}`] = await fileToBlobURL(member.image[0]);
+					}catch(e){ }
+				}
+			}
+
+			let teamData = await registerTeam(tInfo);
+			let emails = [];
+		
+			for(let i = 1; i <= 4; i++) {
+				let member = teamData[`member0${i}`];
+
+				if(member) {
+					// Restore the file URLs back to the teamData
+					member.image = files[`member0${i}`] || "default";
+					emails.push(member.email);
+				}
+			}
+
+			const onRender = async (dataURL) => {
+				try {
+					let url = await saveTicket(dataURL);
+					let str = jsx2html(<EmailTemplate image={url} />);
+	
+					// update with the ticket image url
+					await updateTicket(teamData.ref, url);
+					
+					// We don't care if the email gets to everyone
+					try{
+						let tasks = emails.map((v) => sendEmail(
+							v,
+							"Mini hackathon by MS Club",
+							str
+						));
+
+						await Promise.all(tasks);
+					}catch(e){
+						
+					}
+					
+					for(const func of Object.values(resetFunctions)){
+						try{ func(); }catch(e) {}
+					}
+					setCurrentIndex(0);
+
+					setStatus({
+						state: "success",
+						message:
+							"Nice job 👏🏼. You have successfully submit the registration form",
+					});
+	
+					setTicket((prevTicket) => {
+						return { ...prevTicket, display: true, onRender: null };
+					});
+	
+				} catch (error) {
+					setStatus({
+						state: "error",
+						message:
+							"Failed to register, Something went wrong. Try again later",
+					});
+				}
+	
 				resetStatus(3000);
-			})
-			.catch(() => {
-				setStatus({
-					state: "error",
-					message: "Hmm... 🤔 something went wrong. Please try again",
-				});
-				resetStatus(3000);
+			};
+
+			setTicket({
+				team: teamData,
+				onRender,
+				number: String(teamData.number).padStart(4, "0"),
 			});
+		}catch(e){
+			setStatus({
+				state: "error",
+				message: "Hmm... 🤔 something went wrong. Please try again",
+			});
+
+			resetStatus(3000);
+		}
 	};
 
 	const next = async () => {
@@ -94,6 +177,12 @@ const Register = () => {
 		});
 	};
 
+	const closePopup = () => {
+		setTicket((prevTicket) => {
+			return { ...prevTicket, display: false };
+		});
+	};
+
 	const arr = new Array(memberCount).fill(null);
 
 	return (
@@ -136,6 +225,12 @@ const Register = () => {
 										return { ...prev, [i]: f };
 									})
 								}
+
+								resetFunc={(i, f) => 
+									setResetFunctions((prev) => {
+										return { ...prev, [i]: f };
+									})
+								}
 							/>
 							{arr.map((v, i) => {
 								return (
@@ -145,6 +240,12 @@ const Register = () => {
 										width={`${100 / (memberCount + 1)}%`}
 										handleSubmitFunc={(i, f) =>
 											setSubmitFunctions((prev) => {
+												return { ...prev, [i]: f };
+											})
+										}
+
+										resetFunc={(i, f) => 
+											setResetFunctions((prev) => {
 												return { ...prev, [i]: f };
 											})
 										}
@@ -159,7 +260,7 @@ const Register = () => {
 							onClick={previous}
 							className="mt-2 w-48 h-10 rounded bg-black text-white hover:bg-gray-300 hover:text-black transition duration-0 hover:duration-500 mr-4"
 						>
-							previous
+							Back
 						</button>
 						<button
 							onClick={next}
@@ -178,8 +279,42 @@ const Register = () => {
 					style={{ width: `${(currentIndex * 100) / memberCount}%` }}
 				></div>
 			</div>
+			<TicketPopup
+				ticketNo={ticket.number}
+				isTeam={true}
+				team={ticket.team}
+				display={ticket.display}
+				onRender={ticket.onRender}
+				onClose={closePopup}
+			/>
 		</div>
 	);
 };
 
 export default Register;
+
+function fileToBlobURL(file) {
+	return new Promise((resolve, reject) => {
+		let reader = new FileReader();
+		reader.onload = function(e) {
+			try{
+				const blob = new Blob([new Uint8Array(e.target.result)], {type: file.type });
+				const url = URL.createObjectURL(blob);
+				resolve(url);
+			}catch(e){
+				reject(e);
+			}
+			
+		};
+
+		reader.onerror = function(e) {
+			reject(e);
+		}
+
+		try{
+			reader.readAsArrayBuffer(file);
+		}catch(e){
+			reject(e);
+		}
+	})
+}
