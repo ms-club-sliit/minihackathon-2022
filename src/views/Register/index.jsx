@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import HashLoader from "react-spinners/HashLoader";
+import BeatLoader from "react-spinners/BeatLoader";
 import { registerTeam } from "../../api/register";
 import MemberForm2 from "./MemberForm2";
 import NameForm from "./NameForm";
@@ -109,11 +109,11 @@ const Register = () => {
 						} absolute flex justify-center items-center top-0 right-0 w-full h-full p-[3em] z-10`}
 					>
 						<p className="text-center font-bold text-4xl mb-[1.5em]">
-							<HashLoader
+							<BeatLoader
 								color="#000000"
 								loading={status.state === "error" ? false : true}
 								cssOverride={override}
-								size={90}
+								size={20}
 							/>
 							{status.message}
 						</p>

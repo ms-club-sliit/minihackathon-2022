@@ -23,7 +23,7 @@ const TeamView = (props) => {
 
 	return (
 		<div id="teamsView">
-			<div className="mb-14 lg:px-20">
+			<div className="lg:px-20">
 				<h1 className="text-4xl md:text-5xl text-center mb-5 mt-10 font-bold">
 					{props.title}
 				</h1>
