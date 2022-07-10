@@ -1,5 +1,5 @@
 import React from "react";
-import HashLoader from "react-spinners/HashLoader";
+import BeatLoader from "react-spinners/BeatLoader";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -10,11 +10,10 @@ import {
 } from "../../api/register";
 import { useState } from "react";
 import { EmailExists } from "../../api/errors/errors";
-import { Ticket } from "../../components";
-import logo from "./ms_club_logo.png";
 import sendEmail from "../../utils/emailSend";
 import jsx2html from "../../utils/jsx2html";
 import EmailTemplate from "./EmailTemplate";
+import TicketPopup from "../../components/TicketPopup";
 
 const override = {
 	display: "block",
@@ -66,7 +65,7 @@ function AwarenessSession() {
 			setStatus({ state: "loading" });
 
 			// Registers use and Adds new number and document ref to member details
-			await registerAwarenessSession(member_data);
+			let new_data = await registerAwarenessSession(member_data);
 
 			const onRender = async (dataURL) => {
 				try {
@@ -74,10 +73,10 @@ function AwarenessSession() {
 					let str = jsx2html(<EmailTemplate image={url} />);
 
 					// update with the ticket image url
-					await updateTicket(member_data.ref, url);
+					await updateTicket(new_data.ref, url);
 
 					await sendEmail(
-						member_data.email,
+						new_data.email,
 						"Mini hackathon awareness session",
 						str
 					);
@@ -105,9 +104,9 @@ function AwarenessSession() {
 			};
 
 			setTicket({
-				...member_data,
+				...new_data,
 				onRender,
-				number: String(member_data.number).padStart(4, "0"),
+				number: String(new_data.number).padStart(4, "0"),
 			});
 		} catch (error) {
 			if (error instanceof EmailExists) {
@@ -150,11 +149,11 @@ function AwarenessSession() {
 							} absolute flex justify-center items-center top-0 right-0 w-full h-full p-[3em]`}
 						>
 							<p className="text-center font-bold text-4xl mb-[1.5em]">
-								<HashLoader
+								<BeatLoader
 									color="#000000"
 									loading={status.state === "error" ? false : true}
 									cssOverride={override}
-									size={90}
+									size={20}
 								/>
 								{status.message}
 							</p>
@@ -284,59 +283,16 @@ function AwarenessSession() {
 			</div>
 			<TicketPopup
 				ticketNo={ticket.number}
-				studentItNo={ticket.it_no}
-				studentName={ticket.name}
+				student={{
+					studentItNo: ticket.it_no,
+					studentName: ticket.name
+				}}
 				display={ticket.display}
 				onRender={ticket.onRender}
 				onClose={closePopup}
+				ticketURL={"https://msclubsliit.org/"}
 			/>
 		</>
-	);
-}
-
-function TicketPopup({
-	ticketNo,
-	studentItNo,
-	studentName,
-	display,
-	onRender,
-	onClose,
-}) {
-	return (
-		<div
-			className={`fixed w-screen h-screen top-0 left-0 bg-[#000000d9] flex flex-col items-center backdrop-blur-md ${
-				display ? "" : "z-[-2]"
-			}`}
-		>
-			<h1 className="text-center font-bold text-4xl mb-[1.5em] mt-[4em] text-white px-4">
-				You have successfully registered for the awareness session! Here's your
-				ticket. Share everywhere!
-			</h1>
-			<h2 className="text-md text-white">
-				{" "}
-				Check your email for more information.
-			</h2>
-			<div>
-				<Ticket
-					headerImage={logo}
-					title="Mini Hackathon 2022"
-					subTitle="Awareness Session 📣"
-					date={new Date()}
-					ticketNo={ticketNo}
-					studentItNo={studentItNo}
-					studentName={studentName}
-					onRender={onRender}
-					url={"link"}
-				/>
-			</div>
-			<button
-				onClick={() => onClose && onClose()}
-				type="submit"
-				className="mt-2 w-24 h-10 rounded bg-black text-white hover:bg-gray-300 hover:text-black transition duration-0 hover:duration-500"
-			>
-				Close
-			</button>
-		</div>
 	);
 }
 

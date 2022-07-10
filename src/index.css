@@ -2,6 +2,61 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: 'SF Pro Display';
+    font-style: normal;
+    font-weight: 400;
+    src: local('SF Pro Display'), url('https://fonts.cdnfonts.com/s/59278/SFPRODISPLAYREGULAR.woff') format('woff');
+}
+@font-face {
+    font-family: 'SF Pro Display';
+    font-style: italic;
+    font-weight: 100;
+    src: local('SF Pro Display'), url('https://fonts.cdnfonts.com/s/59278/SFPRODISPLAYULTRALIGHTITALIC.woff') format('woff');
+}
+@font-face {
+    font-family: 'SF Pro Display';
+    font-style: italic;
+    font-weight: 200;
+    src: local('SF Pro Display'), url('https://fonts.cdnfonts.com/s/59278/SFPRODISPLAYTHINITALIC.woff') format('woff');
+}
+@font-face {
+    font-family: 'SF Pro Display';
+    font-style: italic;
+    font-weight: 300;
+    src: local('SF Pro Display'), url('https://fonts.cdnfonts.com/s/59278/SFPRODISPLAYLIGHTITALIC.woff') format('woff');
+}
+@font-face {
+    font-family: 'SF Pro Display';
+    font-style: normal;
+    font-weight: 500;
+    src: local('SF Pro Display'), url('https://fonts.cdnfonts.com/s/59278/SFPRODISPLAYMEDIUM.woff') format('woff');
+}
+@font-face {
+    font-family: 'SF Pro Display';
+    font-style: italic;
+    font-weight: 600;
+    src: local('SF Pro Display'), url('https://fonts.cdnfonts.com/s/59278/SFPRODISPLAYSEMIBOLDITALIC.woff') format('woff');
+}
+@font-face {
+    font-family: 'SF Pro Display';
+    font-style: normal;
+    font-weight: 700;
+    src: local('SF Pro Display'), url('https://fonts.cdnfonts.com/s/59278/SFPRODISPLAYBOLD.woff') format('woff');
+}
+@font-face {
+    font-family: 'SF Pro Display';
+    font-style: italic;
+    font-weight: 800;
+    src: local('SF Pro Display'), url('https://fonts.cdnfonts.com/s/59278/SFPRODISPLAYHEAVYITALIC.woff') format('woff');
+}
+@font-face {
+    font-family: 'SF Pro Display';
+    font-style: italic;
+    font-weight: 900;
+    src: local('SF Pro Display'), url('https://fonts.cdnfonts.com/s/59278/SFPRODISPLAYBLACKITALIC.woff') format('woff');
+}
+
 body {
 	margin: 0;
 }
@@ -26,4 +81,77 @@ button.rec-dot {
 		rgba(0, 0, 0, 1) 35%,
 		rgba(122, 122, 122, 1) 83%
 	);
+}
+
+.ticket-team-name {
+	font-family: SF Pro Display;
+	font-size: 32px;
+	font-weight: 700;
+	line-height: 38px;
+	letter-spacing: -0.02em;
+}
+
+.ticket-team-member {
+	font-family: SF Pro Display;
+	font-size: 20px;
+	font-weight: 700;
+	line-height: 24px;
+	letter-spacing: -0.02em;
+}
+
+.ticket-team-bg {
+	background-image: url("../public/assets/teamcard/bg.svg");
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.ticket-team-round {
+	font-family: SF Pro Display;
+	color: #969696;
+	font-size: 24px;
+	font-weight: 500;
+	line-height: 29px;
+	letter-spacing: -0.02em;
+	text-align: center;
+}
+
+.ticket-team-date {
+	font-family: SF Pro Display;
+	font-size: 24px;
+	font-weight: 700;
+	line-height: 29px;
+	letter-spacing: -0.02em;
+	text-align: center;
+}
+
+.ticket-team-time {
+	font-family: SF Pro Display;
+	color: #969696;
+	font-size: 24px;
+	font-weight: 600;
+	line-height: 29px;
+	letter-spacing: -0.02em;
+	text-align: center;
+}
+
+.team-hosted-by {
+	font-family: SF Pro Display;
+	font-size: 20px;
+	font-weight: 700;
+	line-height: 24px;
+	letter-spacing: -0.02em;
+	text-align: center;
+}
+
+.team-dashed-line {
+	border: 2px dashed rgba(0, 0, 0, 0.19);
+}
+
+.team-number {
+	font-family: SF Pro Display;
+	font-size: 36px;
+	font-weight: 800;
+	writing-mode: vertical-lr;
+	text-orientation: mixed;
+	transform: rotate(-180deg);
 }
