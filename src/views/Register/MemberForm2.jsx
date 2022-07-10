@@ -18,11 +18,12 @@ const memberSchema = yup.object().shape({
 	image: yup.mixed(),
 });
 
-function MemberForm2({ formKey, handleSubmitFunc, width }) {
+function MemberForm2({ formKey, handleSubmitFunc, resetFunc, width }) {
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
+		reset
 	} = useForm({
 		resolver: yupResolver(memberSchema),
 	});
@@ -42,6 +43,8 @@ function MemberForm2({ formKey, handleSubmitFunc, width }) {
 					)();
 				});
 			});
+		
+		resetFunc && resetFunc(formKey, reset);
 	}, []); // eslint-disable-line react-hooks/exhaustive-deps
 
 	return (
