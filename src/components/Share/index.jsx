@@ -1,5 +1,18 @@
 import React from "react";
-import { FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon, RedditShareButton, RedditShareCount, RedditIcon, WhatsappShareButton, WhatsappIcon, LinkedinShareButton, LinkedinIcon, TelegramIcon, TelegramShareButton } from "react-share";
+import { 
+    FacebookShareButton, 
+    FacebookIcon, 
+    TwitterShareButton, 
+    TwitterIcon, 
+    RedditShareButton, 
+    RedditIcon, 
+    WhatsappShareButton, 
+    WhatsappIcon, 
+    LinkedinShareButton, 
+    LinkedinIcon, 
+    TelegramIcon, 
+    TelegramShareButton 
+} from "react-share";
 import { useDisplaySize } from "../../hooks";
 
 function Share({ url, title }) {

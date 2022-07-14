@@ -4,7 +4,7 @@ import QRCode from "react-qr-code";
 import moment from "moment";
 import { useEffect } from "react";
 import { forwardRef } from "react";
-import { useDisplaySize } from "../../hooks";
+import { useDisplaySize, usePerspectiveOnMouseMoveEffect } from "../../hooks";
 
 /**
  *
@@ -38,23 +38,7 @@ const Ticket = (props, this_ref) => {
 	const htmlRef = useRef(null);
 	const { onRender } = props;
 
-	const onMove = (e) => {
-		const ticketElm = ref.current;
-		const { x, y, width, height } = ticketElm.getBoundingClientRect();
-		const centerPoint = { x: x + width / 2, y: y + height / 2 };
-
-		const degreeX = (e.clientY - centerPoint.y) * 0.008;
-		const degreeY = (e.clientX - centerPoint.x) * -0.008;
-
-		ticketElm.style.transform = `perspective(500px) rotateX(${degreeX}deg) rotateY(${degreeY}deg)`;
-	}
-
-	useEffect(() => {
-        window.addEventListener('mousemove', onMove);
-		return () => {
-			window.removeEventListener('mousemove', onMove);
-		}
-	}, []); // eslint-disable-line react-hooks/exhaustive-deps
+	usePerspectiveOnMouseMoveEffect(ref);
 
 	useImperativeHandle(this_ref, () => ({
 		renderTicket: () => {

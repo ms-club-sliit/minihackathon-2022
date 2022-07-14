@@ -1,9 +1,9 @@
-import React, { useCallback, useRef, useState } from "react";
+import React, { useCallback, useRef } from "react";
 import { toPng } from "html-to-image";
 import { useEffect } from "react";
 import { forwardRef } from "react";
 import { useImperativeHandle } from "react";
-import { useDisplaySize } from "../../hooks";
+import { useDisplaySize, usePerspectiveOnMouseMoveEffect } from "../../hooks";
 
 /**
  *
@@ -41,23 +41,7 @@ const TeamTicket = (props, this_ref) => {
 	
 	const size = useDisplaySize();
 
-	const onMove = (e) => {
-		const ticketElm = ref.current;
-		const { x, y, width, height } = ticketElm.getBoundingClientRect();
-		const centerPoint = { x: x + width / 2, y: y + height / 2 };
-
-		const degreeX = (e.clientY - centerPoint.y) * 0.008;
-		const degreeY = (e.clientX - centerPoint.x) * -0.008;
-
-		ticketElm.style.transform = `perspective(500px) rotateX(${degreeX}deg) rotateY(${degreeY}deg)`;
-	}
-
-	useEffect(() => {
-        window.addEventListener('mousemove', onMove);
-		return () => {
-			window.removeEventListener('mousemove', onMove);
-		}
-	}, []);
+	usePerspectiveOnMouseMoveEffect(ref);
 
 	useImperativeHandle(this_ref, () => ({
 		renderTicket: () => {

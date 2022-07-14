@@ -1,6 +1,4 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Share from "./components/Share";
-import TicketPopup from "./components/TicketPopup";
 import { Home, Register } from "./views";
 import AwarenessSession from "./views/AwarenessSession";
 
@@ -15,7 +13,7 @@ const PageRoutes = () => {
 					/>
 					<Route path="/team/register" element={<Register />} />
 					<Route path="/" element={<Home />} />
-					<Route path="/popup" element={<TicketPopup
+					{/* <Route path="/popup" element={<TicketPopup
 						ticketNo={1}
 						isTeam={false}
 						team={{
@@ -31,7 +29,7 @@ const PageRoutes = () => {
 						display={true}
 						ticketURL={"https://msclubsliit.org/"}
 					/>} />
-					<Route path="/share" element={<Share />} />
+					<Route path="/share" element={<Share />} /> */}
 				</Routes>
 			</BrowserRouter>
 		</div>
