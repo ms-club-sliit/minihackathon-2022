@@ -36,6 +36,7 @@ import { useDisplaySize } from "../../hooks";
 const TeamTicket = (props, this_ref) => {
 	const isDebugModeOn = false;
 	const ref = useRef(null);
+	const htmlRef = useRef(null);
 	const { onRender } = props;
 	
 	const size = useDisplaySize();
@@ -65,7 +66,7 @@ const TeamTicket = (props, this_ref) => {
 			}
 
 			ref.current.style.transform = "none";
-			return toPng(ref.current, { cacheBust: true });
+			return toPng(htmlRef.current, { cacheBust: true });
 		}
 	}));
 
@@ -103,7 +104,7 @@ const TeamTicket = (props, this_ref) => {
 		<div>
 			<svg width={size === 0 ? 390 : 727} viewBox="0 0 727 400" ref={ref}>
 				<foreignObject width={727} height={400} xmlns="http://www.w3.org/2000/svg">
-					<div className="flex flex-row w-full h-full border-black border-[4px] rounded-[30px] ticket-team-bg bg-white">
+					<div ref={htmlRef} className="flex flex-row w-full h-full border-black border-[4px] rounded-[30px] ticket-team-bg bg-white">
 						<div 
 							className="h-full flex-grow pl-[54px] py-[51px]"
 						>
