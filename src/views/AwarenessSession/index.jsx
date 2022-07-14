@@ -106,7 +106,7 @@ function AwarenessSession() {
 			setTicket({
 				...new_data,
 				onRender,
-				number: String(new_data.number).padStart(4, "0"),
+				number: new_data.number,
 			});
 		} catch (error) {
 			if (error instanceof EmailExists) {

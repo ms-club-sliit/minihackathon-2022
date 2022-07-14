@@ -4,6 +4,7 @@ import QRCode from "react-qr-code";
 import moment from "moment";
 import { useEffect } from "react";
 import { forwardRef } from "react";
+import { useDisplaySize } from "../../hooks";
 
 /**
  *
@@ -80,40 +81,45 @@ const Ticket = (props, this_ref) => {
 		}
 	}, [ref, isDebugModeOn, onRender]);
 
+	const size = useDisplaySize();
+
 	return (
 		<div>
-			<div className="m-6 flex justify-center">
-				<div
-					ref={ref}
-					className="bg-white w-full rounded-lg border-2 border-gray-600"
-				>
-					<div className="p-4">
-						<div className="grid grid-cols-2 gap-0">
-							<div>
-								<img src={props.headerImage} alt="logo" width={100} />
-								<div className="flex font-semibold text-xl">{props.title}</div>
-								<div>{props.subTitle}</div>
-								<div>{moment(props.date).format("LLL")}</div>
-								<div className="text-2xl font-bold mt-3">
-									№ {props.ticketNo}
-								</div>
-								<div className="flex">
-									<div>{props.studentItNo}</div>
-									<div className="ml-5">{props.studentName}</div>
-								</div>
-							</div>
-							<div>
-								<div className="flex justify-end">
-									<QRCode value={props.url} size={180} />
-								</div>
-								<div className="flex justify-end">
-									<small className="">Scan the code to join</small>
+			<svg width={size === 0 ? 390 : 727} viewBox="0 0 500 250" ref={ref}>
+				<foreignObject width={500} height={250} xmlns="http://www.w3.org/2000/svg">
+					<div className="flex justify-center w-[500px] h-[250px]">
+						<div
+							className="bg-white w-full h-full rounded-lg border-2 border-gray-600"
+						>
+							<div className="p-4">
+								<div className="grid grid-cols-2 gap-0">
+									<div>
+										<img src={props.headerImage} alt="logo" width={100} />
+										<div className="flex font-semibold text-xl">{props.title}</div>
+										<div>{props.subTitle}</div>
+										<div>{moment(props.date).format("LLL")}</div>
+										<div className="text-2xl font-bold mt-3">
+											№ {props.ticketNo}
+										</div>
+										<div className="flex">
+											<div>{props.studentItNo}</div>
+											<div className="ml-5">{props.studentName}</div>
+										</div>
+									</div>
+									<div>
+										<div className="flex justify-end">
+											<QRCode value={props.url} size={180} />
+										</div>
+										<div className="flex justify-end">
+											<small className="">Scan the code to join</small>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-			</div>
+				</foreignObject>
+			</svg>
 		</div>
 	);
 };

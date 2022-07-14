@@ -31,13 +31,9 @@ export const registerAwarenessSession = async (member_details) => {
 		}
 
 		transaction.update(counter_ref, { ticket_count: new_count });
-
 		member_details.number = new_count;
-
 		transaction.set(doc_ref, { ...member_details });
-
 		member_details.ref = doc_ref;
-
 		return member_details;
 	});
 };
@@ -110,13 +106,9 @@ export const registerTeam = async (teamInfo) => {
 		}
 
 		transaction.update(counter_ref, { ticket_count: new_count });
-
 		transaction.set(doc_ref, teamInfo);
-
 		teamInfo.number = new_count;
-
 		teamInfo.ref = doc_ref;
-		
 		return teamInfo;
 	})
 };

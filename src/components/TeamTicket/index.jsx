@@ -1,8 +1,9 @@
-import React, { useCallback, useRef } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import { toPng } from "html-to-image";
 import { useEffect } from "react";
 import { forwardRef } from "react";
 import { useImperativeHandle } from "react";
+import { useDisplaySize } from "../../hooks";
 
 /**
  *
@@ -36,6 +37,8 @@ const TeamTicket = (props, this_ref) => {
 	const isDebugModeOn = false;
 	const ref = useRef(null);
 	const { onRender } = props;
+	
+	const size = useDisplaySize();
 
 	const onMove = (e) => {
 		const ticketElm = ref.current;
@@ -98,7 +101,7 @@ const TeamTicket = (props, this_ref) => {
 
 	return (
 		<div>
-			<svg width={727} height={400} viewBox="0 0 727 400" ref={ref}>
+			<svg width={size === 0 ? 390 : 727} viewBox="0 0 727 400" ref={ref}>
 				<foreignObject width={727} height={400} xmlns="http://www.w3.org/2000/svg">
 					<div className="flex flex-row w-full h-full border-black border-[4px] rounded-[30px] ticket-team-bg bg-white">
 						<div 
@@ -146,7 +149,7 @@ const TeamTicket = (props, this_ref) => {
 						</div>
 						<div className="team-dashed-line h-full"></div>
 						<div className="w-[101px] team-number flex justify-center items-center">
-							#{props.ticketNo}
+							#{String(props.ticketNo).padStart(4, "0")}
 						</div>
 					</div>
 				</foreignObject>

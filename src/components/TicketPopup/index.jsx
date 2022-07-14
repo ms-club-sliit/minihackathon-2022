@@ -3,6 +3,9 @@ import { useRef } from "react";
 import { useEffect } from "react";
 import { Ticket } from "..";
 import TeamTicket from "../TeamTicket";
+import Share from "../Share";
+import { getShareURL } from "../../api";
+
 /**T
  * @param {Object} param
  * @param {number} param.ticketNo
@@ -50,7 +53,7 @@ function TicketPopup({
             link.href = dataURL;
             link.click();
         }catch(e){
-
+            
         }
     }
 
@@ -64,7 +67,7 @@ function TicketPopup({
                 transition: "opacity 500ms"
             }}
 		>
-			<h1 className="text-center font-bold text-4xl mb-[2em] mt-[3em] text-white px-4">
+			<h1 className="text-center font-bold text-2xl md:text-4xl mb-[2em] mt-[3em] text-white px-4">
 				You have successfully registered {isTeam ? "for the Mini Hackathon 2022" : "for the Awareness Session"}! <br></br>Here's your
 				ticket. Share everywhere!
 			</h1>
@@ -100,6 +103,7 @@ function TicketPopup({
                     />
                 }
 			</div>
+            <Share url={getShareURL(ticketNo, isTeam ? "team" : "awareness")} title={isTeam ? "I got registered for the Mini Hackathon 2022!" : "I got registered for the Mini Hackathon Awareness Session!"}/>
             <div className="mt-5">
                 <button
                     onClick={saveTicket}
