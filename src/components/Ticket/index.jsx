@@ -35,6 +35,7 @@ import { useDisplaySize } from "../../hooks";
 const Ticket = (props, this_ref) => {
 	const isDebugModeOn = false;
 	const ref = useRef(null);
+	const htmlRef = useRef(null);
 	const { onRender } = props;
 
 	const onMove = (e) => {
@@ -62,7 +63,7 @@ const Ticket = (props, this_ref) => {
 			}
 
 			ref.current.style.transform = "none";
-			return toPng(ref.current, { cacheBust: true });
+			return toPng(htmlRef.current, { cacheBust: true });
 		}
 	}));
 
@@ -87,7 +88,7 @@ const Ticket = (props, this_ref) => {
 		<div>
 			<svg width={size === 0 ? 390 : 727} viewBox="0 0 500 250" ref={ref}>
 				<foreignObject width={500} height={250} xmlns="http://www.w3.org/2000/svg">
-					<div className="flex justify-center w-[500px] h-[250px]">
+					<div className="flex justify-center w-[500px] h-[250px]" ref={htmlRef}>
 						<div
 							className="bg-white w-full h-full rounded-lg border-2 border-gray-600"
 						>
@@ -99,7 +100,7 @@ const Ticket = (props, this_ref) => {
 										<div>{props.subTitle}</div>
 										<div>{moment(props.date).format("LLL")}</div>
 										<div className="text-2xl font-bold mt-3">
-											№ {props.ticketNo}
+											№ {String(props.ticketNo).padStart(4, "0")}
 										</div>
 										<div className="flex">
 											<div>{props.studentItNo}</div>
