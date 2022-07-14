@@ -4,10 +4,8 @@ import { useDisplaySize } from "../../hooks";
 
 function Share({ url, title }) {
     const dSize = useDisplaySize();
-
     const size = dSize === 0 ? 35 : 64;
     
-    console.log(url, title);
     return (
 
         <div className={`${ dSize === 0 ? "py-6 mt-1":"h-[10em] py-4 mt-4" } ${ dSize === 0 ? "min-w-[20em]":"min-w-[35em]" } rounded-[1em] flex flex-col px-8 justify-center`}>
