@@ -3,6 +3,7 @@ import { toPng } from "html-to-image";
 import { useEffect } from "react";
 import { forwardRef } from "react";
 import { useImperativeHandle } from "react";
+import { useDisplaySize, usePerspectiveOnMouseMoveEffect } from "../../hooks";
 
 /**
  *
@@ -35,25 +36,12 @@ import { useImperativeHandle } from "react";
 const TeamTicket = (props, this_ref) => {
 	const isDebugModeOn = false;
 	const ref = useRef(null);
+	const htmlRef = useRef(null);
 	const { onRender } = props;
+	
+	const size = useDisplaySize();
 
-	const onMove = (e) => {
-		const ticketElm = ref.current;
-		const { x, y, width, height } = ticketElm.getBoundingClientRect();
-		const centerPoint = { x: x + width / 2, y: y + height / 2 };
-
-		const degreeX = (e.clientY - centerPoint.y) * 0.008;
-		const degreeY = (e.clientX - centerPoint.x) * -0.008;
-
-		ticketElm.style.transform = `perspective(500px) rotateX(${degreeX}deg) rotateY(${degreeY}deg)`;
-	}
-
-	useEffect(() => {
-        window.addEventListener('mousemove', onMove);
-		return () => {
-			window.removeEventListener('mousemove', onMove);
-		}
-	}, []);
+	usePerspectiveOnMouseMoveEffect(ref);
 
 	useImperativeHandle(this_ref, () => ({
 		renderTicket: () => {
@@ -62,7 +50,7 @@ const TeamTicket = (props, this_ref) => {
 			}
 
 			ref.current.style.transform = "none";
-			return toPng(ref.current, { cacheBust: true });
+			return toPng(htmlRef.current, { cacheBust: true });
 		}
 	}));
 
@@ -98,9 +86,9 @@ const TeamTicket = (props, this_ref) => {
 
 	return (
 		<div>
-			<svg width={727} height={400} viewBox="0 0 727 400" ref={ref}>
+			<svg width={size === 0 ? 390 : 727} viewBox="0 0 727 400" ref={ref}>
 				<foreignObject width={727} height={400} xmlns="http://www.w3.org/2000/svg">
-					<div className="flex flex-row w-full h-full border-black border-[4px] rounded-[30px] ticket-team-bg bg-white">
+					<div ref={htmlRef} className="flex flex-row w-full h-full border-black border-[4px] rounded-[30px] ticket-team-bg bg-white">
 						<div 
 							className="h-full flex-grow pl-[54px] py-[51px]"
 						>
@@ -146,7 +134,7 @@ const TeamTicket = (props, this_ref) => {
 						</div>
 						<div className="team-dashed-line h-full"></div>
 						<div className="w-[101px] team-number flex justify-center items-center">
-							#{props.ticketNo}
+							#{String(props.ticketNo).padStart(4, "0")}
 						</div>
 					</div>
 				</foreignObject>

@@ -4,6 +4,7 @@ import QRCode from "react-qr-code";
 import moment from "moment";
 import { useEffect } from "react";
 import { forwardRef } from "react";
+import { useDisplaySize, usePerspectiveOnMouseMoveEffect } from "../../hooks";
 
 /**
  *
@@ -34,25 +35,10 @@ import { forwardRef } from "react";
 const Ticket = (props, this_ref) => {
 	const isDebugModeOn = false;
 	const ref = useRef(null);
+	const htmlRef = useRef(null);
 	const { onRender } = props;
 
-	const onMove = (e) => {
-		const ticketElm = ref.current;
-		const { x, y, width, height } = ticketElm.getBoundingClientRect();
-		const centerPoint = { x: x + width / 2, y: y + height / 2 };
-
-		const degreeX = (e.clientY - centerPoint.y) * 0.008;
-		const degreeY = (e.clientX - centerPoint.x) * -0.008;
-
-		ticketElm.style.transform = `perspective(500px) rotateX(${degreeX}deg) rotateY(${degreeY}deg)`;
-	}
-
-	useEffect(() => {
-        window.addEventListener('mousemove', onMove);
-		return () => {
-			window.removeEventListener('mousemove', onMove);
-		}
-	}, []); // eslint-disable-line react-hooks/exhaustive-deps
+	usePerspectiveOnMouseMoveEffect(ref);
 
 	useImperativeHandle(this_ref, () => ({
 		renderTicket: () => {
@@ -61,7 +47,7 @@ const Ticket = (props, this_ref) => {
 			}
 
 			ref.current.style.transform = "none";
-			return toPng(ref.current, { cacheBust: true });
+			return toPng(htmlRef.current, { cacheBust: true });
 		}
 	}));
 
@@ -80,40 +66,45 @@ const Ticket = (props, this_ref) => {
 		}
 	}, [ref, isDebugModeOn, onRender]);
 
+	const size = useDisplaySize();
+
 	return (
 		<div>
-			<div className="m-6 flex justify-center">
-				<div
-					ref={ref}
-					className="bg-white w-full rounded-lg border-2 border-gray-600"
-				>
-					<div className="p-4">
-						<div className="grid grid-cols-2 gap-0">
-							<div>
-								<img src={props.headerImage} alt="logo" width={100} />
-								<div className="flex font-semibold text-xl">{props.title}</div>
-								<div>{props.subTitle}</div>
-								<div>{moment(props.date).format("LLL")}</div>
-								<div className="text-2xl font-bold mt-3">
-									№ {props.ticketNo}
-								</div>
-								<div className="flex">
-									<div>{props.studentItNo}</div>
-									<div className="ml-5">{props.studentName}</div>
-								</div>
-							</div>
-							<div>
-								<div className="flex justify-end">
-									<QRCode value={props.url} size={180} />
-								</div>
-								<div className="flex justify-end">
-									<small className="">Scan the code to join</small>
+			<svg width={size === 0 ? 390 : 727} viewBox="0 0 500 250" ref={ref}>
+				<foreignObject width={500} height={250} xmlns="http://www.w3.org/2000/svg">
+					<div className="flex justify-center w-[500px] h-[250px]" ref={htmlRef}>
+						<div
+							className="bg-white w-full h-full rounded-lg border-2 border-gray-600"
+						>
+							<div className="p-4">
+								<div className="grid grid-cols-2 gap-0">
+									<div>
+										<img src={props.headerImage} alt="logo" width={100} />
+										<div className="flex font-semibold text-xl">{props.title}</div>
+										<div>{props.subTitle}</div>
+										<div>{moment(props.date).format("LLL")}</div>
+										<div className="text-2xl font-bold mt-3">
+											№ {String(props.ticketNo).padStart(4, "0")}
+										</div>
+										<div className="flex">
+											<div>{props.studentItNo}</div>
+											<div className="ml-5">{props.studentName}</div>
+										</div>
+									</div>
+									<div>
+										<div className="flex justify-end">
+											<QRCode value={props.url} size={180} />
+										</div>
+										<div className="flex justify-end">
+											<small className="">Scan the code to join</small>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-			</div>
+				</foreignObject>
+			</svg>
 		</div>
 	);
 };
