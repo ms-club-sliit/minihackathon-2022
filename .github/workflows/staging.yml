@@ -33,6 +33,7 @@ jobs:
           REACT_APP_APP_ID: ${{ secrets.REACT_APP_APP_ID }}
           REACT_APP_MEASUREMENT_ID: ${{ secrets.REACT_APP_MEASUREMENT_ID }}
           REACT_APP_EMAIL_ENDPOINT: ${{ secrets.REACT_APP_EMAIL_ENDPOINT }}
+          REACT_APP_SHARE_ENDPOINT: ${{ secrets.REACT_APP_SHARE_ENDPOINT }}
         run: yarn build
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v2.3.0
