@@ -86,8 +86,8 @@ const Header = () => {
 								to="teams"
 								spy={true}
 								smooth={true}
-								offset={50}
-								duration={700}
+								offset={-10}
+								duration={600}
 								delay={100}
 							>
 								Teams
@@ -106,31 +106,31 @@ const Header = () => {
 							</Link>
 						</li>
 						<li className="text-base font-normal text-gray-500 hover:text-gray-900 mt-1 list-none cursor-pointer">
-							<Link
-								to="rules"
-								spy={true}
-								smooth={true}
-								offset={50}
-								duration={900}
-								delay={100}
+							<a
+								href="https://bit.ly/minihack22Guideline"
+								target="_blank"
+								rel="noopener noreferrer"
 							>
 								Rules
-							</Link>
+							</a>
 						</li>
 						<li className="text-base font-normal text-gray-500 hover:text-gray-900 mt-1 list-none cursor-pointer">
-							<Link
-								to="contact"
-								spy={true}
-								smooth={true}
-								offset={50}
-								duration={1000}
-								delay={100}
+							<a
+								href="https://www.facebook.com/msclubsliit"
+								target="_blank"
+								rel="noopener noreferrer"
 							>
 								Contact
-							</Link>
+							</a>
 						</li>
 						<li className="ml-8 cursor-pointer inline-flex items-center justify-center px-4 py-1 border-0 rounded font-normal text-white hover:text-black bg-black hover:bg-gray-200 transition duration-0 hover:duration-500">
-							Join Teams
+							<a
+								href="https://teams.microsoft.com/l/team/19%3asKeZlvZa7jFdXBP_ZmYQnyc-w70KXbrRugHyDumm2To1%40thread.tacv2/conversations?groupId=b6390614-7075-4334-afe7-ef873eeb4550&tenantId=44e3cf94-19c9-4e32-96c3-14f5bf01391a"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								Join Teams
+							</a>
 						</li>
 					</Popover.Group>
 				</div>
