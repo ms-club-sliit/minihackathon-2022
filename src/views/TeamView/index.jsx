@@ -47,7 +47,7 @@ const TeamView = () => {
 	};
 
 	return (
-		<div id="teamsView">
+		<div id="teams">
 			<div className="lg:px-20">
 				<h1 className="text-4xl md:text-5xl text-center mb-5 mt-10 font-bold">
 					Teams
