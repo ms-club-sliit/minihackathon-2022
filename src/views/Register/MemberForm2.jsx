@@ -6,14 +6,42 @@ import { useEffect } from "react";
 
 const memberSchema = yup.object().shape({
 	name: yup.string().required("Name is required."),
-	email: yup.string().email().required("Email is required."),
-	contactNumber: yup
+	email: yup
+		.string()
+		.email("Enter a valid SLIIT e-mail")
+		.test(
+			"emailTest",
+			"Email needs to be a valid SLIIT e-mail",
+			(email) => {
+				let domain = email.split("@")[1].trim();
+				return domain === "my.sliit.lk"
+			}
+		)
+		.required("Email is required."),
+	contact_no: yup
 		.string()
 		.matches(/[0-9]+/gi, "Enter Numbers only.")
 		.min(10, "Contact Number must be at least 10 digits")
 		.required("Contact number is required"),
-	itNumber: yup.string().required("IT number is required."),
-	academicYear: yup.string().required("Academic Year is required."),
+	it_number: yup
+		.string()
+		.test(
+			"sliitIdTEst",
+			"Enter a valid SLIIT ID",
+			(itNumber) => {
+				let prefixes = ["it", "en", "bm"];
+				
+				for(let p of prefixes) {
+					if(itNumber.toLowerCase().startsWith(p)) {
+						return true
+					}
+				}
+
+				return false;
+			}
+		)
+		.required("SLIIT ID is required."),
+	academic_year: yup.string().required("Academic Year is required."),
 	faculty: yup.string().required("Faculty is required."),
 	image: yup.mixed(),
 });
@@ -84,26 +112,26 @@ function MemberForm2({ formKey, handleSubmitFunc, resetFunc, width }) {
 					Contact Number
 				</label>
 				<input
-					{...register("contactNumber")}
+					{...register("contact_no")}
 					type="text"
 					placeholder="Contact No"
 					className="border-2 border-black rounded mb-[0.1em] px-2 py-1 w-full"
 				/>
 				<p className="text-red-500 text-[0.8em] font-semibold min-h-[1em] italic">
-					{errors.contactNumber?.message}
+					{errors.contact_no?.message}
 				</p>
 
 				<label className="block font-semibold text-[#969696] text-[1em] md:text-left mb-1 md:mb-0 pr-4">
-					IT Number
+					SLIIT ID
 				</label>
 				<input
-					{...register("itNumber")}
+					{...register("it_number")}
 					type="text"
-					placeholder="IT Number"
+					placeholder="SLIIT ID"
 					className="border-2 border-black rounded mb-[0.1em] px-2 py-1 w-full"
 				/>
 				<p className="text-red-500 text-[0.8em] font-semibold min-h-[1em] italic">
-					{errors.itNumber?.message}
+					{errors.it_number?.message}
 				</p>
 
 				<div className="flex flex-row">
@@ -112,7 +140,7 @@ function MemberForm2({ formKey, handleSubmitFunc, resetFunc, width }) {
 							Academic Year
 						</label>
 						<select
-							{...register("academicYear")}
+							{...register("academic_year")}
 							defaultValue=""
 							className="border-2 border-black rounded mb-[0.1em] py-1 px-1 cursor-pointer w-full"
 						>
@@ -124,7 +152,7 @@ function MemberForm2({ formKey, handleSubmitFunc, resetFunc, width }) {
 							<option value="Year 03 Semester 01">Year 03 Semester 01</option>
 						</select>
 						<p className="text-red-500 text-[0.8em] font-semibold min-h-[1em] italic">
-							{errors.academicYear?.message}
+							{errors.academic_year?.message}
 						</p>
 					</div>
 

@@ -29,7 +29,7 @@ const awarenessSchema = yup.object().shape({
 		.matches(/[0-9]+/gi, "Enter Numbers only.")
 		.min(10, "Contact Number must be at least 10 digits")
 		.required("Contact number is required"),
-	it_no: yup.string().required("IT number is required."),
+	it_no: yup.string().required("SLIIT ID is required."),
 	academic_year: yup.string().required("Academic Year is required."),
 	faculty: yup.string().required("Faculty is required."),
 });
@@ -198,12 +198,12 @@ function AwarenessSession() {
 						</p>
 
 						<label className="block font-semibold text-[#969696] text-[1em] md:text-left mb-1 md:mb-0 pr-4">
-							IT Number
+							SLIIT ID
 						</label>
 						<input
 							{...register("it_no")}
 							type="text"
-							placeholder="IT Number"
+							placeholder="SLIIT ID"
 							className="border-2 border-black rounded mb-[0.1em] px-2 py-1 w-full"
 						/>
 						<p className="text-red-500 text-[0.8em] font-semibold min-h-[1em] italic">
