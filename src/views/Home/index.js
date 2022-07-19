@@ -18,12 +18,12 @@ const Home = () => {
 			<Header />
 			<Eligibility />
 			<Timeline />
-			<Sponsors type="Platinum" sponsors={GoldSponsors} />
-			<TeamView title="Round 1" teamsList={teamCardData} />
+			{/* <Sponsors type="Platinum" sponsors={GoldSponsors} />
+			<TeamView title="Round 1" teamsList={teamCardData} /> */}
 			<Gallery />
-			<Sponsors type="Gold" sponsors={GoldSponsors} />
+			{/* <Sponsors type="Gold" sponsors={GoldSponsors} /> */}
 			<PastWinners />
-			<Sponsors type="Silver" sponsors={GoldSponsors} />
+			{/* <Sponsors type="Silver" sponsors={GoldSponsors} /> */}
 			<Footer />
 		</>
 	);
