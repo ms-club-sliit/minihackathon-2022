@@ -50,7 +50,6 @@ export const saveTicket = async (image_string) => {
 };
 
 export const registerTeam = async (teamInfo) => {
-	console.log(teamInfo);
 	teamInfo.created = Timestamp.now();
 
 	// Image tasks
