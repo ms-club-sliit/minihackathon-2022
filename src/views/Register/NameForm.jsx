@@ -5,12 +5,19 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useEffect } from "react";
 
 const memberSchema = yup.object().shape({
-	teamName: yup.string().required("Team Name is required."),
+	team_name: yup.string().required("Team Name is required."),
 	count: yup
 		.number()
 		.required("Please enter the team size.")
 		.min(3, "Team size needs to be 3 or 4.")
 		.max(4),
+	link: yup
+		.string()
+		.matches(
+            /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
+            'Enter correct url!'
+        )
+		.required("URL is required")
 });
 
 function NameForm({ formKey, handleSubmitFunc, width, resetFunc }) {
@@ -48,13 +55,13 @@ function NameForm({ formKey, handleSubmitFunc, width, resetFunc }) {
 				Team Name
 			</label>
 			<input
-				{...register("teamName")}
+				{...register("team_name")}
 				type="text"
 				placeholder="Team Name"
 				className="border-2 border-black rounded mb-[0.1em] px-2 py-1 w-full"
 			/>
 			<p className="text-red-500 text-[0.8em] font-semibold min-h-[1em] italic">
-				{errors.teamName?.message}
+				{errors.team_name?.message}
 			</p>
 
 			<label className="block font-semibold text-[#969696] text-[1em] md:text-left mb-1 md:mb-0 pr-4">
@@ -71,6 +78,19 @@ function NameForm({ formKey, handleSubmitFunc, width, resetFunc }) {
 			</select>
 			<p className="text-red-500 text-[0.8em] font-semibold min-h-[1em] italic">
 				{errors.count?.message}
+			</p>
+
+			<label className="block font-semibold text-[#969696] text-[1em] md:text-left mb-1 md:mb-0 pr-4">
+				OneDrive / Google Drive link
+			</label>
+			<input
+				{...register("link")}
+				type="text"
+				placeholder="Link"
+				className="border-2 border-black rounded mb-[0.1em] px-2 py-1 w-full"
+			/>
+			<p className="text-red-500 text-[0.8em] font-semibold min-h-[1em] italic">
+				{errors.link?.message}
 			</p>
 		</div>
 	);

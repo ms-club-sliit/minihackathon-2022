@@ -140,7 +140,7 @@ const Register = () => {
 			let new_info;
 			// Handle the teamName form
 			if (currentIndex === 0) {
-				new_info = { ...prev, [`teamName`]: data.teamName };
+				new_info = { ...prev, [`team_name`]: data.team_name };
 				setMemberCount(data.count);
 			} else {
 				new_info = { ...prev, [`member0${currentIndex}`]: data };
