@@ -13,10 +13,15 @@ const memberSchema = yup.object().shape({
 		.max(4),
 	link: yup
 		.string()
-		.matches(
-            /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
-            'Enter correct url!'
-        )
+		.test("is-url-valid", "Enter a correct URL", (url) => {
+			try {
+				new URL(url);
+			} catch (e) {
+				console.error(e);
+				return false;
+			}
+			return true;
+		})
 		.required("URL is required")
 });
 
