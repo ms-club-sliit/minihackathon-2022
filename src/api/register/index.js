@@ -38,8 +38,8 @@ export const registerAwarenessSession = async (member_details) => {
 	});
 };
 
-export const updateTicket = async (ref, url) => {
-	await updateDoc(ref, { url });
+export const updateTicket = async (ref, ticket_url) => {
+	await updateDoc(ref, { ticket_url });
 };
 
 export const saveTicket = async (image_string) => {
@@ -50,9 +50,6 @@ export const saveTicket = async (image_string) => {
 };
 
 export const registerTeam = async (teamInfo) => {
-	teamInfo.team_name = `${teamInfo.teamName}`;
-	delete teamInfo.teamName; // Remove redundant key
-
 	teamInfo.created = Timestamp.now();
 
 	// Image tasks
@@ -61,16 +58,6 @@ export const registerTeam = async (teamInfo) => {
 	for(let i = 1; i <= 4; i++) {
 		if(`member0${i}` in teamInfo){
 			let member = teamInfo[`member0${i}`];
-
-			// Correct the keys with deep copy
-			member.it_number = `${member.itNumber}`;
-			delete member.itNumber;
-
-			member.academic_year = `${member.academicYear}`;
-			delete member.academicYear
-
-			member.contact_no = `${member.contactNumber}`;
-			delete member.contactNumber;
 
 			// Add upload image task (team.image is a FileList)
 			if(member.image && member.image.length > 0) {
@@ -106,8 +93,8 @@ export const registerTeam = async (teamInfo) => {
 		}
 
 		transaction.update(counter_ref, { ticket_count: new_count });
-		transaction.set(doc_ref, teamInfo);
 		teamInfo.number = new_count;
+		transaction.set(doc_ref, teamInfo);
 		teamInfo.ref = doc_ref;
 		return teamInfo;
 	})
