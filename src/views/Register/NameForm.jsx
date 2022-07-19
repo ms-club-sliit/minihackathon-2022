@@ -5,12 +5,24 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useEffect } from "react";
 
 const memberSchema = yup.object().shape({
-	teamName: yup.string().required("Team Name is required."),
-	count: yup
+	team_name: yup.string().required("Team Name is required."),
+	team_size: yup
 		.number()
 		.required("Please enter the team size.")
 		.min(3, "Team size needs to be 3 or 4.")
 		.max(4),
+	link: yup
+		.string()
+		.test("is-url-valid", "Enter a correct URL", (url) => {
+			try {
+				new URL(url);
+			} catch (e) {
+				console.error(e);
+				return false;
+			}
+			return true;
+		})
+		.required("URL is required")
 });
 
 function NameForm({ formKey, handleSubmitFunc, width, resetFunc }) {
@@ -48,20 +60,20 @@ function NameForm({ formKey, handleSubmitFunc, width, resetFunc }) {
 				Team Name
 			</label>
 			<input
-				{...register("teamName")}
+				{...register("team_name")}
 				type="text"
 				placeholder="Team Name"
 				className="border-2 border-black rounded mb-[0.1em] px-2 py-1 w-full"
 			/>
 			<p className="text-red-500 text-[0.8em] font-semibold min-h-[1em] italic">
-				{errors.teamName?.message}
+				{errors.team_name?.message}
 			</p>
 
 			<label className="block font-semibold text-[#969696] text-[1em] md:text-left mb-1 md:mb-0 pr-4">
 				Team Size
 			</label>
 			<select
-				{...register("count")}
+				{...register("team_size")}
 				defaultValue=""
 				className="border-2 border-black rounded mb-[0.1em] py-1 px-1 cursor-pointer w-full"
 			>
@@ -70,7 +82,20 @@ function NameForm({ formKey, handleSubmitFunc, width, resetFunc }) {
 				<option value="4">4</option>
 			</select>
 			<p className="text-red-500 text-[0.8em] font-semibold min-h-[1em] italic">
-				{errors.count?.message}
+				{errors.team_size?.message}
+			</p>
+
+			<label className="block font-semibold text-[#969696] text-[1em] md:text-left mb-1 md:mb-0 pr-4">
+				OneDrive / Google Drive link
+			</label>
+			<input
+				{...register("link")}
+				type="text"
+				placeholder="Link"
+				className="border-2 border-black rounded mb-[0.1em] px-2 py-1 w-full"
+			/>
+			<p className="text-red-500 text-[0.8em] font-semibold min-h-[1em] italic">
+				{errors.link?.message}
 			</p>
 		</div>
 	);
