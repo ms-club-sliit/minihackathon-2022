@@ -13,8 +13,13 @@ const memberSchema = yup.object().shape({
 			"emailTest",
 			"Email needs to be a valid SLIIT e-mail",
 			(email) => {
-				let domain = email.split("@")[1].trim();
-				return domain === "my.sliit.lk"
+				let arr = email.split("@");
+
+				if(arr.length > 1) {
+					return arr[1] === "my.sliit.lk"
+				}
+
+				return false;
 			}
 		)
 		.required("Email is required."),

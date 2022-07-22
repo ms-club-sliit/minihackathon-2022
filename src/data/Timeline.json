@@ -3,26 +3,38 @@
 		{
 			"id": 1,
 			"title": "Registration Open for Awareness Session",
-			"dateTime": "23rd Of April - 7.30 pm",
-			"description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout"
+			"dateTime": "25th Of July - 6.00 pm",
+			"description": "Being aware of the competition will help you create a remarkable project adhering to the rules and guidelines of the competition. The best way to do so is by attending the awareness session. Now you can get registered for the awareness session."
 		},
 		{
 			"id": 2,
 			"title": "Awareness Session",
-			"dateTime": "23rd Of April - 7.30 pm",
-			"description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout"
+			"dateTime": "30th Of July - 10.00 am",
+			"description": "Following the rules and guidelines is mandatory during the competition. Join us with the awareness session to be aware of the competition guidelines and see what our organizers have to say about the event."
 		},
 		{
 			"id": 3,
-			"title": "Registration Open",
-			"dateTime": "23rd Of April - 7.30 pm",
-			"description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout"
+			"title": "Team Registration Open",
+			"dateTime": "30th Of July - 12.30 pm",
+			"description": "Registrations for round one start. Get your team registered on time by submitting an entry. Make sure that your team consist of 3 to 4 members. Keep in mind that a good team will help you win championships."
 		},
 		{
 			"id": 4,
 			"title": "Registration Closes",
-			"dateTime": "23rd Of April - 7.30 pm",
-			"description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout"
+			"dateTime": "7th Of August - 11.55 pm",
+			"description": "Team registration closes on this day. Please note that NO registration is accepted after the registrations are closed. Be sure to get registered before the deadline ends."
+		},
+		{
+			"id": 5,
+			"title": "Round 2 - Live Presentation",
+			"dateTime": "21st Of August - 10.00 am",
+			"description": "Your team is to present a live presentation of your project. Explain what your project is and get evaluated by an expert judge panel to proceed to the next round."
+		},
+		{
+			"id": 6,
+			"title": "Final Round",
+			"dateTime": "28th Of August - 08.30 am",
+			"description": "All teams advancing to round 3 are invited to the physical event at the Sri Lanka Institute of Information Technology Campus, Malabe, to present the project in front of an expert panel. Winners will be selected accordingly."
 		}
 	]
 }

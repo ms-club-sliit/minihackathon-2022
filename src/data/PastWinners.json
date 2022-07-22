@@ -2,7 +2,7 @@
 	"data": [
 		{
 			"id": 1,
-			"description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution",
+			"description": "Mini Hackathon is a competition which gave us a chance to perform our skills and also we gained vast knowledge by participating. We are happy to say that we got many chances to participate in different hackathons organized by different organizations after winning the past Mini Hackathon competition.",
 			"imageUrl": "/assets/pastwinners/TeamCareCycle.webp"
 		},
 		{
@@ -12,7 +12,7 @@
 		},
 		{
 			"id": 3,
-			"description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution",
+			"description": "It's a great pleasure to be able to participate in Mini Hackathon and become the second runners up. Mini Hackathon opened doors for many other opportunities in the industry.",
 			"imageUrl": "/assets/pastwinners/BringTheSolution.webp"
 		}
 	]
