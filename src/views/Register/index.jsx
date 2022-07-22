@@ -118,7 +118,7 @@ const Register = () => {
 			setTicket({
 				team: teamData,
 				onRender,
-				number: String(teamData.number).padStart(4, "0"),
+				number: teamData.number
 			});
 		}catch(e){
 			setStatus({
