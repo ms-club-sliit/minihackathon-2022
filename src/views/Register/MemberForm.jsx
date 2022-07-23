@@ -16,7 +16,7 @@ const MemberForm = (props) => {
 			/>
 
 			<label className="block text-gray-500 font-light text-sm md:text-left mb-1 md:mb-0 pr-4">
-				Email
+				SLIIT Email
 			</label>
 			<input
 				type="text"
@@ -77,7 +77,7 @@ const MemberForm = (props) => {
 			</select>
 
 			<label className="block text-gray-500 font-light text-sm md:text-left mb-1 md:mb-0 pr-4">
-				Member {props.id} Profile Image
+				Member {props.id} Profile Image ( Optional )
 			</label>
 			<input
 				type="file"

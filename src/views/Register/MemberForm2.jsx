@@ -101,7 +101,7 @@ function MemberForm2({ formKey, handleSubmitFunc, resetFunc, width }) {
 				</p>
 
 				<label className="block font-semibold text-[#969696] text-[1em] md:text-left mb-1 md:mb-0 pr-4">
-					Email
+					SLIIT Email
 				</label>
 				<input
 					{...register("email")}
