@@ -79,8 +79,11 @@ const Ticket = (props, this_ref) => {
 							<div className="p-4">
 								<div className="grid grid-cols-2 gap-0">
 									<div>
-										<img src={props.headerImage} alt="logo" width={100} />
-										<div className="flex font-semibold text-xl">{props.title}</div>
+										<div className="flex">
+											<img src={props.headerImage} alt="logo" width={100} />
+											<img src={props.headerImage2} alt="logo" width={100} className="pl-2" />
+										</div>
+										<div className="flex font-semibold text-xl mt-2">{props.title}</div>
 										<div>{props.subTitle}</div>
 										<div>{moment(props.date).format("LLL")}</div>
 										<div className="text-2xl font-bold mt-3">
