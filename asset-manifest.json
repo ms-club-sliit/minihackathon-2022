@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/static/css/main.02bc60fe.css",
+    "main.js": "/static/js/main.6921fe2f.js",
+    "static/media/mlsa_logo.png": "/static/media/mlsa_logo.6876beb746e3c3a28461.png",
+    "static/media/img7.webp": "/static/media/img7.5845c4d9781a1260b9ae.webp",
+    "static/media/img3.webp": "/static/media/img3.89cf1d4fd82becf3b24b.webp",
+    "static/media/img1.webp": "/static/media/img1.40228b7dbb8fc611870d.webp",
+    "static/media/img4.webp": "/static/media/img4.0367902707ae4dcb5cf4.webp",
+    "static/media/img2.webp": "/static/media/img2.ea83c98c3babb0e80065.webp",
+    "static/media/img5.webp": "/static/media/img5.731bd3b3c3ab9722dd25.webp",
+    "static/media/img6.webp": "/static/media/img6.db2394595f94d234c93f.webp",
+    "static/media/ms_club_logo.png": "/static/media/ms_club_logo.c9ee879ddd13255b63ca.png",
+    "static/media/fcsc_logo.webp": "/static/media/fcsc_logo.62a5d41f64f2174f4f68.webp",
+    "static/media/bg.svg": "/static/media/bg.435a101ea4cfaca02670.svg",
+    "static/media/mini_hackathon_logo.webp": "/static/media/mini_hackathon_logo.c649c30e399def395bac.webp",
+    "static/media/revicons.eot": "/static/media/revicons.a77de540a38981833f9e.eot",
+    "static/media/revicons.ttf": "/static/media/revicons.57fd05d4ae650374c8de.ttf",
+    "static/media/revicons.woff": "/static/media/revicons.e8746a624ed098489406.woff",
+    "index.html": "/index.html",
+    "main.02bc60fe.css.map": "/static/css/main.02bc60fe.css.map",
+    "main.6921fe2f.js.map": "/static/js/main.6921fe2f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.02bc60fe.css",
+    "static/js/main.6921fe2f.js"
+  ]
+}
