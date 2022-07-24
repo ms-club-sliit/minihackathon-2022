@@ -1,12 +1,14 @@
-import { collection, getDocs } from "firebase/firestore";
+import { collection, where, getDocs, query } from "firebase/firestore";
 import { Db } from "../../Firebase";
+import { TicketDoesNotExist } from "../errors/errors";
 
 export const getAllTeams = async (round) => {
-    let teams_ref = collection(Db, "teams");
+    const teams_ref = collection(Db, "teams");
     const doc_ref = await getDocs(teams_ref)
     const docs = doc_ref.docs.map(doc => doc.data())
 
     const mapped = docs.filter((doc) => {
+        // "if" is to distinguish between counter doc and actual team 
         if("team_name" in doc) {
             doc.team_id = doc.number;
             delete doc.number;
@@ -32,4 +34,16 @@ export const getAllTeams = async (round) => {
     })
 
     return sorted
+}
+
+export const getTeam = async (number) => {
+    const teams_ref = collection(Db, "teams");
+    const q = query(teams_ref, where("number", "==", number))
+    const q_snapshot = await getDocs(q);
+
+    if(q_snapshot.empty){
+        throw new TicketDoesNotExist()
+    }
+
+    return q_snapshot.docs[0].data()
 }

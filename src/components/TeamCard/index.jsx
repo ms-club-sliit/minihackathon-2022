@@ -1,11 +1,20 @@
+import { Portal } from "@headlessui/react";
 import React from "react";
+import { useState } from "react";
+import TicketView from "../TicketView";
 
 const TeamCard = (props) => {
+	const [showSharePopup, setShowSharePopup] = useState(false);
+
+	const closeSharePopup = () => { 
+		console.log("close", showSharePopup); setShowSharePopup(prev => !prev) 
+	};
+
 	return (
-		<div className="md:w-1/2 lg:w-96 p-4 bg-white border-inherit h-56 border rounded-lg transition-transform duration-100 hover:scale-105 min-w-[400px]">
+		<div onClick={() => { setShowSharePopup(prev => !prev) }} className="md:w-1/2 lg:w-96 p-4 bg-white border-inherit h-56 border rounded-lg transition-transform duration-100 hover:scale-105 min-w-[400px] cursor-pointer">
 			<div className="grid grid-rows-1 grid-cols-11 items-center p-4 pt-2">
 				<div className="col-start-1 col-span-1 h-[50px] w-[50px] rounded-full bg-black text-white flex justify-center items-center font-bold text-2xl">
-					{props.team_name[0]}
+					{props.team_name[0].toUpperCase()}
 				</div>
 				<div className="col-start-3 col-span-6 line-clamp-1">
 					<h1 className="font-bold line-clamp-1">{props.team_name}</h1>
@@ -30,8 +39,8 @@ const TeamCard = (props) => {
 					{props.member04}
 				</p>
 			</div>
+		 	{ showSharePopup && <Portal><TicketView number={props.team_id} onClose={closeSharePopup} isTeam/> </Portal> }
 		</div>
 	);
 };
-
 export default TeamCard;

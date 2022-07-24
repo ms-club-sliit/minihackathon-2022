@@ -78,7 +78,7 @@ const TeamView = () => {
 						Search
 					</button>
 				</div>
-				<div className="flex flex-wrap px-4 md:px-20">
+				<div className="flex flex-wrap px-4 justify-center md:px-20">
 					{currentTeamCards.map((singleTeamCardDetails) => (
 						<div key={singleTeamCardDetails.team_id} className="p-3">
 							<TeamCard
@@ -88,11 +88,12 @@ const TeamView = () => {
 								member02={singleTeamCardDetails.members.Member2}
 								member03={singleTeamCardDetails.members.Member3}
 								member04={singleTeamCardDetails.members.Member4}
+								team_id={singleTeamCardDetails.team_id}
 							/>
 						</div>
 					))}
 				</div>
-				<div className="flex gap-2 justify-center w-100">
+				<div className="flex gap-2 justify-center w-100 mt-3">
 					<PaginateButton
 						handleOnClick={() => handlePaginateClick("PREV")}
 						disabled={currentView === 1}

@@ -112,7 +112,7 @@ const TeamTicket = (props, this_ref) => {
 												<div className="w-[40px] h-[40px] flex justify-center items-center flex-shrink-0 rounded-full bg-black mr-[8px] overflow-hidden">
 													{member.image === "default" ? (
 														<div className="text-white text-xl font-bold">
-															{member.name[0]}
+															{member.name[0].toUpperCase()}
 														</div>
 													) : (
 														<img
