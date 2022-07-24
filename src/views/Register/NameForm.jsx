@@ -17,7 +17,6 @@ const memberSchema = yup.object().shape({
 			try {
 				new URL(url);
 			} catch (e) {
-				console.error(e);
 				return false;
 			}
 			return true;
