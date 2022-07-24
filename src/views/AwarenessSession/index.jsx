@@ -285,12 +285,14 @@ function AwarenessSession() {
 				ticketNo={ticket.number}
 				student={{
 					studentItNo: ticket.it_no,
-					studentName: ticket.name
+					studentName: ticket.name,
 				}}
 				display={ticket.display}
 				onRender={ticket.onRender}
 				onClose={closePopup}
-				ticketURL={"https://msclubsliit.org/"}
+				ticketURL={
+					"https://teams.microsoft.com/l/meetup-join/19%3ameeting_MWZlZGFhNTEtMWRhMC00MmUxLTkzNDYtMWRlZTBjNzA3ODc2%40thread.v2/0?context=%7b%22Tid%22%3a%2244e3cf94-19c9-4e32-96c3-14f5bf01391a%22%2c%22Oid%22%3a%22b1296a6a-951d-4c0f-ae2e-b9c9362465c6%22%7d"
+				}
 			/>
 		</>
 	);

@@ -1,6 +1,5 @@
-import { useState } from "react";
-import { useRef } from "react";
-import { useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
+import moment from "moment";
 import { Ticket } from "..";
 import TeamTicket from "../TeamTicket";
 import Share from "../Share";
@@ -91,9 +90,10 @@ function TicketPopup({
                     : 
                     <Ticket
                         headerImage={"/assets/ms_club_logo.png"}
+                        headerImage2={"/assets/fcsc_logo.png"}
                         title="Mini Hackathon 2022"
                         subTitle="Awareness Session 📣"
-                        date={new Date()}
+                        date={moment("2022-07-30 19:00")}
                         ticketNo={ticketNo}
                         studentItNo={student.studentItNo}
                         studentName={student.studentName}
