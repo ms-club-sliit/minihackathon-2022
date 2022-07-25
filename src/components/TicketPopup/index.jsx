@@ -26,6 +26,7 @@ function TicketPopup({
 	onRender,
 	onClose,
     ticketURL,
+    minimal
 }) {
 
     const [opacity, setOpacity] = useState(0);
@@ -58,7 +59,7 @@ function TicketPopup({
 
 	return (
 		<div
-			className={`fixed w-screen h-screen top-0 left-0 bg-[#000000d9] pb-[4em] flex flex-col items-center backdrop-blur-md overflow-y-auto ${
+			className={`${minimal ? "" : "fixed w-screen h-screen top-0 left-0 pb-[4em] overflow-y-auto bg-[#000000d9] backdrop-blur-md"} flex flex-col items-center ${
 				display ? "z-[10]" : "z-[-2]"
 			}`}
             style={{
@@ -66,14 +67,21 @@ function TicketPopup({
                 transition: "opacity 500ms"
             }}
 		>
-			<h1 className="text-center font-bold text-2xl md:text-4xl mb-[2em] mt-[3em] text-white px-4">
-				You have successfully registered {isTeam ? "for the Mini Hackathon 2022" : "for the Awareness Session"}! <br></br>Here's your
-				ticket. Share everywhere!
-			</h1>
-			<h2 className="text-md text-white mb-[1em]">
-				{" "}
-				Check your email for more information.
-			</h2>
+			{ !minimal && 
+                (
+                    <>
+                        <h1 className="text-center font-bold text-2xl md:text-4xl mb-[2em] mt-[3em] text-white px-4">
+                            You have successfully registered {isTeam ? "for the Mini Hackathon 2022" : "for the Awareness Session"}! <br></br>Here's your
+                            ticket. Share everywhere!
+                        </h1>
+                        <h2 className="text-md text-white mb-[1em]">
+                            {" "}
+                            Check your email for more information.
+                        </h2>
+                    </>
+                    
+                )
+            }
 			<div>
 				{ isTeam ? 
                     <TeamTicket
@@ -108,17 +116,19 @@ function TicketPopup({
                 <button
                     onClick={saveTicket}
                     type="submit"
-                    className="flex-shrink-0 mt-2 mr-5 w-24 h-10 rounded bg-black text-white hover:bg-gray-300 hover:text-black transition duration-0 hover:duration-500"
+                    className={`flex-shrink-0 mt-2 ${minimal ? "" : "mr-5"} w-24 h-10 rounded bg-black text-white hover:bg-gray-300 hover:text-black transition duration-0 hover:duration-500`}
                 >
                     Save
                 </button>
-                <button
-                    onClick={() => onClose && onClose()}
-                    type="submit"
-                    className="flex-shrink-0 mt-2 w-24 h-10 rounded bg-black text-white hover:bg-gray-300 hover:text-black transition duration-0 hover:duration-500"
-                >
-                    Close
-                </button>
+                { !minimal && 
+                    <button
+                        onClick={() => onClose && onClose()}
+                        type="submit"
+                        className="flex-shrink-0 mt-2 w-24 h-10 rounded bg-black text-white hover:bg-gray-300 hover:text-black transition duration-0 hover:duration-500"
+                    >
+                        Close
+                    </button>
+                }
             </div>
 		</div>
 	);
