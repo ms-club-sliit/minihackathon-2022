@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import { getTeam } from "../../api/team";
 import TicketPopup from "../TicketPopup"
 import { GrClose } from "react-icons/gr";
+import { useDisplaySize } from "../../hooks";
 
 function TicketView({ number, isTeam, onClose }) {
     const [currentView, setCurrentView] = useState(null);
+    const size = useDisplaySize();
 
     useEffect(() => {
         async function effect() {
@@ -31,8 +33,8 @@ function TicketView({ number, isTeam, onClose }) {
     }
 
     return (
-        <div className="fixed top-0 right-0 w-full h-full items-center p-4">
-            <div className="w-full h-full bg-[#000000cc] backdrop-blur-md rounded-lg overflow-auto">
+        <div className={`fixed top-0 right-0 w-full h-full items-center z-[1000] ${ size !== 0 ? "p-4": "" }`}>
+            <div className={`w-full h-full bg-[#000000cc] backdrop-blur-md ${ size !== 0 ? "rounded-lg": "" } overflow-auto`}>
                 <div className="w-full flex">
                     <div className="flex-grow"></div>
                     <button className="p-3 m-2 rounded bg-white cursor-pointer" onClick={() => { onClose && onClose() }}>
