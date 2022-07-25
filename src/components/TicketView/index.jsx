@@ -14,7 +14,7 @@ function TicketView({ number, isTeam, onClose }) {
         }
 
         effect()
-    }, [])
+    }, [number, isTeam]) // eslint-disable-line react-hooks/exhaustive-deps
 
     const getTeamTicket = async (number) => {
         let data = await getTeam(number);
