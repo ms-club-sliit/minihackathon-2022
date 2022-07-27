@@ -71,7 +71,7 @@ const TeamView = () => {
 						Search
 					</button>
 				</div>
-				<div className="flex flex-wrap justify-between px-4 md:px-20">
+				<div className="flex flex-wrap justify-between md:justify-center sm:justify-center px-4 md:px-20">
 					{currentTeamCards.map((singleTeamCardDetails) => (
 						<TeamCard
 							key={singleTeamCardDetails.team_id}
