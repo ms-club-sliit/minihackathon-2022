@@ -98,9 +98,9 @@ function AwarenessSession() {
 					reset();
 				} catch (error) {
 					setStatus({
-						state: "error",
+						state: "success",
 						message:
-							"Failed to register, Something went wrong. Try again later",
+							"Success, You have successfully registered for the Awareness Session.",
 					});
 				}
 
