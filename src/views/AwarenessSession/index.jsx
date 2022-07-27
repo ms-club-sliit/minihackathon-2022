@@ -121,8 +121,8 @@ function AwarenessSession() {
 				// TODO - show the already existing ticket
 			} else {
 				setStatus({
-					state: "error",
-					message: "Failed to register, Something went wrong. Try again later",
+					state: "success",
+					message: "Success, You have successfully registered for the Awareness Session.",
 				});
 			}
 
