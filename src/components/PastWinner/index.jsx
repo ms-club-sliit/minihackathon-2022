@@ -2,7 +2,7 @@ import React from "react";
 
 const PastWinner = (props) => {
 	return (
-		<div class="grid grid-cols-1 md:grid-cols-2 mb-10 md:mb-20">
+		<div className="grid grid-cols-1 md:grid-cols-2 mb-10 md:mb-20">
 			{props.data.id % 2 === 0 ? (
 				<>
 					<div className="flex self-center px-7 hidden md:block">
