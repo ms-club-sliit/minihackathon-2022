@@ -48,7 +48,7 @@ const Ticket = (props, this_ref) => {
 
 			ref.current.style.transform = "none";
 			return toPng(htmlRef.current, { cacheBust: true });
-		}
+		},
 	}));
 
 	useEffect(() => {
@@ -71,19 +71,31 @@ const Ticket = (props, this_ref) => {
 	return (
 		<div>
 			<svg width={size === 0 ? 390 : 727} viewBox="0 0 500 250" ref={ref}>
-				<foreignObject width={500} height={250} xmlns="http://www.w3.org/2000/svg">
-					<div className="flex justify-center w-[500px] h-[250px]" ref={htmlRef}>
-						<div
-							className="bg-white w-full h-full rounded-lg border-2 border-gray-600"
-						>
+				<foreignObject
+					width={500}
+					height={250}
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<div
+						className="flex justify-center w-[500px] h-[250px]"
+						ref={htmlRef}
+					>
+						<div className="bg-white w-full h-full rounded-lg border-2 border-gray-600">
 							<div className="p-4">
 								<div className="grid grid-cols-2 gap-0">
 									<div>
 										<div className="flex">
 											<img src={props.headerImage} alt="logo" width={100} />
-											<img src={props.headerImage2} alt="logo" width={100} className="pl-2" />
+											<img
+												src={props.headerImage2}
+												alt="logo"
+												width={100}
+												className="pl-2"
+											/>
 										</div>
-										<div className="flex font-semibold text-xl mt-2">{props.title}</div>
+										<div className="flex font-semibold text-xl mt-2">
+											{props.title}
+										</div>
 										<div>{props.subTitle}</div>
 										<div>{moment(props.date).format("LLL")}</div>
 										<div className="text-2xl font-bold mt-3">

@@ -14,7 +14,7 @@ const PageRoutes = () => {
 					/>
 					<Route path="/team/register" element={<Register />} />
 					<Route path="/" element={<Home />} />
-					<Route path="/test" element={<TicketView number={1} isTeam/>} />
+					<Route path="/test" element={<TicketView number={1} isTeam />} />
 				</Routes>
 			</BrowserRouter>
 		</div>

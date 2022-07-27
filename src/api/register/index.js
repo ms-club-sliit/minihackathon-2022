@@ -55,21 +55,21 @@ export const registerTeam = async (teamInfo) => {
 	// Image tasks
 	let tasks = [];
 
-	for(let i = 1; i <= 4; i++) {
-		if(`member0${i}` in teamInfo){
+	for (let i = 1; i <= 4; i++) {
+		if (`member0${i}` in teamInfo) {
 			let member = teamInfo[`member0${i}`];
 
 			// Add upload image task (team.image is a FileList)
-			if(member.image && member.image.length > 0) {
+			if (member.image && member.image.length > 0) {
 				let fileName = generateFileName();
 				const storageRef = ref(Storage, `/profile-images/${fileName}`);
 
 				let task = uploadBytes(storageRef, member.image[0])
-							.then(snapshot => getDownloadURL(snapshot.ref))
-							.then(url => member.image = url)
+					.then((snapshot) => getDownloadURL(snapshot.ref))
+					.then((url) => (member.image = url));
 
 				tasks.push(task);
-			}else{
+			} else {
 				member.image = "default";
 			}
 		}
@@ -80,7 +80,7 @@ export const registerTeam = async (teamInfo) => {
 	return await runTransaction(Db, async (transaction) => {
 		const counter_ref = doc(Db, "teams", "--counter--");
 		let counter_doc = await transaction.get(counter_ref);
-		
+
 		let doc_ref = doc(collection(Db, "teams"));
 
 		if (!counter_doc.exists()) {
@@ -97,7 +97,7 @@ export const registerTeam = async (teamInfo) => {
 		transaction.set(doc_ref, teamInfo);
 		teamInfo.ref = doc_ref;
 		return teamInfo;
-	})
+	});
 };
 
 const generateFileName = () => {

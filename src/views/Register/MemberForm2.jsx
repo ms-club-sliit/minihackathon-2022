@@ -9,19 +9,15 @@ const memberSchema = yup.object().shape({
 	email: yup
 		.string()
 		.email("Enter a valid SLIIT e-mail")
-		.test(
-			"emailTest",
-			"Email needs to be a valid SLIIT e-mail",
-			(email) => {
-				let arr = email.split("@");
+		.test("emailTest", "Email needs to be a valid SLIIT e-mail", (email) => {
+			let arr = email.split("@");
 
-				if(arr.length > 1) {
-					return arr[1] === "my.sliit.lk"
-				}
-
-				return false;
+			if (arr.length > 1) {
+				return arr[1] === "my.sliit.lk";
 			}
-		)
+
+			return false;
+		})
 		.required("Email is required."),
 	contact_no: yup
 		.string()
@@ -30,21 +26,17 @@ const memberSchema = yup.object().shape({
 		.required("Contact number is required"),
 	it_number: yup
 		.string()
-		.test(
-			"sliitIdTEst",
-			"Enter a valid SLIIT ID",
-			(itNumber) => {
-				let prefixes = ["it", "en", "bm"];
-				
-				for(let p of prefixes) {
-					if(itNumber.toLowerCase().startsWith(p)) {
-						return true
-					}
-				}
+		.test("sliitIdTEst", "Enter a valid SLIIT ID", (itNumber) => {
+			let prefixes = ["it", "en", "bm"];
 
-				return false;
+			for (let p of prefixes) {
+				if (itNumber.toLowerCase().startsWith(p)) {
+					return true;
+				}
 			}
-		)
+
+			return false;
+		})
 		.required("SLIIT ID is required."),
 	academic_year: yup.string().required("Academic Year is required."),
 	faculty: yup.string().required("Faculty is required."),
@@ -56,7 +48,7 @@ function MemberForm2({ formKey, handleSubmitFunc, resetFunc, width }) {
 		register,
 		handleSubmit,
 		formState: { errors },
-		reset
+		reset,
 	} = useForm({
 		resolver: yupResolver(memberSchema),
 	});
@@ -76,7 +68,7 @@ function MemberForm2({ formKey, handleSubmitFunc, resetFunc, width }) {
 					)();
 				});
 			});
-		
+
 		resetFunc && resetFunc(formKey, reset);
 	}, []); // eslint-disable-line react-hooks/exhaustive-deps
 
