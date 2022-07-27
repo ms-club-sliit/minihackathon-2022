@@ -40,7 +40,7 @@ const solutions = [
 const Header = () => {
 	return (
 		<Popover className="relative bg-white">
-			<div className="max-w-7xl mx-auto px-4 sm:px-6">
+			<div className="max-w-7xl mx-auto px-4 sm:px-6 w-full">
 				<div className="flex justify-between items-center border-0 py-3 md:justify-start md:space-x-10">
 					<div className="flex justify-start lg:w-0 lg:flex-1">
 						<div className="text-xl font-medium text-black hover:text-gray-900 list-none">
@@ -53,11 +53,14 @@ const Header = () => {
 							<MenuIcon className="h-6 w-6" aria-hidden="true" />
 						</Popover.Button>
 					</div>
-					<Popover.Group as="nav" className="hidden md:flex space-x-7">
-						<li className="text-base font-medium text-black hover:text-gray-900 mt-1 list-none cursor-pointer">
+					<Popover.Group
+						as="nav"
+						className="hidden md:flex md:flex-row md:justify-end md:items-center space-x-7 md:space-x-3 "
+					>
+						<li className="lg:text-lg md:text-sm text-base font-medium text-black hover:text-gray-900 mt-1 list-none cursor-pointer">
 							Home
 						</li>
-						<li className="text-base font-normal text-gray-500 hover:text-gray-900 mt-1 list-none cursor-pointer">
+						<li className="lg:text-lg md:text-sm text-base md:ml-3 font-normal text-gray-500 hover:text-gray-900 mt-1 list-none cursor-pointer">
 							<Link
 								to="eligibility"
 								spy={true}
@@ -69,7 +72,7 @@ const Header = () => {
 								Eligibility
 							</Link>
 						</li>
-						<li className="text-base font-normal text-gray-500 hover:text-gray-900 mt-1 list-none cursor-pointer">
+						<li className="lg:text-lg md:text-sm text-base md:ml-3 font-normal text-gray-500 hover:text-gray-900 mt-1 list-none cursor-pointer">
 							<Link
 								to="timeline"
 								spy={true}
@@ -81,7 +84,7 @@ const Header = () => {
 								Timeline
 							</Link>
 						</li>
-						<li className="text-base font-normal text-gray-500 hover:text-gray-900 mt-1 list-none cursor-pointer">
+						<li className="lg:text-lg md:text-sm text-base md:ml-3 font-normal text-gray-500 hover:text-gray-900 mt-1 list-none cursor-pointer">
 							<Link
 								to="teams"
 								spy={true}
@@ -93,7 +96,7 @@ const Header = () => {
 								Teams
 							</Link>
 						</li>
-						<li className="text-base font-normal text-gray-500 hover:text-gray-900 mt-1 list-none cursor-pointer">
+						<li className="lg:text-lg md:text-sm text-base md:ml-3 font-normal text-gray-500 hover:text-gray-900 mt-1 list-none cursor-pointer">
 							<Link
 								to="gallery"
 								spy={true}
@@ -105,7 +108,7 @@ const Header = () => {
 								Gallery
 							</Link>
 						</li>
-						<li className="text-base font-normal text-gray-500 hover:text-gray-900 mt-1 list-none cursor-pointer">
+						<li className="lg:text-lg md:text-sm text-base md:ml-3 font-normal text-gray-500 hover:text-gray-900 mt-1 list-none cursor-pointer">
 							<a
 								href="https://bit.ly/minihack22Guideline"
 								target="_blank"
@@ -114,7 +117,7 @@ const Header = () => {
 								Rules
 							</a>
 						</li>
-						<li className="text-base font-normal text-gray-500 hover:text-gray-900 mt-1 list-none cursor-pointer">
+						<li className="lg:text-lg md:text-sm text-base md:ml-3 font-normal text-gray-500 hover:text-gray-900 mt-1 list-none cursor-pointer">
 							<a
 								href="https://www.facebook.com/msclubsliit"
 								target="_blank"
@@ -123,7 +126,7 @@ const Header = () => {
 								Contact
 							</a>
 						</li>
-						<li className="ml-8 cursor-pointer inline-flex items-center justify-center px-4 py-1 border-0 rounded font-normal text-white hover:text-black bg-black hover:bg-gray-200 transition duration-0 hover:duration-500">
+						<li className="lg:text-lg md:text-sm ml-8 md:ml-3 cursor-pointer inline-flex items-center justify-center px-4 md:px-2 md:w-fit py-1 border-0 rounded font-normal text-white hover:text-black bg-black hover:bg-gray-200 transition duration-0 hover:duration-500">
 							<a
 								href="https://teams.microsoft.com/l/team/19%3asKeZlvZa7jFdXBP_ZmYQnyc-w70KXbrRugHyDumm2To1%40thread.tacv2/conversations?groupId=b6390614-7075-4334-afe7-ef873eeb4550&tenantId=44e3cf94-19c9-4e32-96c3-14f5bf01391a"
 								target="_blank"
