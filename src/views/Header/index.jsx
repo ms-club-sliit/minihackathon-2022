@@ -12,7 +12,7 @@ const Countdown = () => {
 
 	return (
 		<div className="flex justify-center flex-col md:flex-row px-3.5 mt-10">
-			<div className="flex justify-center items-center md:p-10">
+			<div className="flex justify-center items-center md:p-10 md:w-1/2 logoDiv">
 				<img
 					src={Logo}
 					alt="Mini Hackathon Logo"
