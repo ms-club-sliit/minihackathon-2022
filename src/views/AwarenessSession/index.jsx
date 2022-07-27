@@ -75,11 +75,15 @@ function AwarenessSession() {
 					// update with the ticket image url
 					await updateTicket(new_data.ref, url);
 
-					await sendEmail(
-						new_data.email,
-						"Mini hackathon awareness session",
-						str
-					);
+					try {
+						await sendEmail(
+							new_data.email,
+							"Mini hackathon awareness session",
+							str
+						);
+					} catch (error) {
+						console.log("Registration success, but email sending failed");
+					}
 
 					setStatus({
 						state: "success",
