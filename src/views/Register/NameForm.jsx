@@ -21,7 +21,7 @@ const memberSchema = yup.object().shape({
 			}
 			return true;
 		})
-		.required("URL is required")
+		.required("URL is required"),
 });
 
 function NameForm({ formKey, handleSubmitFunc, width, resetFunc }) {
@@ -29,7 +29,7 @@ function NameForm({ formKey, handleSubmitFunc, width, resetFunc }) {
 		register,
 		handleSubmit,
 		formState: { errors },
-		reset
+		reset,
 	} = useForm({
 		resolver: yupResolver(memberSchema),
 	});
@@ -48,7 +48,7 @@ function NameForm({ formKey, handleSubmitFunc, width, resetFunc }) {
 					)();
 				});
 			});
-		
+
 		resetFunc && resetFunc(formKey, reset);
 	}, []); // eslint-disable-line react-hooks/exhaustive-deps
 

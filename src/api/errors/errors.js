@@ -12,5 +12,4 @@ class TicketDoesNotExist extends Error {
 	}
 }
 
-
 export { EmailExists, TicketDoesNotExist };

@@ -41,27 +41,27 @@ const Register = () => {
 
 	const finish = async (tInfo) => {
 		setStatus({ state: "loading" });
-		try{
+		try {
 			// Get the file objects and convert those to BLOB Urls
 			let files = {};
-			
-			for(let i = 1; i <= 4; i++) {
+
+			for (let i = 1; i <= 4; i++) {
 				let member = tInfo[`member0${i}`];
 
-				if(member) {
-					try{
+				if (member) {
+					try {
 						files[`member0${i}`] = await fileToBlobURL(member.image[0]);
-					}catch(e){ }
+					} catch (e) {}
 				}
 			}
 
 			let teamData = await registerTeam(tInfo);
 			let emails = [];
-		
-			for(let i = 1; i <= 4; i++) {
+
+			for (let i = 1; i <= 4; i++) {
 				let member = teamData[`member0${i}`];
 
-				if(member) {
+				if (member) {
 					// Restore the file URLs back to the teamData
 					member.image = files[`member0${i}`] || "default";
 					emails.push(member.email);
@@ -72,25 +72,23 @@ const Register = () => {
 				try {
 					let url = await saveTicket(dataURL);
 					let str = jsx2html(<EmailTemplate image={url} />);
-	
+
 					// update with the ticket image url
 					await updateTicket(teamData.ref, url);
-					
+
 					// We don't care if the email gets to everyone
-					try{
-						let tasks = emails.map((v) => sendEmail(
-							v,
-							"Mini hackathon by MS Club",
-							str
-						));
+					try {
+						let tasks = emails.map((v) =>
+							sendEmail(v, "Mini hackathon by MS Club", str)
+						);
 
 						await Promise.all(tasks);
-					}catch(e){
-						
-					}
-					
-					for(const func of Object.values(resetFunctions)){
-						try{ func(); }catch(e) {}
+					} catch (e) {}
+
+					for (const func of Object.values(resetFunctions)) {
+						try {
+							func();
+						} catch (e) {}
 					}
 					setCurrentIndex(0);
 
@@ -99,11 +97,10 @@ const Register = () => {
 						message:
 							"Nice job 👏🏼. You have successfully submit the registration form",
 					});
-	
+
 					setTicket((prevTicket) => {
 						return { ...prevTicket, display: true, onRender: null };
 					});
-	
 				} catch (error) {
 					setStatus({
 						state: "error",
@@ -111,16 +108,16 @@ const Register = () => {
 							"Failed to register, Something went wrong. Try again later",
 					});
 				}
-	
+
 				resetStatus(3000);
 			};
 
 			setTicket({
 				team: teamData,
 				onRender,
-				number: teamData.number
+				number: teamData.number,
 			});
-		}catch(e){
+		} catch (e) {
 			setStatus({
 				state: "error",
 				message: "Hmm... 🤔 something went wrong. Please try again",
@@ -225,8 +222,7 @@ const Register = () => {
 										return { ...prev, [i]: f };
 									})
 								}
-
-								resetFunc={(i, f) => 
+								resetFunc={(i, f) =>
 									setResetFunctions((prev) => {
 										return { ...prev, [i]: f };
 									})
@@ -243,8 +239,7 @@ const Register = () => {
 												return { ...prev, [i]: f };
 											})
 										}
-
-										resetFunc={(i, f) => 
+										resetFunc={(i, f) =>
 											setResetFunctions((prev) => {
 												return { ...prev, [i]: f };
 											})
@@ -296,25 +291,26 @@ export default Register;
 function fileToBlobURL(file) {
 	return new Promise((resolve, reject) => {
 		let reader = new FileReader();
-		reader.onload = function(e) {
-			try{
-				const blob = new Blob([new Uint8Array(e.target.result)], {type: file.type });
+		reader.onload = function (e) {
+			try {
+				const blob = new Blob([new Uint8Array(e.target.result)], {
+					type: file.type,
+				});
 				const url = URL.createObjectURL(blob);
 				resolve(url);
-			}catch(e){
+			} catch (e) {
 				reject(e);
 			}
-			
 		};
 
-		reader.onerror = function(e) {
+		reader.onerror = function (e) {
 			reject(e);
-		}
+		};
 
-		try{
+		try {
 			reader.readAsArrayBuffer(file);
-		}catch(e){
+		} catch (e) {
 			reject(e);
 		}
-	})
+	});
 }
