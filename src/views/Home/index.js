@@ -6,7 +6,6 @@ import Timeline from "../Timeline";
 import Gallery from "../Gallery";
 import PastWinners from "../PastWinners";
 import TeamView from "../TeamView";
-import teamCardData from "../../data/TeamCard.json";
 
 const Home = () => {
 	return (
@@ -16,7 +15,7 @@ const Home = () => {
 			<Eligibility />
 			<Timeline />
 			{/* <Sponsors type="Platinum" sponsors={GoldSponsors} /> */}
-			<TeamView title="Round 1" teamsList={teamCardData} />
+			<TeamView />
 			<Gallery />
 			{/* <Sponsors type="Gold" sponsors={GoldSponsors} /> */}
 			<PastWinners />
