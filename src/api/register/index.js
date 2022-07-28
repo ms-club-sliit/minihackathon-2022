@@ -87,7 +87,7 @@ export const registerTeam = async (teamInfo) => {
 		const team_name_index_doc_ref = doc(Db, "team_name_index", team_min_name);
 		const team_name_index_doc = await transaction.get(team_name_index_doc_ref);
 
-		if(team_name_index_doc){ 
+		if(team_name_index_doc.exists()){ 
 			throw new TeamExist();
 		}
 		let counter_doc = await transaction.get(counter_ref);

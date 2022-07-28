@@ -50,7 +50,7 @@ function NameForm({ formKey, handleSubmitFunc, width, resetFunc }) {
 			});
 		
 		resetFunc && resetFunc(formKey, reset);
-	}, []); // eslint-disable-line react-hooks/exhaustive-deps
+	}, [formKey, handleSubmit]); // eslint-disable-line react-hooks/exhaustive-deps
 
 	return (
 		<div className="h-full" style={{ width: width || "20%" }}>
