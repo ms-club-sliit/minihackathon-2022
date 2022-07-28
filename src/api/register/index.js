@@ -7,7 +7,7 @@ import {
 	updateDoc,
 } from "firebase/firestore";
 import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
-import { EmailExists } from "../errors/errors";
+import { EmailExists, TeamExist } from "../errors/errors";
 
 export const registerAwarenessSession = async (member_details) => {
 	return await runTransaction(Db, async (transaction) => {
@@ -26,13 +26,13 @@ export const registerAwarenessSession = async (member_details) => {
 		}
 
 		let new_count = 1;
-		if (counter_doc.data()) {
+		if (counter_doc.data()) { 
 			new_count = counter_doc.data().ticket_count + 1;
 		}
 
-		transaction.update(counter_ref, { ticket_count: new_count });
+		await transaction.update(counter_ref, { ticket_count: new_count });
 		member_details.number = new_count;
-		transaction.set(doc_ref, { ...member_details });
+		await transaction.set(doc_ref, { ...member_details });
 		member_details.ref = doc_ref;
 		return member_details;
 	});
@@ -78,11 +78,19 @@ export const registerTeam = async (teamInfo) => {
 	await Promise.all(tasks);
 
 	return await runTransaction(Db, async (transaction) => {
+		const doc_ref = doc(collection(Db, "teams"));
 		const counter_ref = doc(Db, "teams", "--counter--");
-		let counter_doc = await transaction.get(counter_ref);
-		
-		let doc_ref = doc(collection(Db, "teams"));
+		const team_min_name = teamInfo
+								.team_name
+								.replace(/[ `!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]/gm, "")
+								.toLowerCase();
+		const team_name_index_doc_ref = doc(Db, "team_name_index", team_min_name);
+		const team_name_index_doc = await transaction.get(team_name_index_doc_ref);
 
+		if(team_name_index_doc){ 
+			throw new TeamExist();
+		}
+		let counter_doc = await transaction.get(counter_ref);
 		if (!counter_doc.exists()) {
 			await transaction.set(counter_ref, { ticket_count: 1 });
 		}
@@ -92,9 +100,12 @@ export const registerTeam = async (teamInfo) => {
 			new_count = counter_doc.data().ticket_count + 1;
 		}
 
-		transaction.update(counter_ref, { ticket_count: new_count });
+		await transaction.update(counter_ref, { ticket_count: new_count });
 		teamInfo.number = new_count;
-		transaction.set(doc_ref, teamInfo);
+
+		await transaction.set(doc_ref, teamInfo);
+		await transaction.set(team_name_index_doc_ref, { id: doc_ref.id });
+
 		teamInfo.ref = doc_ref;
 		return teamInfo;
 	})

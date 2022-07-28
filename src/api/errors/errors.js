@@ -12,5 +12,12 @@ class TicketDoesNotExist extends Error {
 	}
 }
 
+class TeamExist extends Error {
+	constructor() {
+		super("There's a team with the same name");
+	}
+}
 
-export { EmailExists, TicketDoesNotExist };
+
+
+export { EmailExists, TicketDoesNotExist, TeamExist };
