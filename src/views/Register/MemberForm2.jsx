@@ -78,7 +78,7 @@ function MemberForm2({ formKey, handleSubmitFunc, resetFunc, width }) {
 			});
 		
 		resetFunc && resetFunc(formKey, reset);
-	}, []); // eslint-disable-line react-hooks/exhaustive-deps
+	}, [handleSubmit, formKey]); // eslint-disable-line react-hooks/exhaustive-deps
 
 	return (
 		<div className="h-full" style={{ width: width || "20%" }}>
