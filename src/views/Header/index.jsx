@@ -23,7 +23,7 @@ const Countdown = () => {
 			<div className="justify-center items-center mt-0 md:mt-0 md:p-10">
 				<div>
 					<CountdownTimer
-						countdownTimestampMs={newDate.getTime()}
+						countdownTimestampMs={1659184200000}
 						month={month}
 						date={date}
 					/>
