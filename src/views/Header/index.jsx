@@ -8,7 +8,7 @@ const Countdown = () => {
 	myDate = myDate.split("-");
 	let newDate = new Date(myDate[2], myDate[1] - 1, myDate[0]);
 	let month = newDate.toLocaleString("en-us", { month: "long" });
-	let date = newDate.getDate();
+	// let date = newDate.getDate();
 
 	return (
 		<div className="flex justify-center flex-col md:flex-row px-3.5 mt-10">
