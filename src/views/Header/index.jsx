@@ -4,7 +4,7 @@ import Logo from "../../assets/logo/mini_hackathon_logo.webp";
 
 const Countdown = () => {
 	const isAwarenessSession = false;
-	let myDate = "07-08-2022";
+	let myDate = "08-08-2022";
 	myDate = myDate.split("-");
 	let newDate = new Date(myDate[2], myDate[1] - 1, myDate[0]);
 	let month = newDate.toLocaleString("en-us", { month: "long" });
@@ -25,7 +25,7 @@ const Countdown = () => {
 					<CountdownTimer
 						countdownTimestampMs={newDate.getTime()}
 						month={month}
-						date={date}
+						date={7}
 					/>
 				</div>
 				<div className="text-center mt-5">
