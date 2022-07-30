@@ -125,7 +125,7 @@ const Header = () => {
 						</li>
 						<li className="ml-8 cursor-pointer inline-flex items-center justify-center px-4 py-1 border-0 rounded font-normal text-white hover:text-black bg-black hover:bg-gray-200 transition duration-0 hover:duration-500">
 							<a
-								href="https://teams.microsoft.com/l/team/19%3asKeZlvZa7jFdXBP_ZmYQnyc-w70KXbrRugHyDumm2To1%40thread.tacv2/conversations?groupId=b6390614-7075-4334-afe7-ef873eeb4550&tenantId=44e3cf94-19c9-4e32-96c3-14f5bf01391a"
+								href="https://teams.microsoft.com/l/team/19%3akzG-B3fHJkpNjqLclXuXUvsQD0Nb3juJl9jpnOW002w1%40thread.tacv2/conversations?groupId=c1f24bbf-380c-453c-9a1e-c6b3b2c3077f&tenantId=44e3cf94-19c9-4e32-96c3-14f5bf01391a"
 								target="_blank"
 								rel="noopener noreferrer"
 							>
