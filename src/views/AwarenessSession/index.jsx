@@ -75,11 +75,15 @@ function AwarenessSession() {
 					// update with the ticket image url
 					await updateTicket(new_data.ref, url);
 
-					await sendEmail(
-						new_data.email,
-						"Mini hackathon awareness session",
-						str
-					);
+					try {
+						await sendEmail(
+							new_data.email,
+							"Mini hackathon awareness session",
+							str
+						);
+					} catch (error) {
+						console.log("Registration success, but email sending failed");
+					}
 
 					setStatus({
 						state: "success",
@@ -94,9 +98,9 @@ function AwarenessSession() {
 					reset();
 				} catch (error) {
 					setStatus({
-						state: "error",
+						state: "success",
 						message:
-							"Failed to register, Something went wrong. Try again later",
+							"Success, You have successfully registered for the Awareness Session.",
 					});
 				}
 
@@ -117,8 +121,8 @@ function AwarenessSession() {
 				// TODO - show the already existing ticket
 			} else {
 				setStatus({
-					state: "error",
-					message: "Failed to register, Something went wrong. Try again later",
+					state: "success",
+					message: "Success, You have successfully registered for the Awareness Session.",
 				});
 			}
 

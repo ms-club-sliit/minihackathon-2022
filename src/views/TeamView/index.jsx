@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import TeamCard from "../../components/TeamCard";
-import teamCardData from "../../data/TeamCard.json";
 import { SearchIcon } from "@heroicons/react/outline";
 import PaginateButton from "../../components/PaginateButton";
+import { getAllTeams } from "../../api/team";
 
 const TeamView = () => {
 	const [teamCards, setTeamCards] = useState([]);
-	// const [teamName, setTeamName] = useState("");
+	const [teamData, setTeamData] = useState([]);
 
 	const [currentView, setCurrentView] = useState(1);
 	const [maxViews, setMaxViews] = useState(0);
@@ -30,19 +30,26 @@ const TeamView = () => {
 	};
 
 	useEffect(() => {
-		setTeamCards(teamCardData.data);
-		const maxpages = Math.floor(teamCardData.data?.length / 6 + 1);
-		setMaxViews(() => maxpages);
+		async function effect() {
+			let data = await getAllTeams(1);
+			setTeamData(data);
+
+			// Initially set all teams in view
+			setTeamCards(data);
+			const maxpages = Math.floor(data?.length / 6 + 1);
+			setMaxViews(() => maxpages);
+		}
+		effect()
 	}, []);
 
 	const searchTeamByName = (teamName) => {
 		if (teamName) {
-			const searchedTeam = teamCardData.data.filter((team) =>
+			const searchedTeam = teamData.data.filter((team) =>
 				team.team_name.toLowerCase().includes(teamName.toLowerCase())
 			);
 			setTeamCards(searchedTeam);
 		} else {
-			setTeamCards(teamCardData.data);
+			setTeamCards(teamData);
 		}
 	};
 
@@ -71,21 +78,22 @@ const TeamView = () => {
 						Search
 					</button>
 				</div>
-				<div className="flex flex-wrap justify-between px-4 md:px-20">
+				<div className="flex flex-wrap px-4 justify-center md:px-20">
 					{currentTeamCards.map((singleTeamCardDetails) => (
-						<TeamCard
-							key={singleTeamCardDetails.team_id}
-							teamImage={singleTeamCardDetails.team_image}
-							round={singleTeamCardDetails.round}
-							team_name={singleTeamCardDetails.team_name}
-							member01={singleTeamCardDetails.members.Member1}
-							member02={singleTeamCardDetails.members.Member2}
-							member03={singleTeamCardDetails.members.Member3}
-							member04={singleTeamCardDetails.members.Member4}
-						/>
+						<div key={singleTeamCardDetails.team_id} className="p-3">
+							<TeamCard
+								round={singleTeamCardDetails.round}
+								team_name={singleTeamCardDetails.team_name}
+								member01={singleTeamCardDetails.members.Member1}
+								member02={singleTeamCardDetails.members.Member2}
+								member03={singleTeamCardDetails.members.Member3}
+								member04={singleTeamCardDetails.members.Member4}
+								team_id={singleTeamCardDetails.team_id}
+							/>
+						</div>
 					))}
 				</div>
-				<div className="flex gap-2 justify-center w-100">
+				<div className="flex gap-2 justify-center w-100 mt-3">
 					<PaginateButton
 						handleOnClick={() => handlePaginateClick("PREV")}
 						disabled={currentView === 1}
