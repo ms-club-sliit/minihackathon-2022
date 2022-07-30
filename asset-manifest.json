@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.02bc60fe.css",
-    "main.js": "/static/js/main.6c9abee7.js",
+    "main.js": "/static/js/main.e911558e.js",
     "static/media/mlsa_logo.png": "/static/media/mlsa_logo.6876beb746e3c3a28461.png",
     "static/media/img7.webp": "/static/media/img7.5845c4d9781a1260b9ae.webp",
     "static/media/img3.webp": "/static/media/img3.89cf1d4fd82becf3b24b.webp",
@@ -19,10 +19,10 @@
     "static/media/revicons.woff": "/static/media/revicons.e8746a624ed098489406.woff",
     "index.html": "/index.html",
     "main.02bc60fe.css.map": "/static/css/main.02bc60fe.css.map",
-    "main.6c9abee7.js.map": "/static/js/main.6c9abee7.js.map"
+    "main.e911558e.js.map": "/static/js/main.e911558e.js.map"
   },
   "entrypoints": [
     "static/css/main.02bc60fe.css",
-    "static/js/main.6c9abee7.js"
+    "static/js/main.e911558e.js"
   ]
 }
