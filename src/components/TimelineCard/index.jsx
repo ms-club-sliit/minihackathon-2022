@@ -19,7 +19,7 @@ const TimelineComponent = (props) => (
 			{props.data && props.data.description}
 		</div>
 		<div className="mt-5">
-			{props.data.id === 1 && (
+			{/* {props.data.id === 1 && (
 				<a
 					href="/awareness-session/register"
 					target="_blank"
@@ -28,8 +28,8 @@ const TimelineComponent = (props) => (
 				>
 					📣 Book your tickets now
 				</a>
-			)}
-			{/* {props.data.id === 3 && (
+			)} */}
+			{props.data.id === 3 && (
 				<a
 					href="/team/register"
 					target="_blank"
@@ -38,7 +38,7 @@ const TimelineComponent = (props) => (
 				>
 					✍🏼 Register your team
 				</a>
-			)} */}
+			)}
 		</div>
 	</VerticalTimelineElement>
 );
