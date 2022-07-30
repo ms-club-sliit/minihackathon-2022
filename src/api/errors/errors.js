@@ -6,4 +6,18 @@ class EmailExists extends Error {
 	}
 }
 
-export { EmailExists };
+class TicketDoesNotExist extends Error {
+	constructor() {
+		super("Team doesn't exist.");
+	}
+}
+
+class TeamExist extends Error {
+	constructor() {
+		super("There's a team with the same name");
+	}
+}
+
+
+
+export { EmailExists, TicketDoesNotExist, TeamExist };

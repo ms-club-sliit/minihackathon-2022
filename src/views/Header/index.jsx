@@ -3,12 +3,12 @@ import CountdownTimer from "./CountdownTimer";
 import Logo from "../../assets/logo/mini_hackathon_logo.webp";
 
 const Countdown = () => {
-	const isAwarenessSession = true;
-	let myDate = "30-07-2022";
+	const isAwarenessSession = false;
+	let myDate = "08-08-2022";
 	myDate = myDate.split("-");
 	let newDate = new Date(myDate[2], myDate[1] - 1, myDate[0]);
 	let month = newDate.toLocaleString("en-us", { month: "long" });
-	let date = newDate.getDate();
+	// let date = newDate.getDate();
 
 	return (
 		<div className="flex justify-center flex-col md:flex-row px-3.5 mt-10">
@@ -25,7 +25,7 @@ const Countdown = () => {
 					<CountdownTimer
 						countdownTimestampMs={1659187800000}
 						month={month}
-						date={date}
+						date={7}
 					/>
 				</div>
 				<div className="text-center mt-5">
