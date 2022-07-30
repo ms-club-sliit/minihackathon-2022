@@ -21,6 +21,7 @@
 		"react-icons": "^4.4.0",
 		"react-loader-spinner": "^5.1.5",
 		"react-multi-carousel": "^2.8.0",
+		"react-portal": "^4.2.2",
 		"react-qr-code": "^2.0.7",
 		"react-router-dom": "^6.3.0",
 		"react-scripts": "5.0.1",

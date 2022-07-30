@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import BeatLoader from "react-spinners/BeatLoader";
+import { TeamExist } from "../../api/errors/errors";
 import { registerTeam, saveTicket, updateTicket } from "../../api/register";
 import TicketPopup from "../../components/TicketPopup";
 import sendEmail from "../../utils/emailSend";
@@ -121,11 +122,19 @@ const Register = () => {
 				number: teamData.number
 			});
 		}catch(e){
-			setStatus({
-				state: "error",
-				message: "Hmm... 🤔 something went wrong. Please try again",
-			});
-
+			if(e instanceof TeamExist){
+				setStatus({
+					state: "error",
+					message: "Team with this name already exist.",
+				});
+				setCurrentIndex(0);
+			} else {
+				setStatus({
+					state: "error",
+					message: "Hmm... 🤔 something went wrong. Please try again",
+				});
+			}
+			
 			resetStatus(3000);
 		}
 	};

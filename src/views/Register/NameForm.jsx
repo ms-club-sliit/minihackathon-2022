@@ -17,7 +17,6 @@ const memberSchema = yup.object().shape({
 			try {
 				new URL(url);
 			} catch (e) {
-				console.error(e);
 				return false;
 			}
 			return true;
@@ -51,7 +50,7 @@ function NameForm({ formKey, handleSubmitFunc, width, resetFunc }) {
 			});
 		
 		resetFunc && resetFunc(formKey, reset);
-	}, []); // eslint-disable-line react-hooks/exhaustive-deps
+	}, [formKey, handleSubmit]); // eslint-disable-line react-hooks/exhaustive-deps
 
 	return (
 		<div className="h-full" style={{ width: width || "20%" }}>
