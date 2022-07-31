@@ -139,10 +139,10 @@ const TeamTicket = (props, this_ref) => {
 									/>
 									<div className="ticket-team-round mb-[28px]">1st Round</div>
 									<div className="ticket-team-date mb-[6px]">
-										Sunday, July 24, 2022
+										Sunday, August 7, 2022
 									</div>
 									<div className="ticket-team-time mb-[16px]">
-										7PM IST Online
+										10AM IST Online
 									</div>
 									<div className="w-[183px] h-[70px] flex-row justify-center">
 										<div className="team-hosted-by whitespace-nowrap mr-[8px] text-sm mb-2">
