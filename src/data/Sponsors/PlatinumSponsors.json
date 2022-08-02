@@ -1,0 +1,14 @@
+{
+	"data": [
+		{
+			"id": 1,
+			"companyName": "Cambio",
+			"imageUrl": "/assets/sponsors/cambio.webp"
+		},
+		{
+			"id": 2,
+			"companyName": "SimCentric",
+			"imageUrl": "/assets/sponsors/simcentric.webp"
+		}
+	]
+}
