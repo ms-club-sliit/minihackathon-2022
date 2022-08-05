@@ -78,9 +78,9 @@ const TeamView = () => {
 						Search
 					</button>
 				</div>
-				<div className="flex flex-wrap px-4 justify-center md:px-20">
+				<div className="flex flex-wrap px-4 justify-center md:px-10">
 					{currentTeamCards.map((singleTeamCardDetails) => (
-						<div key={singleTeamCardDetails.team_id} className="p-3">
+						<div key={singleTeamCardDetails.team_id} className="py-2 md:p-3">
 							<TeamCard
 								round={singleTeamCardDetails.round}
 								team_name={singleTeamCardDetails.team_name}
