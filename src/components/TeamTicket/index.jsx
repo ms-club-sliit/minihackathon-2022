@@ -137,9 +137,9 @@ const TeamTicket = (props, this_ref) => {
 										alt="Mini hackathon logo"
 										className="mb-[8px]"
 									/>
-									<div className="ticket-team-round mb-[28px]">1st Round</div>
+									<div className="ticket-team-round mb-[28px]">2nd Round</div>
 									<div className="ticket-team-date mb-[6px]">
-										Sunday, August 7, 2022
+										Saturday, September 3, 2022
 									</div>
 									<div className="ticket-team-time mb-[16px]">
 										10AM IST Online

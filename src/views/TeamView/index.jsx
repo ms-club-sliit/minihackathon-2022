@@ -57,7 +57,7 @@ const TeamView = () => {
 		<div id="teams">
 			<div className="lg:px-20">
 				<h1 className="text-4xl md:text-5xl text-center mb-5 mt-10 font-bold">
-					Teams
+					Round 2 Teams
 				</h1>
 				<div className="flex justify-center mb-6 ml-8 mr-8 md:px-20">
 					<SearchIcon className="w-6 h-6 text-gray-600 relative top-3 left-10" />
