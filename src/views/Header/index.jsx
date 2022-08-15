@@ -3,7 +3,7 @@ import CountdownTimer from "./CountdownTimer";
 import Logo from "../../assets/logo/mini_hackathon_logo.webp";
 
 const Countdown = () => {
-	const isAwarenessSession = false;
+	// const isAwarenessSession = false;
 	let myDate = "03-09-2022";
 	myDate = myDate.split("-");
 	let newDate = new Date(myDate[2], myDate[1] - 1, myDate[0]);
