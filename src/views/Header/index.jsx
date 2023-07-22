@@ -12,7 +12,6 @@ const Countdown = () => {
 
 	return (
 		<div className="flex justify-center flex-col md:flex-row px-3.5 mt-10 ">
-			
 			<div className="flex justify-center items-center md:p-10 ">
 				<img
 					src={Logo}
@@ -31,7 +30,7 @@ const Countdown = () => {
 				</div>
 
 				<div className="text-center mt-7">
-					
+
 						<a
 							href=""
 							target="_blank"
