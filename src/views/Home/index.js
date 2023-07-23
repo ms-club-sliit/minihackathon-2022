@@ -16,8 +16,8 @@ const Home = () => {
 			<Header />
 			<Eligibility />
 			<Timeline />
-			<Sponsors type="Platinum" sponsors={PlatinumSponsors} />
-			<TeamView />
+			{/* <Sponsors type="Platinum" sponsors={PlatinumSponsors} /> */}
+			{/* <TeamView /> */}
 			<Gallery />
 			{/* <Sponsors type="Gold" sponsors={GoldSponsors} /> */}
 			<PastWinners />
