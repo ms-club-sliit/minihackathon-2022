@@ -3,25 +3,25 @@
 		{
 			"id": 1,
 			"title": "Registration Open for Awareness Session",
-			"dateTime": "25th Of July - 6.00 pm",
+			"dateTime": "24th Of July - 10.00 am",
 			"description": "Being aware of the competition will help you create a remarkable project adhering to the rules and guidelines of the competition. The best way to do so is by attending the awareness session. Now you can get registered for the awareness session."
 		},
 		{
 			"id": 2,
 			"title": "Awareness Session",
-			"dateTime": "30th Of July - 10.00 am",
+			"dateTime": "29th Of July - 10.00 am",
 			"description": "Following the rules and guidelines is mandatory during the competition. Join us with the awareness session to be aware of the competition guidelines and see what our organizers have to say about the event."
 		},
 		{
 			"id": 3,
 			"title": "Team Registration Open",
-			"dateTime": "30th Of July - 12.30 pm",
+			"dateTime": "30th Of July - 10.00 am",
 			"description": "Registrations for round one start. Get your team registered on time by submitting an entry. Make sure that your team consist of 3 to 4 members. Keep in mind that a good team will help you win championships."
 		},
 		{
 			"id": 4,
 			"title": "Registration Closes",
-			"dateTime": "13th Of August - 6.30 pm",
+			"dateTime": "12th Of August - 10.00 am",
 			"description": "Team registration closes on this day. Please note that NO registration is accepted after the registrations are closed. Be sure to get registered before the deadline ends."
 		},
 		{
@@ -33,7 +33,7 @@
 		{
 			"id": 6,
 			"title": "Final Round",
-			"dateTime": "28th Of August - 08.30 am",
+			"dateTime": "30th Of August - 10.00 am",
 			"description": "All teams advancing to round 3 are invited to the physical event at the Sri Lanka Institute of Information Technology Campus, Malabe, to present the project in front of an expert panel. Winners will be selected accordingly."
 		}
 	]

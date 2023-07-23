@@ -17,7 +17,7 @@ const TeamCard = (props) => {
 							</div>
 							<div className="col-start-9 col-span-2">
 								<button className="w-24 whitespace-nowrap rounded-full border-2 px-3 py-1 text-base md:text-gray-800">
-									{props.round + "st Round"}
+								 {props.round + "st Round"}
 								</button>
 							</div>
 						</div>
