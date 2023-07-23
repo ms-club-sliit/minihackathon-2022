@@ -3,7 +3,7 @@ import CountdownTimer from "./CountdownTimer";
 import Logo from "../../assets/logo/mini_hackathon_logo_2023.png";
 
 const Countdown = () => {
-	const isAwarenessSession = false;
+	// const isAwarenessSession = false;
 	let myDate = "30-08-2023";
 	myDate = myDate.split("-");
 	let newDate = new Date(myDate[2], myDate[1] - 1, myDate[0]);
@@ -32,7 +32,7 @@ const Countdown = () => {
 				<div className="text-center mt-7">
 
 						<a
-							href=""
+							href="https://msclubsliit.org/"
 							target="_blank"
 							rel="noopener noreferrer"
 							className=" bg-black text-white border border-black hover:bg-gray-100 hover:text-black rounded lg:text-lg pl-4 pr-4 pt-1 pb-1 transition duration-0 hover:duration-500"
