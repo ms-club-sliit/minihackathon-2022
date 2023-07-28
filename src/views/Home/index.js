@@ -5,10 +5,10 @@ import Eligibility from "../Eligibility";
 import Timeline from "../Timeline";
 import Gallery from "../Gallery";
 import PastWinners from "../PastWinners";
-import TeamView from "../TeamView";
+/* import TeamView from "../TeamView";
 import Sponsors from "../Sponsors";
 import PlatinumSponsors from "../../data/Sponsors/PlatinumSponsors.json";
-
+ */
 const Home = () => {
 	return (
 		<>
