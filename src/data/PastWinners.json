@@ -2,18 +2,18 @@
 	"data": [
 		{
 			"id": 1,
-			"description": "Mini Hackathon is a competition which gave us a chance to perform our skills and also we gained vast knowledge by participating. We are happy to say that we got many chances to participate in different hackathons organized by different organizations after winning the past Mini Hackathon competition.",
-			"imageUrl": "/assets/pastwinners/TeamCareCycle.webp"
+			"description": "The Mini Hackathon victory was a testament to our teamwork, dedication, and innovation. It's incredible how this competition has paved the way for us to explore new horizons and build a network within the tech community.",
+			"imageUrl": "/assets/pastwinners/winners.webp"
 		},
 		{
 			"id": 2,
-			"description": "Mini Hackathon is the first step on the path of exposure to the new world which helps unlock our new skills to recognize our hidden potential and beyond that was the basis of the big journey of competing in global level competitions like Imagine cup.",
-			"imageUrl": "/assets/pastwinners/AlphaSquard.webp"
+			"description": "The Mini Hackathon has been a challenging and exhilarating journey. Securing a top position is a testament to our hard work and determination. This accomplishment will serve as a stepping stone to greater achievements.",
+			"imageUrl": "/assets/pastwinners/runners_up.webp"
 		},
 		{
 			"id": 3,
-			"description": "It's a great pleasure to be able to participate in Mini Hackathon and become the second runners up. Mini Hackathon opened doors for many other opportunities in the industry.",
-			"imageUrl": "/assets/pastwinners/BringTheSolution.webp"
+			"description": "The Mini Hackathon pushed us to think outside the box and put our skills to the test. We are grateful for the recognition we received, and this competition has definitely prepared us for even greater challenges.",
+			"imageUrl": "/assets/pastwinners/2nd_runners_up.webp"
 		}
 	]
 }

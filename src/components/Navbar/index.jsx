@@ -44,7 +44,7 @@ const Header = () => {
 				<div className="flex justify-between items-center border-0 py-3 md:justify-start md:space-x-10">
 					<div className="flex justify-start lg:w-0 lg:flex-1">
 						<div className="text-xl font-medium text-black hover:text-gray-900 list-none">
-							MiNi HACKATHON 2022
+							MiNi HACKATHON 2023
 						</div>
 					</div>
 					<div className="-mr-2 -my-2 md:hidden">
@@ -107,7 +107,7 @@ const Header = () => {
 						</li>
 						<li className="text-base font-normal text-gray-500 hover:text-gray-900 mt-1 list-none cursor-pointer">
 							<a
-								href="https://bit.ly/minihack22Guideline"
+								href="/instructions"
 								target="_blank"
 								rel="noopener noreferrer"
 							>
@@ -125,7 +125,7 @@ const Header = () => {
 						</li>
 						<li className="ml-8 cursor-pointer inline-flex items-center justify-center px-4 py-1 border-0 rounded font-normal text-white hover:text-black bg-black hover:bg-gray-200 transition duration-0 hover:duration-500">
 							<a
-								href="https://teams.microsoft.com/l/team/19%3akzG-B3fHJkpNjqLclXuXUvsQD0Nb3juJl9jpnOW002w1%40thread.tacv2/conversations?groupId=c1f24bbf-380c-453c-9a1e-c6b3b2c3077f&tenantId=44e3cf94-19c9-4e32-96c3-14f5bf01391a"
+								href="https://teams.microsoft.com/l/team/19%3abbyMtHm95TuODG6QRHhhrYFg3-H5B9GckzKF4ofQNCQ1%40thread.tacv2/conversations?groupId=6c5080c9-4b76-4820-a884-c105c960a193&tenantId=44e3cf94-19c9-4e32-96c3-14f5bf01391a"
 								target="_blank"
 								rel="noopener noreferrer"
 							>
