@@ -57,14 +57,13 @@ const TeamTicket = (props, this_ref) => {
 	useEffect(() => {
 		if (onRender && ref.current) {
 			ref.current.style.transform = "none";
-
 			toPng(ref.current, { cacheBust: true })
 				.then((dataUrl) => {
 					ref.current.style.transform = "none";
 					onRender(dataUrl);
 				})
 				.catch((err) => {
-					isDebugModeOn && console.log(err);
+					console.error(err);
 				});
 		}
 	}, [ref, isDebugModeOn, onRender]);
@@ -110,17 +109,9 @@ const TeamTicket = (props, this_ref) => {
 												className="flex flex-row items-center mb-[14px]"
 											>
 												<div className="w-[40px] h-[40px] flex justify-center items-center flex-shrink-0 rounded-full bg-black mr-[8px] overflow-hidden">
-													{member.image === "default" ? (
-														<div className="text-white text-xl font-bold">
-															{member.name[0].toUpperCase()}
-														</div>
-													) : (
-														<img
-															src={member.image}
-															alt={member.name}
-															className="object-fill h-full w-full"
-														/>
-													)}
+													<div className="text-white text-xl font-bold">
+														{member.name[0].toUpperCase()}
+													</div>
 												</div>
 												<div className="ticket-team-member line-clamp-2">
 													{member.name}
