@@ -15,5 +15,6 @@ const FirebaseApp = initializeApp({
 
 const Db = getFirestore(FirebaseApp);
 const Storage = getStorage(FirebaseApp);
+const colPrefix = process.env.REACT_APP_FIREBASE_COLLECTION_PREFIX || "dev";
 
-export { FirebaseApp, Db, Storage };
+export { FirebaseApp, Db, Storage, colPrefix };

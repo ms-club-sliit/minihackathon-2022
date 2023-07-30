@@ -31,6 +31,7 @@ jobs:
           REACT_APP_MEASUREMENT_ID: ${{ secrets.REACT_APP_MEASUREMENT_ID }}
           REACT_APP_EMAIL_ENDPOINT: ${{ secrets.REACT_APP_EMAIL_ENDPOINT }}
           REACT_APP_SHARE_ENDPOINT: ${{ secrets.REACT_APP_SHARE_ENDPOINT }}
+          REACT_APP_FIREBASE_COLLECTION_PREFIX: ${{ secrets.REACT_APP_FIREBASE_COLLECTION_PREFIX }}
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4.3.3
         with:

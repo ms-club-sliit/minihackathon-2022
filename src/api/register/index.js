@@ -1,4 +1,4 @@
-import { Db, Storage } from "../../Firebase";
+import { Db, Storage, colPrefix } from "../../Firebase";
 import {
 	collection,
 	Timestamp,
@@ -11,10 +11,10 @@ import { EmailExists, TeamExist } from "../errors/errors";
 
 export const registerAwarenessSession = async (member_details) => {
 	return await runTransaction(Db, async (transaction) => {
-		const counter_ref = doc(Db, "awareness_session", "--counter--");
+		const counter_ref = doc(Db, `awareness_session_${colPrefix}`, "--counter--");
 		let counter_doc = await transaction.get(counter_ref);
 
-		const doc_ref = doc(Db, "awareness_session", member_details.email);
+		const doc_ref = doc(Db, `awareness_session_${colPrefix}`, member_details.email);
 		const document = await transaction.get(doc_ref);
 
 		if (document.exists()) {
@@ -44,7 +44,7 @@ export const updateTicket = async (ref, ticket_url) => {
 
 export const saveTicket = async (image_string) => {
 	let fileName = generateFileName();
-	const storageRef = ref(Storage, `/ticket-images/${fileName}`);
+	const storageRef = ref(Storage, `/ticket-images-${colPrefix}/${fileName}`);
 	let snapshot = await uploadBytes(storageRef, dataURItoBlob(image_string));
 	return await getDownloadURL(snapshot.ref);
 };
@@ -78,13 +78,13 @@ export const registerTeam = async (teamInfo) => {
 	await Promise.all(tasks);
 
 	return await runTransaction(Db, async (transaction) => {
-		const doc_ref = doc(collection(Db, "teams"));
-		const counter_ref = doc(Db, "teams", "--counter--");
+		const doc_ref = doc(collection(Db, `teams-${colPrefix}`));
+		const counter_ref = doc(Db, `teams-${colPrefix}`, "--counter--");
 		const team_min_name = teamInfo
 								.team_name
 								.replace(/[ `!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]/gm, "")
 								.toLowerCase();
-		const team_name_index_doc_ref = doc(Db, "team_name_index", team_min_name);
+		const team_name_index_doc_ref = doc(Db, `team_name_index_${colPrefix}`, team_min_name);
 		const team_name_index_doc = await transaction.get(team_name_index_doc_ref);
 
 		if(team_name_index_doc.exists()){ 
